@@ -1,5 +1,3 @@
-import 'package:buy_buddy_user_app/translations/codegen_loader.g.dart';
-
 abstract class Failure {
   final String message;
 

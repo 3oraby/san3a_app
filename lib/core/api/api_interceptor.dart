@@ -1,5 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
+import 'package:san3a_app/core/api/api_keys.dart';
+import 'package:san3a_app/core/api/end_points.dart';
+import 'package:san3a_app/core/constants/storage_keys.dart';
+import 'package:san3a_app/core/helpers/app_storage_helper.dart';
 
 class ApiInterceptor extends Interceptor {
   final Dio dio;
@@ -31,12 +35,6 @@ class ApiInterceptor extends Interceptor {
     if (err.response?.data["message"] ==
         "Invalid or expired token, please login again.") {
       try {
-        // final path = err.requestOptions.path;
-        // if (path.contains(EndPoints.login) || path.contains(EndPoints.signUp)) {
-        //   debugPrint("Login/Signup request failed → skipping refresh handling");
-        //   return handler.next(err);
-        // }
-
         await handleUnAuthorizedException(err, handler);
         return;
       } catch (e) {
