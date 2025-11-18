@@ -1,0 +1,130 @@
+import 'package:dio/dio.dart';
+import 'package:flutter/widgets.dart';
+
+class ApiInterceptor extends Interceptor {
+  final Dio dio;
+
+  ApiInterceptor({required this.dio});
+  @override
+  Future<void> onRequest(
+    RequestOptions options,
+    RequestInterceptorHandler handler,
+  ) async {
+    options.headers['Accept-language'] = "en";
+    options.extra['withCredentials'] = true;
+
+    final token = await AppStorageHelper.getSecureData(StorageKeys.accessToken);
+
+    if (token != null) {
+      options.headers['Authorization'] = 'Bearer $token';
+    }
+    return handler.next(options);
+  }
+
+  @override
+  void onError(DioException err, ErrorInterceptorHandler handler) async {
+    debugPrint("error: ApiInterceptor.onError()");
+    debugPrint("status message: ${err.response?.statusMessage}");
+    debugPrint("response data: ${err.response?.data}");
+    debugPrint("response status code: ${err.response?.statusCode}");
+
+    if (err.response?.data["message"] ==
+        "Invalid or expired token, please login again.") {
+      try {
+        // final path = err.requestOptions.path;
+        // if (path.contains(EndPoints.login) || path.contains(EndPoints.signUp)) {
+        //   debugPrint("Login/Signup request failed → skipping refresh handling");
+        //   return handler.next(err);
+        // }
+
+        await handleUnAuthorizedException(err, handler);
+        return;
+      } catch (e) {
+        debugPrint("error in get refresh token part: ${e.toString()}");
+        await forcesUserLogOut(handler, err);
+        return;
+      }
+    }
+
+    if (err.response?.data['message'] ==
+        "You are not logged in! please login to get access.") {
+      await handleNoRefreshTokenFound(handler, err);
+      return;
+    }
+
+    return handler.reject(err);
+  }
+
+  Future<void> handleNoRefreshTokenFound(
+    ErrorInterceptorHandler handler,
+    DioException err,
+  ) async {
+    debugPrint("No refreshToken found in cookie");
+    await forcesUserLogOut(handler, err);
+  }
+
+  Future<void> handleUnAuthorizedException(
+    DioException err,
+    ErrorInterceptorHandler handler,
+  ) async {
+    debugPrint("error in ApiInterceptors: Unable to verify token");
+    final refreshResponse = await dio.post(EndPoints.refreshToken);
+    final newAccessToken = refreshResponse.data[ApiKeys.accessToken];
+    await AppStorageHelper.setSecureData(
+      StorageKeys.accessToken,
+      newAccessToken,
+    );
+
+    final opts = err.requestOptions;
+    opts.headers['Authorization'] = 'Bearer $newAccessToken';
+    await retryRequestWithNewToken(err, handler, newAccessToken);
+    return;
+  }
+
+  Future<void> forcesUserLogOut(
+    ErrorInterceptorHandler handler,
+    DioException err,
+  ) async {
+    await AppStorageHelper.deleteSecureData(StorageKeys.accessToken);
+
+    await AppStorageHelper.setBool(StorageKeys.isLoggedIn, false);
+
+    if (navigatorKey.currentContext == null) {
+      debugPrint("Navigator context is null ,can`t navigate to login screen");
+    } else {
+      debugPrint("Navigating to login screen..");
+      Navigator.of(
+        navigatorKey.currentContext!,
+      ).pushNamedAndRemoveUntil(Routes.loginScreen, (route) => false);
+    }
+  }
+
+  Future<void> retryRequestWithNewToken(
+    DioException err,
+    ErrorInterceptorHandler handler,
+    String newToken,
+  ) async {
+    final updatedOptions = Options(
+      method: err.requestOptions.method,
+      headers: {"Authorization": "Bearer $newToken"},
+    );
+
+    try {
+      final retryResponse = await dio.request(
+        err.requestOptions.path,
+        options: updatedOptions,
+        data: err.requestOptions.data,
+        queryParameters: err.requestOptions.queryParameters,
+      );
+      handler.resolve(retryResponse);
+    } catch (retryError, retryStackTrace) {
+      handler.reject(
+        DioException(
+          requestOptions: err.requestOptions,
+          error: retryError,
+          stackTrace: retryStackTrace,
+        ),
+      );
+    }
+  }
+}
