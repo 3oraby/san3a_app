@@ -1,0 +1,36 @@
+{
+    "messages": {
+        "success": {
+            "verification_code_sent": "A verification code has been sent to your email.",
+            "new_verification_code_sent": "A new verification code has been sent to your email."
+        },
+        "failures": {
+            "incorrect_credentials": "Incorrect email or password. Please try again.",
+            "inactive_user": "User is not active. Please go and verify your email",
+            "unexpected_error": "An unexpected error occurred. Please try again later.",
+            "account_already_exists": "An account with this email already exists.",
+            "username_already_exists": "This username is already linked to an existing account.",
+            "invalid_or_expired_code": "The code you entered is Invalid or expired. Please try again.",
+            "invalid_email": "We couldn’t find an account with this email.",
+            "user_already_active": "Your account is already active. No further action is needed.",
+            "verification_code_not_found": "Verification code not found. Please request a new one."
+        }
+    },
+    "validation": {
+        "field_is_required": "Field is required",
+        "email_is_required": "Email is required",
+        "invalid_email": "Please enter a valid email address",
+        "password_is_required": "Password is required",
+        "password_too_short": "Password must be at least 8 characters long",
+        "phone_is_required": "Phone number is required",
+        "invalid_phone": "Please enter a valid phone number",
+        "age_is_required": "Age is required",
+        "invalid_age": "Please enter a valid age",
+        "age_too_young": "Age must be 14 or older",
+        "age_too_old": "Please enter a realistic age",
+        "confirm_password_is_required": "Confirm password is required.",
+        "passwords_do_not_match": "Passwords do not match.",
+        "password_must_contain_6_chars": "Password must contain at least 6 characters",
+        "enter_your_email_to_reset_password": "please Enter your E-mail to reset password"
+    }
+}
