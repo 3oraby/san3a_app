@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:san3a_app/core/errors/exceptions.dart';
+import 'package:san3a_app/core/errors/failures.dart';
 import 'package:san3a_app/core/models/error_model.dart';
 
 void handleDioExceptions(DioException e) {
@@ -9,15 +10,12 @@ void handleDioExceptions(DioException e) {
 
   final data = e.response?.data;
 
-  ServerException serverException() {
+  ServerException getServerExceptionFromResponseData(dynamic data) {
     if (data is Map<String, dynamic>) {
       return ServerException(errModel: ErrorModel.fromJson(data));
     }
     return ServerException(
-      errModel: ErrorModel(
-        message: e.message ?? "Unknown error",
-        code: 404,
-      ),
+      errModel: ErrorModel(message: e.message ?? "Unknown error", code: 404),
     );
   }
 
@@ -28,7 +26,7 @@ void handleDioExceptions(DioException e) {
     case DioExceptionType.badCertificate:
     case DioExceptionType.cancel:
     case DioExceptionType.unknown:
-      throw serverException();
+      throw getServerExceptionFromResponseData(data);
 
     case DioExceptionType.connectionError:
       throw ConnectionException();
@@ -37,8 +35,8 @@ void handleDioExceptions(DioException e) {
       final status = e.response?.statusCode;
       if (status != null &&
           [400, 401, 403, 404, 409, 422, 504].contains(status)) {
-        throw serverException();
+        throw getServerExceptionFromResponseData(data);
       }
-      throw serverException();
+      throw getServerExceptionFromResponseData(data);
   }
 }

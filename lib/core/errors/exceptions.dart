@@ -5,12 +5,3 @@ class ServerException implements Exception {
 
   const ServerException({required this.errModel});
 }
-
-class ConnectionException implements Exception {
-  final String message;
-
-  const ConnectionException({
-    this.message =
-        "No internet connection. Please check your connection and try again.",
-  });
-}
