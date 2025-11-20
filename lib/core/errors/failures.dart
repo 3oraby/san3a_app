@@ -9,15 +9,8 @@ abstract class Failure {
   String toString() => message;
 }
 
-class CustomException extends Failure {
-  const CustomException({
+class CustomFailure extends Failure {
+  const CustomFailure({
     String message = LocaleKeys.messagesFailuresUnexpectedError,
-  }) : super(message);
-}
-
-class ConnectionException extends Failure {
-  const ConnectionException({
-    String message =
-        "No internet connection. Please check your connection and try again.",
   }) : super(message);
 }
