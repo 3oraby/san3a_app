@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:san3a_app/core/helpers/app_storage_helper.dart';
+import 'package:san3a_app/core/helpers/on_generate_routes.dart';
 import 'package:san3a_app/core/services/custom_bloc_observer.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -28,7 +29,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      navigatorKey: navigatorKey,
+      locale: context.locale,
+      supportedLocales: context.supportedLocales,
+      localizationsDelegates: context.localizationDelegates,
+      onGenerateRoute: (settings) => onGenerateRoutes(settings, context),      
       home: Scaffold(body: Center(child: Text('Hello World!'))),
     );
   }
