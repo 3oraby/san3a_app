@@ -1,7 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:san3a_app/core/utils/app_light_colors.dart';
+import 'package:san3a_app/core/utils/app_text_styles.dart';
 
 class AppTheme {
-  static ThemeData lightTheme = ThemeData(brightness: Brightness.light);
+  static ThemeData lightTheme = ThemeData(
+    brightness: Brightness.light,
+    primaryColor: AppLightColors.primaryColor,
+    scaffoldBackgroundColor: AppLightColors.scaffoldBackgroundColor,
+    dividerColor: AppLightColors.dividerColor,
+    iconTheme: const IconThemeData(color: Color(0xFF0A73FF)),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: AppLightColors.textFieldBackground,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.r),
+        borderSide: const BorderSide(
+          color: AppLightColors.borderColor,
+          width: 1,
+        ),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.r),
+        borderSide: const BorderSide(
+          color: AppLightColors.borderColor,
+          width: 1,
+        ),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.r),
+        borderSide: const BorderSide(
+          color: AppLightColors.primaryColor,
+          width: 2,
+        ),
+      ),
+      hintStyle: AppTextStyles.getTextStyle(16),
+    ),
+    snackBarTheme: const SnackBarThemeData(
+      backgroundColor: Color(0xFF0B2545),
+      contentTextStyle: TextStyle(color: Colors.white),
+    ),
+    visualDensity: VisualDensity.adaptivePlatformDensity,
+  );
 
   static ThemeData darkTheme = ThemeData(brightness: Brightness.dark);
 }

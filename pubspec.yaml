@@ -22,6 +22,7 @@ dependencies:
   flutter_secure_storage: ^9.2.4
   flutter_svg: ^2.1.0
   get_it: ^9.0.5
+  google_fonts: ^6.3.2
   image_picker: ^1.2.1
   path_provider: ^2.1.5
   shared_preferences: ^2.5.3
@@ -44,6 +45,7 @@ flutter_assets:
   filename: app_svgs.dart
   field_prefix: null
   classname: AppSvgs
+
 # flutter_assets:
 #   assets_path: assets/images
 #   output_path: lib/core/utils

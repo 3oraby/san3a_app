@@ -61,7 +61,7 @@ class _MainAppState extends State<MainApp> {
       child: BlocBuilder<AppThemeCubit, AppThemeState>(
         builder: (context, state) {
           return ScreenUtilInit(
-            designSize: Size(393, 852),
+            designSize: Size(375, 812),
             minTextAdapt: true,
             splitScreenMode: true,
             enableScaleWH: () => false,
