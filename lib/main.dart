@@ -12,6 +12,7 @@ import 'package:san3a_app/core/helpers/on_generate_routes.dart';
 import 'package:san3a_app/core/services/custom_bloc_observer.dart';
 import 'package:san3a_app/core/services/get_it_service.dart';
 import 'package:san3a_app/core/utils/app_themes.dart';
+import 'package:san3a_app/core/widgets/developer_overlay.dart';
 import 'package:san3a_app/features/auth/presentation/screens/login_screen.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -80,6 +81,9 @@ class _MainAppState extends State<MainApp> {
                 onGenerateRoute: (settings) =>
                     onGenerateRoutes(settings, context),
                 home: const LoginScreen(),
+                builder: (context, child) {
+                  return DeveloperOverlay(child: child!);
+                },
               );
             },
           );
