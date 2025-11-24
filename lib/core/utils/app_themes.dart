@@ -57,9 +57,9 @@ class AppTheme {
 
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
-    primaryColor: AppLightColors.primaryColor,
+    primaryColor: AppDarkColors.primaryColor,
     scaffoldBackgroundColor: AppDarkColors.scaffoldBackgroundColor,
-    dividerColor: Colors.white24,
+    dividerColor: AppDarkColors.dividerColor,
     extensions: [
       AppSemanticColors(
         headingColor: AppDarkColors.headingColor,
@@ -69,5 +69,38 @@ class AppTheme {
       ),
     ],
     iconTheme: const IconThemeData(color: Colors.white),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: AppDarkColors.textFieldBackground,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.r),
+        borderSide: const BorderSide(
+          color: AppDarkColors.borderColor,
+          width: 1,
+        ),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.r),
+        borderSide: const BorderSide(
+          color: AppDarkColors.borderColor,
+          width: 1,
+        ),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.r),
+        borderSide: const BorderSide(
+          color: AppDarkColors.primaryColor,
+          width: 2,
+        ),
+      ),
+      hintStyle: AppTextStyles.getTextStyle(
+        16,
+      ).copyWith(color: AppDarkColors.paragraphColor),
+    ),
+    snackBarTheme: const SnackBarThemeData(
+      backgroundColor: AppDarkColors.primaryColor,
+      contentTextStyle: TextStyle(color: Colors.white),
+    ),
+    visualDensity: VisualDensity.adaptivePlatformDensity,
   );
 }
