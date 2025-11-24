@@ -12,6 +12,7 @@ import 'package:san3a_app/core/helpers/on_generate_routes.dart';
 import 'package:san3a_app/core/services/custom_bloc_observer.dart';
 import 'package:san3a_app/core/services/get_it_service.dart';
 import 'package:san3a_app/core/utils/app_themes.dart';
+import 'package:san3a_app/features/auth/presentation/screens/login_screen.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -78,7 +79,7 @@ class _MainAppState extends State<MainApp> {
                 localizationsDelegates: context.localizationDelegates,
                 onGenerateRoute: (settings) =>
                     onGenerateRoutes(settings, context),
-                home: Scaffold(body: Center(child: Text('Hello World!'))),
+                home: const LoginScreen(),
               );
             },
           );
