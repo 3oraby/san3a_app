@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:san3a_app/core/cubits/app_theme_cubit/app_theme_cubit.dart';
@@ -13,6 +14,21 @@ class DeveloperOverlay extends StatelessWidget {
     return Stack(
       children: [
         child,
+        Positioned(
+          bottom: 50,
+          left: 16,
+          child: FloatingActionButton(
+            mini: true,
+            onPressed: () async {
+              await context.setLocale(
+                context.locale == const Locale('en')
+                    ? const Locale('ar')
+                    : const Locale('en'),
+              );
+            },
+            child: const Icon(Icons.language),
+          ),
+        ),
         Positioned(
           bottom: 50,
           right: 16,
