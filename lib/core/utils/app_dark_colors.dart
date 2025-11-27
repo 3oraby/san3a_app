@@ -13,6 +13,10 @@ class AppDarkColors {
   static const Color labelColor = Color(0xFFBFBFC0);
   static const Color contentBackgroundColor = Color(0xFFF9FAFB);
 
+  // button colors
+  static const Color buttonBackgroundColor = Color(0xFF1E1E1E);
+  static const Color disabledButtonBackgroundColor = Color(0xFF374151);
+
   static const Color selectedColor = Color(0xFF343A47);
   static const Color textFieldBackground = Color(0xFF2C2C2C);
   static const Color pinFieldBackground = Color(0xFF2C2C2C);

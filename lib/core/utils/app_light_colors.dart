@@ -12,6 +12,10 @@ class AppLightColors {
   static const Color labelColor = Color(0xFFBFBFC0);
   static const Color contentBackgroundColor = Color(0xFFF9FAFB);
 
+  // button colors
+  static const Color buttonBackgroundColor = Color(0xFFF9FAFB);
+  static const Color disabledButtonBackgroundColor = Color(0xFFC0C4CA);
+
   static const Color selectedColor = Color(0xFF343A47);
   static const Color textFieldBackground = Color(0xFFF5F5F5);
   static const Color pinFieldBackground = Color(0xFFD9D9D9);

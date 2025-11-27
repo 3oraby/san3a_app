@@ -1,0 +1,78 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:san3a_app/core/constants/locale_keys.dart';
+import 'package:san3a_app/core/helpers/get_app_semantic_colors.dart';
+import 'package:san3a_app/core/utils/app_images.dart';
+import 'package:san3a_app/core/utils/app_svgs.dart';
+import 'package:san3a_app/core/utils/app_text_styles.dart';
+import 'package:san3a_app/core/widgets/custom_button.dart';
+import 'package:san3a_app/core/widgets/vertical_gap.dart';
+
+class InitialAuthBody extends StatelessWidget {
+  const InitialAuthBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final appSemanticColors = getAppSemanticColors(context);
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const VerticalGap(39),
+        SvgPicture.asset(AppSvgs.san3aLogo),
+        Image.asset(AppImages.initialAuthLogo),
+        const VerticalGap(27),
+        Text(
+          LocaleKeys.authInitialLetStart.tr(),
+          style: AppTextStyles.getTextStyle(32).copyWith(
+            fontWeight: FontWeight.w700,
+            color: appSemanticColors.headingColor,
+          ),
+        ),
+        const VerticalGap(12),
+        Text(
+          LocaleKeys.authInitialBestCraftsmenTitle.tr(),
+          style: AppTextStyles.getTextStyle(
+            12,
+          ).copyWith(color: appSemanticColors.headingColor),
+        ),
+        const VerticalGap(25),
+        RPadding(
+          padding: const EdgeInsets.symmetric(horizontal: 44),
+          child: Column(
+            children: [
+              CustomButton(
+                text: LocaleKeys.authInitialLoginButton.tr(),
+                onPressed: () {},
+              ),
+              const VerticalGap(7),
+              CustomButton(
+                text: LocaleKeys.authInitialCreateAccountButton.tr(),
+                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                textColor: Theme.of(context).primaryColor,
+                isOutline: true,
+                onPressed: () {},
+              ),
+            ],
+          ),
+        ),
+        const VerticalGap(16),
+        Text(
+          LocaleKeys.authInitialCreateAccountAgreeText.tr(),
+          style: AppTextStyles.getTextStyle(
+            12,
+          ).copyWith(color: appSemanticColors.paragraphColor),
+        ),
+        Text(
+          LocaleKeys.authInitialTermsAndConditions.tr(),
+          style: AppTextStyles.getTextStyle(12).copyWith(
+            color: appSemanticColors.paragraphColor,
+            decoration: TextDecoration.underline,
+          ),
+        ),
+        const VerticalGap(27),
+      ],
+    );
+  }
+}
