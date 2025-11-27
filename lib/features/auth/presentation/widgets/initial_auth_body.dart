@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:san3a_app/core/constants/locale_keys.dart';
 import 'package:san3a_app/core/helpers/get_app_semantic_colors.dart';
 import 'package:san3a_app/core/utils/app_images.dart';
+import 'package:san3a_app/core/utils/app_routes.dart';
 import 'package:san3a_app/core/utils/app_svgs.dart';
 import 'package:san3a_app/core/utils/app_text_styles.dart';
 import 'package:san3a_app/core/widgets/custom_button.dart';
@@ -44,7 +45,9 @@ class InitialAuthBody extends StatelessWidget {
             children: [
               CustomButton(
                 text: LocaleKeys.authInitialLoginButton.tr(),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.loginScreen);
+                },
               ),
               const VerticalGap(7),
               CustomButton(
@@ -52,7 +55,9 @@ class InitialAuthBody extends StatelessWidget {
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                 textColor: Theme.of(context).primaryColor,
                 isOutline: true,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.signUpScreen);
+                },
               ),
             ],
           ),

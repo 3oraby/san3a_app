@@ -1,6 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,10 +27,13 @@ Future<void> main() async {
 
   runApp(
     EasyLocalization(
-      supportedLocales: [Locale('en'), Locale('ar')],
+      supportedLocales: const [Locale('en'), Locale('ar')],
       path: 'assets/translations',
-      fallbackLocale: Locale('en'),
-      child: DevicePreview(enabled: true, builder: (context) => San3aApp()),
+      fallbackLocale: const Locale('en'),
+      child: DevicePreview(
+        enabled: true,
+        builder: (context) => const San3aApp(),
+      ),
     ),
   );
 }
@@ -63,7 +67,7 @@ class _San3aAppState extends State<San3aApp> {
       child: BlocBuilder<AppThemeCubit, AppThemeState>(
         builder: (context, state) {
           return ScreenUtilInit(
-            designSize: Size(375, 812),
+            designSize: const Size(375, 812),
             builder: (context, child) {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
@@ -77,9 +81,11 @@ class _San3aAppState extends State<San3aApp> {
                 onGenerateRoute: (settings) =>
                     onGenerateRoutes(settings, context),
                 home: const InitialAuthScreen(),
-                builder: (context, child) {
-                  return DeveloperOverlay(child: child!);
-                },
+                builder: kDebugMode
+                    ? (context, child) {
+                        return DeveloperOverlay(child: child!);
+                      }
+                    : null,
               );
             },
           );
