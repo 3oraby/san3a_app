@@ -50,4 +50,16 @@ abstract class LocaleKeys {
   static const validationInvalidTaxId = "validation.invalid_tax_id";
   static const validationEnterYourEmailToResetPassword =
       "validation.enter_your_email_to_reset_password";
+
+  // auth_initial
+  static const authInitialLetStart = "auth_initial.let`s_start";
+  static const authInitialBestCraftsmenTitle =
+      "auth_initial.best_craftsmen_title";
+  static const authInitialLoginButton = "auth_initial.login_button";
+  static const authInitialCreateAccountButton =
+      "auth_initial.create_account_button";
+  static const authInitialCreateAccountAgreeText =
+      "auth_initial.create_account_agree_text";
+  static const authInitialTermsAndConditions =
+      "auth_initial.terms_and_conditions";
 }

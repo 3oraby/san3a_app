@@ -52,6 +52,7 @@ flutter_assets:
 #   filename: app_images.dart
 #   field_prefix: null
 #   classname: AppImages
+
 # flutter_assets:
 #   assets_path: assets/animations
 #   output_path: lib/core/utils

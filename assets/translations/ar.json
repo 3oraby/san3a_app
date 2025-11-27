@@ -1,3 +1,44 @@
 {
-    
+    "messages": {
+        "success": {
+            "verification_code_sent": "تم إرسال رمز التحقق إلى بريدك الإلكتروني.",
+            "new_verification_code_sent": "تم إرسال رمز تحقق جديد إلى بريدك الإلكتروني."
+        },
+        "failures": {
+            "incorrect_credentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة. يرجى المحاولة مرة أخرى.",
+            "inactive_user": "المستخدم غير نشط. يرجى التحقق من بريدك الإلكتروني",
+            "unexpected_error": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى لاحقاً.",
+            "account_already_exists": "يوجد حساب بالفعل بهذا البريد الإلكتروني.",
+            "username_already_exists": "اسم المستخدم هذا مرتبط بالفعل بحساب موجود.",
+            "invalid_or_expired_code": "الرمز الذي أدخلته غير صالح أو منتهي الصلاحية. يرجى المحاولة مرة أخرى.",
+            "invalid_email": "لم نتمكن من العثور على حساب بهذا البريد الإلكتروني.",
+            "user_already_active": "حسابك نشط بالفعل. لا حاجة لاتخاذ أي إجراء آخر.",
+            "verification_code_not_found": "لم يتم العثور على رمز التحقق. يرجى طلب رمز جديد."
+        }
+    },
+    "validation": {
+        "field_is_required": "هذا الحقل مطلوب",
+        "email_is_required": "البريد الإلكتروني مطلوب",
+        "invalid_email": "يرجى إدخال عنوان بريد إلكتروني صالح",
+        "password_is_required": "كلمة المرور مطلوبة",
+        "password_too_short": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
+        "phone_is_required": "رقم الهاتف مطلوب",
+        "invalid_phone": "يرجى إدخال رقم هاتف صالح",
+        "age_is_required": "العمر مطلوب",
+        "invalid_age": "يرجى إدخال عمر صالح",
+        "age_too_young": "يجب أن يكون العمر 14 عاماً أو أكثر",
+        "age_too_old": "يرجى إدخال عمر واقعي",
+        "confirm_password_is_required": "تأكيد كلمة المرور مطلوب.",
+        "passwords_do_not_match": "كلمتا المرور غير متطابقتين.",
+        "password_must_contain_6_chars": "يجب أن تحتوي كلمة المرور على 6 أحرف على الأقل",
+        "enter_your_email_to_reset_password": "يرجى إدخال بريدك الإلكتروني لإعادة تعيين كلمة المرور"
+    },
+    "auth_initial": {
+        "let`s_start": "يلا نبدأ",
+        "best_craftsmen_title": "أفضل الحرفيين في كل المجالات",
+        "login_button": "تسجيل الدخول",
+        "create_account_button": "إنشاء حساب جديد",
+        "create_account_agree_text": "بإنشاء حساب جديد فأنت موافق علي",
+        "terms_and_conditions": "الشروط والأحكام"
+    }
 }

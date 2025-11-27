@@ -32,5 +32,13 @@
         "passwords_do_not_match": "Passwords do not match.",
         "password_must_contain_6_chars": "Password must contain at least 6 characters",
         "enter_your_email_to_reset_password": "please Enter your E-mail to reset password"
+    },
+    "auth_initial": {
+        "let`s_start": "Let`s Start",
+        "best_craftsmen_title": "The best craftsmen in every field",
+        "login_button": "Log In",
+        "create_account_button": "Create a New Account",
+        "create_account_agree_text": "By creating a new account, you agree to the",
+        "terms_and_conditions": "Terms & Conditions"
     }
 }

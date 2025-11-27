@@ -13,7 +13,7 @@ import 'package:san3a_app/core/services/custom_bloc_observer.dart';
 import 'package:san3a_app/core/services/get_it_service.dart';
 import 'package:san3a_app/core/utils/app_themes.dart';
 import 'package:san3a_app/core/widgets/developer_overlay.dart';
-import 'package:san3a_app/features/auth/presentation/screens/login_screen.dart';
+import 'package:san3a_app/features/auth/presentation/screens/initial_auth_screen.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -29,19 +29,19 @@ Future<void> main() async {
       supportedLocales: [Locale('en'), Locale('ar')],
       path: 'assets/translations',
       fallbackLocale: Locale('en'),
-      child: DevicePreview(enabled: true, builder: (context) => MainApp()),
+      child: DevicePreview(enabled: true, builder: (context) => San3aApp()),
     ),
   );
 }
 
-class MainApp extends StatefulWidget {
-  const MainApp({super.key});
+class San3aApp extends StatefulWidget {
+  const San3aApp({super.key});
 
   @override
-  State<MainApp> createState() => _MainAppState();
+  State<San3aApp> createState() => _San3aAppState();
 }
 
-class _MainAppState extends State<MainApp> {
+class _San3aAppState extends State<San3aApp> {
   late AppThemeCubit appThemeCubit;
 
   @override
@@ -80,7 +80,7 @@ class _MainAppState extends State<MainApp> {
                 localizationsDelegates: context.localizationDelegates,
                 onGenerateRoute: (settings) =>
                     onGenerateRoutes(settings, context),
-                home: const LoginScreen(),
+                home: const InitialAuthScreen(),
                 builder: (context, child) {
                   return DeveloperOverlay(child: child!);
                 },
