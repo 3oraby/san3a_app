@@ -64,10 +64,6 @@ class _San3aAppState extends State<San3aApp> {
         builder: (context, state) {
           return ScreenUtilInit(
             designSize: Size(375, 812),
-            minTextAdapt: true,
-            splitScreenMode: true,
-            enableScaleWH: () => false,
-            enableScaleText: () => false,
             builder: (context, child) {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,

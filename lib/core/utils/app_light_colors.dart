@@ -10,6 +10,7 @@ class AppLightColors {
   static const Color headingColor = Color(0xFF111827);
   static const Color paragraphColor = Color(0xFF6B7280);
   static const Color labelColor = Color(0xFFBFBFC0);
+  static const Color contentBackgroundColor = Color(0xFFF9FAFB);
 
   static const Color selectedColor = Color(0xFF343A47);
   static const Color textFieldBackground = Color(0xFFF5F5F5);

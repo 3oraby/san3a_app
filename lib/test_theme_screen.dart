@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:san3a_app/core/cubits/app_theme_cubit/app_theme_cubit.dart';
 import 'package:san3a_app/core/enums/app_theme_mode.dart';
-import 'package:san3a_app/core/utils/app_semantic_colors.dart';
+import 'package:san3a_app/core/helpers/get_app_semantic_colors.dart';
 
 class TestThemeScreen extends StatelessWidget {
   const TestThemeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final semanticColors = Theme.of(context).extension<AppSemanticColors>()!;
+    final semanticColors = getAppSemanticColors(context);
 
     return Scaffold(
       appBar: AppBar(title: const Text("Dynamic Text Theme Test")),

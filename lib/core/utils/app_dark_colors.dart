@@ -11,8 +11,7 @@ class AppDarkColors {
   static const Color headingColor = Color(0xFFFFFFFF);
   static const Color paragraphColor = Color(0xFF9CA3AF);
   static const Color labelColor = Color(0xFFBFBFC0);
-  static const Color darkBlue = Color(0xFF011632);
-  static const Color grey81 = Color(0xFFA1A1AA);
+  static const Color contentBackgroundColor = Color(0xFFF9FAFB);
 
   static const Color selectedColor = Color(0xFF343A47);
   static const Color textFieldBackground = Color(0xFF2C2C2C);

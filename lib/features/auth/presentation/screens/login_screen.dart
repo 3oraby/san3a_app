@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:san3a_app/core/utils/app_semantic_colors.dart';
+import 'package:san3a_app/core/helpers/get_app_semantic_colors.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final semanticColors = Theme.of(context).extension<AppSemanticColors>()!;
+    final semanticColors = getAppSemanticColors(context);
 
     return Scaffold(
       body: SafeArea(

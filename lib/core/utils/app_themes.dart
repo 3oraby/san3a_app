@@ -11,11 +11,12 @@ class AppTheme {
     primaryColor: AppLightColors.primaryColor,
     scaffoldBackgroundColor: AppLightColors.scaffoldBackgroundColor,
     dividerColor: AppLightColors.dividerColor,
-    extensions: [
+    extensions: const [
       AppSemanticColors(
         headingColor: AppLightColors.headingColor,
         paragraphColor: AppLightColors.paragraphColor,
-        labelColor: Colors.grey,
+        labelColor: AppLightColors.labelColor,
+        contentBackgroundColor: AppLightColors.contentBackgroundColor,
         alertColor: Colors.red,
       ),
     ],
@@ -60,12 +61,13 @@ class AppTheme {
     primaryColor: AppDarkColors.primaryColor,
     scaffoldBackgroundColor: AppDarkColors.scaffoldBackgroundColor,
     dividerColor: AppDarkColors.dividerColor,
-    extensions: [
+    extensions: const [
       AppSemanticColors(
         headingColor: AppDarkColors.headingColor,
         paragraphColor: AppDarkColors.paragraphColor,
         labelColor: AppDarkColors.labelColor,
-        alertColor: Colors.red[900]!,
+        contentBackgroundColor: AppDarkColors.contentBackgroundColor,
+        alertColor: Colors.red,
       ),
     ],
     iconTheme: const IconThemeData(color: Colors.white),

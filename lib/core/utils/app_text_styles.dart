@@ -10,7 +10,10 @@ class AppTextStyles {
   }) {
     switch (fontFamily) {
       case AppFonts.cairo:
-        return GoogleFonts.cairo(fontSize: fontSize.sp);
+        return GoogleFonts.cairo(
+          fontSize: fontSize.sp,
+          fontWeight: FontWeight.w400,
+        );
 
       default:
         return TextStyle(fontFamily: fontFamily, fontSize: fontSize);
