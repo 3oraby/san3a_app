@@ -6,11 +6,12 @@ class AppLightColors {
   static const Color scaffoldBackgroundColor = Color(0xFFF9FAFB);
   static const Color accentColor = Color(0xFFF59E0B);
 
-  // content colors
+  // text colors
+  static const Color textPrimaryColor = Color(0xFF000000);
   static const Color headingColor = Color(0xFF111827);
   static const Color paragraphColor = Color(0xFF6B7280);
   static const Color labelColor = Color(0xFFBFBFC0);
-  static const Color contentBackgroundColor = Color(0xFFF9FAFB);
+  static const Color textBackgroundColor = Color(0xFFF9FAFB);
 
   // button colors
   static const Color buttonBackgroundColor = Color(0xFFF9FAFB);

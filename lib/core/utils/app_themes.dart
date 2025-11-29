@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:san3a_app/core/utils/app_dark_colors.dart';
 import 'package:san3a_app/core/utils/app_light_colors.dart';
 import 'package:san3a_app/core/utils/app_text_styles.dart';
-import 'package:san3a_app/core/utils/app_semantic_colors.dart';
+import 'package:san3a_app/core/utils/text_palette.dart';
 
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
@@ -12,11 +12,12 @@ class AppTheme {
     scaffoldBackgroundColor: AppLightColors.scaffoldBackgroundColor,
     dividerColor: AppLightColors.dividerColor,
     extensions: const [
-      AppSemanticColors(
+      TextPalette(
+        primaryColor: AppLightColors.textPrimaryColor,
         headingColor: AppLightColors.headingColor,
         paragraphColor: AppLightColors.paragraphColor,
         labelColor: AppLightColors.labelColor,
-        contentBackgroundColor: AppLightColors.contentBackgroundColor,
+        contentBackgroundColor: AppLightColors.textBackgroundColor,
         alertColor: Colors.red,
       ),
     ],
@@ -62,11 +63,12 @@ class AppTheme {
     scaffoldBackgroundColor: AppDarkColors.scaffoldBackgroundColor,
     dividerColor: AppDarkColors.dividerColor,
     extensions: const [
-      AppSemanticColors(
+      TextPalette(
+        primaryColor: AppDarkColors.textPrimaryColor,
         headingColor: AppDarkColors.headingColor,
         paragraphColor: AppDarkColors.paragraphColor,
         labelColor: AppDarkColors.labelColor,
-        contentBackgroundColor: AppDarkColors.contentBackgroundColor,
+        contentBackgroundColor: AppDarkColors.textBackgroundColor,
         alertColor: Colors.red,
       ),
     ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:san3a_app/core/helpers/get_app_semantic_colors.dart';
+import 'package:san3a_app/core/helpers/get_text_palette.dart';
 import 'package:san3a_app/core/utils/app_text_styles.dart';
 
 class CustomButton extends StatelessWidget {
@@ -35,7 +35,7 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appSemanticColors = getAppSemanticColors(context);
+    final appSemanticColors = getTextPalette(context);
 
     return SizedBox(
       height: height,

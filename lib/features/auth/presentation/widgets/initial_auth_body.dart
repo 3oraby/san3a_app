@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:san3a_app/core/constants/locale_keys.dart';
-import 'package:san3a_app/core/helpers/get_app_semantic_colors.dart';
+import 'package:san3a_app/core/helpers/get_text_palette.dart';
 import 'package:san3a_app/core/utils/app_images.dart';
 import 'package:san3a_app/core/utils/app_routes.dart';
 import 'package:san3a_app/core/utils/app_svgs.dart';
@@ -16,7 +16,7 @@ class InitialAuthBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appSemanticColors = getAppSemanticColors(context);
+    final textPalette = getTextPalette(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -28,7 +28,7 @@ class InitialAuthBody extends StatelessWidget {
           LocaleKeys.authInitialLetStart.tr(),
           style: AppTextStyles.getTextStyle(32).copyWith(
             fontWeight: FontWeight.w700,
-            color: appSemanticColors.headingColor,
+            color: textPalette.headingColor,
           ),
         ),
         const VerticalGap(12),
@@ -36,7 +36,7 @@ class InitialAuthBody extends StatelessWidget {
           LocaleKeys.authInitialBestCraftsmenTitle.tr(),
           style: AppTextStyles.getTextStyle(
             12,
-          ).copyWith(color: appSemanticColors.headingColor),
+          ).copyWith(color: textPalette.headingColor),
         ),
         const VerticalGap(25),
         RPadding(
@@ -67,12 +67,12 @@ class InitialAuthBody extends StatelessWidget {
           LocaleKeys.authInitialCreateAccountAgreeText.tr(),
           style: AppTextStyles.getTextStyle(
             12,
-          ).copyWith(color: appSemanticColors.paragraphColor),
+          ).copyWith(color: textPalette.paragraphColor),
         ),
         Text(
           LocaleKeys.authInitialTermsAndConditions.tr(),
           style: AppTextStyles.getTextStyle(12).copyWith(
-            color: appSemanticColors.paragraphColor,
+            color: textPalette.paragraphColor,
             decoration: TextDecoration.underline,
           ),
         ),

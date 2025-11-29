@@ -7,11 +7,12 @@ class AppDarkColors {
   static const Color backgroundColor = Color(0xFF1E1E1E);
   static const Color accentColor = Color(0xFFF59E0B);
 
-  // content colors
+  // text colors
+  static const Color textPrimaryColor = Color(0xFFFFFFFF);
   static const Color headingColor = Color(0xFFFFFFFF);
   static const Color paragraphColor = Color(0xFF9CA3AF);
   static const Color labelColor = Color(0xFFBFBFC0);
-  static const Color contentBackgroundColor = Color(0xFFF9FAFB);
+  static const Color textBackgroundColor = Color(0xFFF9FAFB);
 
   // button colors
   static const Color buttonBackgroundColor = Color(0xFF1E1E1E);

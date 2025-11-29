@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 @immutable
-class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
+class TextPalette extends ThemeExtension<TextPalette> {
+  final Color primaryColor;
   final Color headingColor;
   final Color paragraphColor;
   final Color labelColor;
   final Color contentBackgroundColor;
   final Color alertColor;
 
-  const AppSemanticColors({
+  const TextPalette({
+    required this.primaryColor,
     required this.headingColor,
     required this.paragraphColor,
     required this.labelColor,
@@ -17,14 +19,16 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
   });
 
   @override
-  AppSemanticColors copyWith({
+  TextPalette copyWith({
+    Color? primaryColor,
     Color? headingColor,
     Color? paragraphColor,
     Color? labelColor,
     Color? contentBackgroundColor,
     Color? alertColor,
   }) {
-    return AppSemanticColors(
+    return TextPalette(
+      primaryColor: primaryColor ?? this.primaryColor,
       headingColor: headingColor ?? this.headingColor,
       paragraphColor: paragraphColor ?? this.paragraphColor,
       labelColor: labelColor ?? this.labelColor,
@@ -35,11 +39,12 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
   }
 
   @override
-  AppSemanticColors lerp(ThemeExtension<AppSemanticColors>? other, double t) {
-    if (other is! AppSemanticColors) {
+  TextPalette lerp(ThemeExtension<TextPalette>? other, double t) {
+    if (other is! TextPalette) {
       return this;
     }
-    return AppSemanticColors(
+    return TextPalette(
+      primaryColor: Color.lerp(primaryColor, other.primaryColor, t)!,
       headingColor: Color.lerp(headingColor, other.headingColor, t)!,
       paragraphColor: Color.lerp(paragraphColor, other.paragraphColor, t)!,
       labelColor: Color.lerp(labelColor, other.labelColor, t)!,
