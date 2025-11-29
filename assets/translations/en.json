@@ -40,5 +40,13 @@
         "create_account_button": "Create a New Account",
         "create_account_agree_text": "By creating a new account, you agree to the",
         "terms_and_conditions": "Terms & Conditions"
+    },
+    "auth_login": {
+        "login": "Login",
+        "email_address": "Email Address",
+        "password": "Password",
+        "forgot_password": "Forgot Password?",
+        "create_new_account": "Create New Account",
+        "login_with_google": "Log in with Google"
     }
 }

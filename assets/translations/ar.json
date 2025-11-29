@@ -40,5 +40,13 @@
         "create_account_button": "إنشاء حساب جديد",
         "create_account_agree_text": "بإنشاء حساب جديد فأنت موافق علي",
         "terms_and_conditions": "الشروط والأحكام"
+    },
+    "auth_login": {
+        "login": "تسجيل الدخول",
+        "email_address": "البريد الإلكتروني",
+        "password": "كلمة المرور",
+        "forgot_password": "نسيت كلمة المرور",
+        "create_new_account": "إنشاء حساب جديد",
+        "login_with_google": "تسجيل الدخول باستخدام Google"
     }
 }
