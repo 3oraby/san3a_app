@@ -48,5 +48,28 @@
         "forgot_password": "Forgot Password?",
         "create_new_account": "Create New Account",
         "login_with_google": "Log in with Google"
+    },
+    "auth_forget_password": {
+        "help": "Help",
+        "reset_password": "Reset Password",
+        "enter_email": "Please enter the email associated with your account",
+        "code_will_be_sent": "A 4-digit code will be sent to your email",
+        "send_code": "Send Code"
+    },
+    "auth_verify_otp": {
+        "help": "Help",
+        "reset_password": "Reset Password",
+        "enter_otp": "Enter the 4-digit code to reset your password",
+        "code_sent": "A 4-digit code has been sent to your email",
+        "confirm": "Confirm",
+        "resend_code": "Resend Code"
+    },
+    "auth_reset_password": {
+        "help": "Help",
+        "reset_password": "Reset Password",
+        "enter_new_password": "Enter your new password",
+        "password": "Password",
+        "confirm_password": "Confirm Password",
+        "confirm": "Confirm"
     }
 }

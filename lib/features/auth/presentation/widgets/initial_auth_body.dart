@@ -45,6 +45,7 @@ class InitialAuthBody extends StatelessWidget {
             children: [
               CustomButton(
                 text: LocaleKeys.authInitialLoginButton.tr(),
+                borderRadius: 8,
                 onPressed: () {
                   Navigator.pushNamed(context, Routes.loginScreen);
                 },
@@ -55,6 +56,7 @@ class InitialAuthBody extends StatelessWidget {
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                 textColor: Theme.of(context).primaryColor,
                 isOutline: true,
+                borderRadius: 8,
                 onPressed: () {
                   Navigator.pushNamed(context, Routes.signUpScreen);
                 },

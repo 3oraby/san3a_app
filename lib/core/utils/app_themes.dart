@@ -11,10 +11,12 @@ class AppTheme {
     primaryColor: AppLightColors.primaryColor,
     scaffoldBackgroundColor: AppLightColors.scaffoldBackgroundColor,
     dividerColor: AppLightColors.dividerColor,
-    extensions: const [
+    extensions: [
       TextPalette(
         primaryColor: AppLightColors.textPrimaryColor,
         secondaryColor: AppLightColors.textSecondaryColor,
+        tertiaryColor: AppLightColors.textTertiaryColor,
+        helperColor: AppLightColors.textHelperColor,
         headingColor: AppLightColors.headingColor,
         paragraphColor: AppLightColors.paragraphColor,
         labelColor: AppLightColors.labelColor,
@@ -75,10 +77,12 @@ class AppTheme {
     primaryColor: AppDarkColors.primaryColor,
     scaffoldBackgroundColor: AppDarkColors.scaffoldBackgroundColor,
     dividerColor: AppDarkColors.dividerColor,
-    extensions: const [
+    extensions: [
       TextPalette(
         primaryColor: AppDarkColors.textPrimaryColor,
         secondaryColor: AppDarkColors.textSecondaryColor,
+        tertiaryColor: AppDarkColors.textTertiaryColor,
+        helperColor: AppDarkColors.textHelperColor,
         headingColor: AppDarkColors.headingColor,
         paragraphColor: AppDarkColors.paragraphColor,
         labelColor: AppDarkColors.labelColor,

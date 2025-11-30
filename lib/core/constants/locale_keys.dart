@@ -70,4 +70,27 @@ abstract class LocaleKeys {
   static const authLoginForgotPassword = "auth_login.forgot_password";
   static const authLoginCreateNewAccount = "auth_login.create_new_account";
   static const authLoginLoginWithGoogle = "auth_login.login_with_google";
+
+  // forget_password
+  static const authForgetPasswordHelp = "auth_forget_password.help";
+  static const authForgetPasswordResetPassword = "auth_forget_password.reset_password";
+  static const authForgetPasswordEnterEmail = "auth_forget_password.enter_email";
+  static const authForgetPasswordCodeWillBeSent = "auth_forget_password.code_will_be_sent";
+  static const authForgetPasswordSendCode = "auth_forget_password.send_code";
+
+  // verify_otp
+  static const authVerifyOtpHelp = "auth_verify_otp.help";
+  static const authVerifyOtpResetPassword = "auth_verify_otp.reset_password";
+  static const authVerifyOtpEnterOtp = "auth_verify_otp.enter_otp";
+  static const authVerifyOtpCodeSent = "auth_verify_otp.code_sent";
+  static const authVerifyOtpConfirm = "auth_verify_otp.confirm";
+  static const authVerifyOtpResendCode = "auth_verify_otp.resend_code";
+
+  // reset_password
+  static const authResetPasswordHelp = "auth_reset_password.help";
+  static const authResetPasswordResetPassword = "auth_reset_password.reset_password";
+  static const authResetPasswordEnterNewPassword = "auth_reset_password.enter_new_password";
+  static const authResetPasswordPassword = "auth_reset_password.password";
+  static const authResetPasswordConfirmPassword = "auth_reset_password.confirm_password";
+  static const authResetPasswordConfirm = "auth_reset_password.confirm";
 }

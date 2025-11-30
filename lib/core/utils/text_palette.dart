@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 class TextPalette extends ThemeExtension<TextPalette> {
   final Color primaryColor;
   final Color secondaryColor;
+  final Color tertiaryColor;
+  final Color helperColor;
   final Color headingColor;
   final Color paragraphColor;
   final Color labelColor;
@@ -14,6 +16,8 @@ class TextPalette extends ThemeExtension<TextPalette> {
   const TextPalette({
     required this.primaryColor,
     required this.secondaryColor,
+    required this.tertiaryColor,
+    required this.helperColor,
     required this.headingColor,
     required this.paragraphColor,
     required this.labelColor,
@@ -26,6 +30,8 @@ class TextPalette extends ThemeExtension<TextPalette> {
   TextPalette copyWith({
     Color? primaryColor,
     Color? secondaryColor,
+    Color? tertiaryColor,
+    Color? helperColor,
     Color? headingColor,
     Color? paragraphColor,
     Color? labelColor,
@@ -36,6 +42,8 @@ class TextPalette extends ThemeExtension<TextPalette> {
     return TextPalette(
       primaryColor: primaryColor ?? this.primaryColor,
       secondaryColor: secondaryColor ?? this.secondaryColor,
+      tertiaryColor: tertiaryColor ?? this.tertiaryColor,
+      helperColor: helperColor ?? this.helperColor,
       headingColor: headingColor ?? this.headingColor,
       paragraphColor: paragraphColor ?? this.paragraphColor,
       labelColor: labelColor ?? this.labelColor,
@@ -54,6 +62,8 @@ class TextPalette extends ThemeExtension<TextPalette> {
     return TextPalette(
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t)!,
       secondaryColor: Color.lerp(secondaryColor, other.secondaryColor, t)!,
+      tertiaryColor: Color.lerp(tertiaryColor, other.tertiaryColor, t)!,
+      helperColor: Color.lerp(helperColor, other.helperColor, t)!,
       headingColor: Color.lerp(headingColor, other.headingColor, t)!,
       paragraphColor: Color.lerp(paragraphColor, other.paragraphColor, t)!,
       labelColor: Color.lerp(labelColor, other.labelColor, t)!,

@@ -15,6 +15,8 @@ class AppDarkColors {
   static const Color labelColor = Color(0xFFBFBFC0);
   static const Color textBackgroundColor = Color(0xFFF9FAFB);
   static const Color textDarkBlueDesignColor = Color(0xFF2563EB);
+  static const Color textTertiaryColor = Color(0xFFCCCCCC);
+  static Color textHelperColor = const Color(0xFF6B7280).withValues(alpha: 0.5);
 
   // button colors
   static const Color buttonBackgroundColor = Color(0xFF1E1E1E);

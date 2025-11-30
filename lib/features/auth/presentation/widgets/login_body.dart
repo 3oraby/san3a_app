@@ -132,7 +132,6 @@ class _LoginBodyState extends State<LoginBody> {
                 CustomButton(
                   text: LocaleKeys.authLoginLogin.tr(),
                   textColor: textPalette.contentBackgroundColor,
-                  borderRadius: 21,
                   onPressed: submitLoginForm,
                   isDisabled: !isButtonEnabled,
                 ),
