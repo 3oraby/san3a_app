@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:san3a_app/core/utils/app_dark_colors.dart';
 import 'package:san3a_app/core/utils/app_light_colors.dart';
+import 'package:san3a_app/core/utils/app_text_field_theme.dart';
 import 'package:san3a_app/core/utils/app_text_styles.dart';
 import 'package:san3a_app/core/utils/text_palette.dart';
 
@@ -22,6 +23,13 @@ class AppTheme {
         contentBackgroundColor: AppLightColors.textBackgroundColor,
         alertColor: Colors.red,
         darkBlueDesign: AppLightColors.textDarkBlueDesignColor,
+      ),
+      AppTextFieldTheme(
+        backgroundColor: AppLightColors.textFieldBackgroundColor,
+        highLightBackgroundColor:
+            AppLightColors.textFieldHighLightBackgroundColor,
+        borderColor: AppLightColors.textFieldBorderColor,
+        focusedBorderColor: AppLightColors.primaryColor,
       ),
     ],
     iconTheme: const IconThemeData(color: Color(0xFF0A73FF)),
@@ -65,6 +73,13 @@ class AppTheme {
         contentBackgroundColor: AppDarkColors.textBackgroundColor,
         alertColor: Colors.red,
         darkBlueDesign: AppDarkColors.textDarkBlueDesignColor,
+      ),
+      AppTextFieldTheme(
+        backgroundColor: AppDarkColors.textFieldBackgroundColor,
+        highLightBackgroundColor:
+            AppDarkColors.textFieldHighLightBackgroundColor,
+        borderColor: AppDarkColors.textFieldBorderColor,
+        focusedBorderColor: AppDarkColors.primaryColor,
       ),
     ],
     iconTheme: const IconThemeData(color: Colors.white),

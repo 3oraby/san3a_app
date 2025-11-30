@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:san3a_app/core/helpers/get_text_palette.dart';
-import 'package:san3a_app/core/utils/app_dark_colors.dart';
-import 'package:san3a_app/core/utils/app_light_colors.dart';
+import 'package:san3a_app/core/utils/app_text_field_theme.dart';
 import 'package:san3a_app/core/utils/app_text_styles.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -54,6 +53,7 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textPalette = getTextPalette(context);
+    final appTextFieldTheme = Theme.of(context).extension<AppTextFieldTheme>()!;
 
     return TextFormField(
       focusNode: focusNode,
@@ -72,9 +72,7 @@ class CustomTextFormField extends StatelessWidget {
       ).copyWith(color: textPalette.headingColor),
       decoration: InputDecoration(
         filled: true,
-        fillColor: Theme.of(context).brightness == Brightness.light
-            ? AppLightColors.textFieldBackground
-            : AppDarkColors.textFieldBackground,
+        fillColor: appTextFieldTheme.backgroundColor,
         hintText: hintText,
         labelText: labelText,
         helperText: helperText,
@@ -89,27 +87,21 @@ class CustomTextFormField extends StatelessWidget {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(21.r),
           borderSide: BorderSide(
-            color: Theme.of(context).brightness == Brightness.light
-                ? AppLightColors.textFieldBorderColor
-                : AppDarkColors.textFieldBorderColor,
+            color: appTextFieldTheme.borderColor,
             width: 1,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(21.r),
           borderSide: BorderSide(
-            color: Theme.of(context).brightness == Brightness.light
-                ? AppLightColors.textFieldBorderColor
-                : AppDarkColors.textFieldBorderColor,
+            color: appTextFieldTheme.borderColor,
             width: 1,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(21.r),
           borderSide: BorderSide(
-            color: Theme.of(context).brightness == Brightness.light
-                ? AppLightColors.primaryColor
-                : AppDarkColors.primaryColor,
+            color: appTextFieldTheme.focusedBorderColor,
             width: 2,
           ),
         ),

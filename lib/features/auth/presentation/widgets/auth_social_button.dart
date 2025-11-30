@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:san3a_app/core/helpers/get_text_palette.dart';
-import 'package:san3a_app/core/utils/app_dark_colors.dart';
-import 'package:san3a_app/core/utils/app_light_colors.dart';
+import 'package:san3a_app/core/utils/app_text_field_theme.dart';
 import 'package:san3a_app/core/utils/app_text_styles.dart';
 import 'package:san3a_app/core/widgets/custom_button.dart';
 import 'package:san3a_app/core/widgets/horizontal_gap.dart';
@@ -21,11 +20,12 @@ class AuthSocialButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textPalette = getTextPalette(context);
+    final AppTextFieldTheme appTextFieldTheme = Theme.of(
+      context,
+    ).extension<AppTextFieldTheme>()!;
 
     return CustomButton(
-      backgroundColor: Theme.of(context).brightness == Brightness.light
-          ? AppLightColors.textFieldBackground
-          : AppDarkColors.textFieldBackground,
+      backgroundColor: appTextFieldTheme.backgroundColor,
       onPressed: onPressed,
       isOutline: true,
       borderRadius: 21,
