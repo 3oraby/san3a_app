@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:san3a_app/core/utils/app_dark_colors.dart';
 import 'package:san3a_app/core/utils/app_light_colors.dart';
 import 'package:san3a_app/core/utils/app_text_styles.dart';
@@ -34,33 +33,10 @@ class AppTheme {
     ),
     disabledColor: AppLightColors.disabledButtonBackgroundColor,
     inputDecorationTheme: InputDecorationTheme(
-      filled: true,
-      fillColor: AppLightColors.textFieldBackground,
       suffixIconColor: AppLightColors.paragraphColor,
       labelStyle: AppTextStyles.getTextStyle(
         16,
       ).copyWith(color: AppLightColors.headingColor),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(21.r),
-        borderSide: BorderSide(
-          color: AppLightColors.textFieldBorderColor,
-          width: 1,
-        ),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(21.r),
-        borderSide: BorderSide(
-          color: AppLightColors.textFieldBorderColor,
-          width: 1,
-        ),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(21.r),
-        borderSide: const BorderSide(
-          color: AppLightColors.primaryColor,
-          width: 2,
-        ),
-      ),
       hintStyle: AppTextStyles.getTextStyle(
         16,
       ).copyWith(color: AppLightColors.headingColor),
@@ -94,33 +70,10 @@ class AppTheme {
     iconTheme: const IconThemeData(color: Colors.white),
     disabledColor: AppDarkColors.disabledColor,
     inputDecorationTheme: InputDecorationTheme(
-      filled: true,
-      fillColor: AppDarkColors.textFieldBackground,
       suffixIconColor: AppDarkColors.paragraphColor,
       labelStyle: AppTextStyles.getTextStyle(
         16,
       ).copyWith(color: AppDarkColors.headingColor),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(21.r),
-        borderSide: BorderSide(
-          color: AppDarkColors.textFieldBorderColor,
-          width: 1,
-        ),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(21.r),
-        borderSide: BorderSide(
-          color: AppDarkColors.textFieldBorderColor,
-          width: 1,
-        ),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(21.r),
-        borderSide: const BorderSide(
-          color: AppDarkColors.primaryColor,
-          width: 2,
-        ),
-      ),
       hintStyle: AppTextStyles.getTextStyle(
         16,
       ).copyWith(color: AppDarkColors.paragraphColor),

@@ -1,25 +1,55 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:san3a_app/core/constants/locale_keys.dart';
+import 'package:san3a_app/core/helpers/get_text_palette.dart';
 import 'package:san3a_app/core/utils/app_text_styles.dart';
-import 'package:san3a_app/core/utils/text_palette.dart';
 import 'package:san3a_app/core/widgets/custom_button.dart';
-import 'package:san3a_app/core/widgets/custom_text_form_field.dart';
+import 'package:san3a_app/core/widgets/custom_under_line_text_field.dart';
 import 'package:san3a_app/core/widgets/vertical_gap.dart';
 
-class ForgetPasswordBody extends StatelessWidget {
+class ForgetPasswordBody extends StatefulWidget {
   const ForgetPasswordBody({super.key});
 
   @override
+  State<ForgetPasswordBody> createState() => _ForgetPasswordBodyState();
+}
+
+class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
+  final TextEditingController emailController = TextEditingController();
+  bool isButtonEnabled = false;
+
+  @override
+  void initState() {
+    super.initState();
+    emailController.addListener(checkEmail);
+  }
+
+  void checkEmail() {
+    final isFilled = emailController.text.isNotEmpty;
+    if (isFilled != isButtonEnabled) {
+      setState(() {
+        isButtonEnabled = isFilled;
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    emailController.removeListener(checkEmail);
+    emailController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final textPalette = Theme.of(context).extension<TextPalette>()!;
+    final textPalette = getTextPalette(context);
 
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 45.h, horizontal: 19.w),
-      child: Center(
+      child: SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
               LocaleKeys.authForgetPasswordResetPassword.tr(),
@@ -47,10 +77,11 @@ class ForgetPasswordBody extends StatelessWidget {
               ),
             ),
             const VerticalGap(89),
-            const CustomTextFormField(),
+            CustomUnderLineTextField(controller: emailController),
             const VerticalGap(28),
             CustomButton(
               onPressed: () {},
+              isDisabled: !isButtonEnabled,
               text: LocaleKeys.authForgetPasswordSendCode.tr(),
             ),
           ],
