@@ -62,11 +62,12 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
     final textPalette = getTextPalette(context);
 
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 45.h, horizontal: 19.w),
+      padding: EdgeInsets.symmetric(horizontal: 19.w),
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            const VerticalGap(45),
             Text(
               LocaleKeys.authForgetPasswordResetPassword.tr(),
               style: AppTextStyles.getTextStyle(24).copyWith(
