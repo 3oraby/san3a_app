@@ -2,7 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:san3a_app/core/constants/locale_keys.dart';
+import 'package:san3a_app/core/constants/storage_keys.dart';
+import 'package:san3a_app/core/helpers/app_storage_helper.dart';
 import 'package:san3a_app/core/helpers/get_text_palette.dart';
+import 'package:san3a_app/core/utils/app_routes.dart';
 import 'package:san3a_app/core/utils/app_text_styles.dart';
 import 'package:san3a_app/core/widgets/custom_button.dart';
 import 'package:san3a_app/core/widgets/custom_under_line_text_field.dart';
@@ -39,6 +42,19 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
     emailController.removeListener(checkEmail);
     emailController.dispose();
     super.dispose();
+  }
+
+  void onSendCodeTap() async {
+    await AppStorageHelper.setString(
+      StorageKeys.userEmail,
+      emailController.text,
+    );
+
+    goToVerifyCodeScreen();
+  }
+
+  void goToVerifyCodeScreen() {
+    Navigator.pushNamed(context, Routes.verifyForgetPasswordOtpScreen);
   }
 
   @override
@@ -80,7 +96,7 @@ class _ForgetPasswordBodyState extends State<ForgetPasswordBody> {
             CustomUnderLineTextField(controller: emailController),
             const VerticalGap(28),
             CustomButton(
-              onPressed: () {},
+              onPressed: onSendCodeTap,
               isDisabled: !isButtonEnabled,
               text: LocaleKeys.authForgetPasswordSendCode.tr(),
             ),
