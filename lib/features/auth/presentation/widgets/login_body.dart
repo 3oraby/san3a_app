@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:san3a_app/core/constants/locale_keys.dart';
 import 'package:san3a_app/core/helpers/get_text_palette.dart';
 import 'package:san3a_app/core/utils/app_images.dart';
+import 'package:san3a_app/core/utils/app_routes.dart';
 import 'package:san3a_app/core/utils/app_text_styles.dart';
 import 'package:san3a_app/core/widgets/custom_button.dart';
 import 'package:san3a_app/core/widgets/custom_text_form_field.dart';
@@ -59,6 +60,16 @@ class _LoginBodyState extends State<LoginBody> {
     // );
   }
 
+  void onForgotPasswordTap() {
+    Navigator.pushNamed(context, Routes.forgetPasswordScreen);
+  }
+
+  void onGoogleLoginTap() {}
+
+  void onCreateNewAccountTap() {
+    Navigator.pushNamed(context, Routes.signUpScreen);
+  }
+
   @override
   Widget build(BuildContext context) {
     final textPalette = getTextPalette(context);
@@ -105,13 +116,16 @@ class _LoginBodyState extends State<LoginBody> {
                 const VerticalGap(5),
                 CustomPasswordTextField(controller: passwordController),
                 const VerticalGap(9),
-                Text(
-                  LocaleKeys.authLoginForgotPassword.tr(),
-                  style: AppTextStyles.getTextStyle(11).copyWith(
-                    color: textPalette.secondaryColor,
-                    fontWeight: FontWeight.w300,
-                    decoration: TextDecoration.underline,
-                    decorationColor: textPalette.secondaryColor,
+                GestureDetector(
+                  onTap: onForgotPasswordTap,
+                  child: Text(
+                    LocaleKeys.authLoginForgotPassword.tr(),
+                    style: AppTextStyles.getTextStyle(11).copyWith(
+                      color: textPalette.secondaryColor,
+                      fontWeight: FontWeight.w300,
+                      decoration: TextDecoration.underline,
+                      decorationColor: textPalette.secondaryColor,
+                    ),
                   ),
                 ),
                 const VerticalGap(33),
@@ -126,14 +140,18 @@ class _LoginBodyState extends State<LoginBody> {
                 AuthSocialButton(
                   description: LocaleKeys.authLoginLoginWithGoogle.tr(),
                   image: AppImages.googleLogo,
+                  onPressed: onGoogleLoginTap,
                 ),
                 const VerticalGap(16),
-                Text(
-                  LocaleKeys.authLoginCreateNewAccount.tr(),
-                  style: AppTextStyles.getTextStyle(16).copyWith(
-                    color: Theme.of(context).primaryColor,
-                    decoration: TextDecoration.underline,
-                    decorationColor: Theme.of(context).primaryColor,
+                GestureDetector(
+                  onTap: onCreateNewAccountTap,
+                  child: Text(
+                    LocaleKeys.authLoginCreateNewAccount.tr(),
+                    style: AppTextStyles.getTextStyle(16).copyWith(
+                      color: Theme.of(context).primaryColor,
+                      decoration: TextDecoration.underline,
+                      decorationColor: Theme.of(context).primaryColor,
+                    ),
                   ),
                 ),
               ],

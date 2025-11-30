@@ -2,9 +2,12 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:san3a_app/core/widgets/undefined_route_page.dart';
 import 'package:san3a_app/core/utils/app_routes.dart';
+import 'package:san3a_app/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:san3a_app/features/auth/presentation/screens/initial_auth_screen.dart';
 import 'package:san3a_app/features/auth/presentation/screens/login_screen.dart';
+import 'package:san3a_app/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:san3a_app/features/auth/presentation/screens/sign_up_screen.dart';
+import 'package:san3a_app/features/auth/presentation/screens/verify_forget_password_otp_screen.dart';
 
 Route<dynamic> onGenerateRoutes(RouteSettings settings, BuildContext context) {
   log("Navigating to ${settings.name}");
@@ -28,6 +31,17 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings, BuildContext context) {
 
     case Routes.signUpScreen:
       return MaterialPageRoute(builder: (_) => const SignUpScreen());
+
+    case Routes.forgetPasswordScreen:
+      return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
+
+    case Routes.resetPasswordScreen:
+      return MaterialPageRoute(builder: (_) => const ResetPasswordScreen());
+
+    case Routes.verifyForgetPasswordOtpScreen:
+      return MaterialPageRoute(
+        builder: (_) => const VerifyForgetPasswordOtpScreen(),
+      );
 
     default:
       return MaterialPageRoute(

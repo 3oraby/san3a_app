@@ -10,9 +10,11 @@ class AuthSocialButton extends StatelessWidget {
     super.key,
     required this.description,
     required this.image,
+    this.onPressed,
   });
   final String description;
   final String image;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +22,7 @@ class AuthSocialButton extends StatelessWidget {
 
     return CustomButton(
       backgroundColor: Theme.of(context).inputDecorationTheme.fillColor,
+      onPressed: onPressed,
       isOutline: true,
       borderRadius: 21,
       borderColor: Theme.of(context).dividerColor,
@@ -38,7 +41,6 @@ class AuthSocialButton extends StatelessWidget {
           ),
         ],
       ),
-      onPressed: () {},
     );
   }
 }
