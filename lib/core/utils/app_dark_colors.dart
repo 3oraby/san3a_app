@@ -9,23 +9,27 @@ class AppDarkColors {
 
   // text colors
   static const Color textPrimaryColor = Color(0xFFFFFFFF);
+  static const Color textSecondaryColor = Color(0xFFBFBFC0);
   static const Color headingColor = Color(0xFFFFFFFF);
   static const Color paragraphColor = Color(0xFF9CA3AF);
   static const Color labelColor = Color(0xFFBFBFC0);
   static const Color textBackgroundColor = Color(0xFFF9FAFB);
+  static const Color textDarkBlueDesignColor = Color(0xFF2563EB);
 
   // button colors
   static const Color buttonBackgroundColor = Color(0xFF1E1E1E);
   static const Color disabledButtonBackgroundColor = Color(0xFF374151);
 
   static const Color selectedColor = Color(0xFF343A47);
-  static const Color textFieldBackground = Color(0xFF2C2C2C);
+  static const Color textFieldBackground = Color(0xFF000000);
   static const Color pinFieldBackground = Color(0xFF2C2C2C);
   static const Color inActiveIndicatorColor = Color(0xFF4B5563);
-  static const Color dividerColor = Color(0xFF374151);
   static const Color dropDownIconColor = Color(0xFF9CA3AF);
 
-  static const Color borderColor = Color(0xFF374151);
+  static Color textFieldBorderColor = const Color(
+    0xFF000000,
+  ).withValues(alpha: 0.1);
+  static Color dividerColor = const Color(0xFF374151).withValues(alpha: 0.3);
   static const Color errorColor = Color(0xFFEF4444);
   static const Color successColor = Color(0xFF10B981);
   static const Color warningColor = Color(0xFFFBBF24);

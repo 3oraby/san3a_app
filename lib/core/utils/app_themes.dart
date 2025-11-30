@@ -14,33 +14,46 @@ class AppTheme {
     extensions: const [
       TextPalette(
         primaryColor: AppLightColors.textPrimaryColor,
+        secondaryColor: AppLightColors.textSecondaryColor,
         headingColor: AppLightColors.headingColor,
         paragraphColor: AppLightColors.paragraphColor,
         labelColor: AppLightColors.labelColor,
         contentBackgroundColor: AppLightColors.textBackgroundColor,
         alertColor: Colors.red,
+        darkBlueDesign: AppLightColors.textDarkBlueDesignColor,
       ),
     ],
     iconTheme: const IconThemeData(color: Color(0xFF0A73FF)),
+    buttonTheme: ButtonThemeData(
+      colorScheme: ColorScheme.fromSwatch().copyWith(
+        primary: AppLightColors.primaryColor,
+        onPrimary: AppLightColors.textBackgroundColor,
+      ),
+    ),
+    disabledColor: AppLightColors.disabledButtonBackgroundColor,
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: AppLightColors.textFieldBackground,
+      suffixIconColor: AppLightColors.paragraphColor,
+      labelStyle: AppTextStyles.getTextStyle(
+        16,
+      ).copyWith(color: AppLightColors.headingColor),
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.r),
-        borderSide: const BorderSide(
-          color: AppLightColors.borderColor,
+        borderRadius: BorderRadius.circular(21.r),
+        borderSide: BorderSide(
+          color: AppLightColors.textFieldBorderColor,
           width: 1,
         ),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.r),
-        borderSide: const BorderSide(
-          color: AppLightColors.borderColor,
+        borderRadius: BorderRadius.circular(21.r),
+        borderSide: BorderSide(
+          color: AppLightColors.textFieldBorderColor,
           width: 1,
         ),
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(21.r),
         borderSide: const BorderSide(
           color: AppLightColors.primaryColor,
           width: 2,
@@ -48,7 +61,7 @@ class AppTheme {
       ),
       hintStyle: AppTextStyles.getTextStyle(
         16,
-      ).copyWith(color: AppLightColors.paragraphColor),
+      ).copyWith(color: AppLightColors.headingColor),
     ),
     snackBarTheme: const SnackBarThemeData(
       backgroundColor: AppLightColors.primaryColor,
@@ -65,33 +78,40 @@ class AppTheme {
     extensions: const [
       TextPalette(
         primaryColor: AppDarkColors.textPrimaryColor,
+        secondaryColor: AppDarkColors.textSecondaryColor,
         headingColor: AppDarkColors.headingColor,
         paragraphColor: AppDarkColors.paragraphColor,
         labelColor: AppDarkColors.labelColor,
         contentBackgroundColor: AppDarkColors.textBackgroundColor,
         alertColor: Colors.red,
+        darkBlueDesign: AppDarkColors.textDarkBlueDesignColor,
       ),
     ],
     iconTheme: const IconThemeData(color: Colors.white),
+    disabledColor: AppDarkColors.disabledColor,
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: AppDarkColors.textFieldBackground,
+      suffixIconColor: AppDarkColors.paragraphColor,
+      labelStyle: AppTextStyles.getTextStyle(
+        16,
+      ).copyWith(color: AppDarkColors.headingColor),
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.r),
-        borderSide: const BorderSide(
-          color: AppDarkColors.borderColor,
+        borderRadius: BorderRadius.circular(21.r),
+        borderSide: BorderSide(
+          color: AppDarkColors.textFieldBorderColor,
           width: 1,
         ),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.r),
-        borderSide: const BorderSide(
-          color: AppDarkColors.borderColor,
+        borderRadius: BorderRadius.circular(21.r),
+        borderSide: BorderSide(
+          color: AppDarkColors.textFieldBorderColor,
           width: 1,
         ),
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(21.r),
         borderSide: const BorderSide(
           color: AppDarkColors.primaryColor,
           width: 2,

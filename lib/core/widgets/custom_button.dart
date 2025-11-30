@@ -6,8 +6,8 @@ import 'package:san3a_app/core/utils/app_text_styles.dart';
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
-    required this.text,
-    required this.onPressed,
+    this.onPressed,
+    this.text,
     this.backgroundColor,
     this.textColor,
     this.height = 48,
@@ -18,10 +18,11 @@ class CustomButton extends StatelessWidget {
     this.isOutline = false,
     this.isDisabled = false,
     this.borderColor,
+    this.child,
   });
 
-  final String text;
-  final VoidCallback onPressed;
+  final String? text;
+  final VoidCallback? onPressed;
   final Color? backgroundColor;
   final Color? textColor;
   final double height;
@@ -32,18 +33,21 @@ class CustomButton extends StatelessWidget {
   final bool isOutline;
   final bool isDisabled;
   final Color? borderColor;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
     final appSemanticColors = getTextPalette(context);
 
     return SizedBox(
-      height: height,
-      width: width ?? double.infinity,
+      height: height.h,
+      width: width?.w ?? double.infinity,
       child: ElevatedButton(
         onPressed: isDisabled ? null : onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: backgroundColor ?? Theme.of(context).primaryColor,
+          backgroundColor: isDisabled
+              ? Theme.of(context).disabledColor
+              : backgroundColor ?? Theme.of(context).primaryColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius.r),
           ),
@@ -54,12 +58,14 @@ class CustomButton extends StatelessWidget {
             width: borderWidth.r,
           ),
         ),
-        child: Text(
-          text,
-          style: AppTextStyles.getTextStyle(textFontSize).copyWith(
-            color: textColor ?? appSemanticColors.contentBackgroundColor,
-          ),
-        ),
+        child:
+            child ??
+            Text(
+              text ?? '',
+              style: AppTextStyles.getTextStyle(textFontSize).copyWith(
+                color: textColor ?? appSemanticColors.contentBackgroundColor,
+              ),
+            ),
       ),
     );
   }

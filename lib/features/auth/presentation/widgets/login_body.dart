@@ -1,0 +1,146 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:san3a_app/core/constants/locale_keys.dart';
+import 'package:san3a_app/core/helpers/get_text_palette.dart';
+import 'package:san3a_app/core/utils/app_images.dart';
+import 'package:san3a_app/core/utils/app_text_styles.dart';
+import 'package:san3a_app/core/widgets/custom_button.dart';
+import 'package:san3a_app/core/widgets/custom_text_form_field.dart';
+import 'package:san3a_app/core/widgets/custom_password_text_field.dart';
+import 'package:san3a_app/core/widgets/vertical_gap.dart';
+import 'package:san3a_app/features/auth/presentation/widgets/auth_social_button.dart';
+
+class LoginBody extends StatefulWidget {
+  const LoginBody({super.key});
+
+  @override
+  State<LoginBody> createState() => _LoginBodyState();
+}
+
+class _LoginBodyState extends State<LoginBody> {
+  final passwordController = TextEditingController();
+
+  final emailController = TextEditingController();
+  bool isButtonEnabled = false;
+
+  @override
+  void initState() {
+    super.initState();
+    emailController.addListener(checkFormFilled);
+    passwordController.addListener(checkFormFilled);
+  }
+
+  void checkFormFilled() {
+    final isFilled =
+        emailController.text.isNotEmpty && passwordController.text.isNotEmpty;
+    if (isFilled != isButtonEnabled) {
+      setState(() {
+        isButtonEnabled = isFilled;
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    emailController.removeListener(checkFormFilled);
+    passwordController.removeListener(checkFormFilled);
+    emailController.dispose();
+    passwordController.dispose();
+  }
+
+  void submitLoginForm() {
+    // final SignInCubit signInCubit = BlocProvider.of<SignInCubit>(context);
+    // signInCubit.email = emailController.text;
+    // signInCubit.signInWithEmailAndPassword(
+    //   email: emailController.text,
+    //   password: passwordController.text,
+    // );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final textPalette = getTextPalette(context);
+
+    return SafeArea(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 19.w),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  LocaleKeys.authLoginLogin.tr(),
+                  style: AppTextStyles.getTextStyle(24).copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: textPalette.primaryColor,
+                  ),
+                ),
+                const VerticalGap(32),
+                Row(
+                  children: [
+                    Text(
+                      LocaleKeys.authLoginEmailAddress.tr(),
+                      style: AppTextStyles.getTextStyle(
+                        11,
+                      ).copyWith(color: textPalette.secondaryColor),
+                    ),
+                  ],
+                ),
+                const VerticalGap(5),
+                CustomTextFormField(controller: emailController),
+                const VerticalGap(19),
+                Row(
+                  children: [
+                    Text(
+                      LocaleKeys.authLoginPassword.tr(),
+                      style: AppTextStyles.getTextStyle(
+                        11,
+                      ).copyWith(color: textPalette.secondaryColor),
+                    ),
+                  ],
+                ),
+                const VerticalGap(5),
+                CustomPasswordTextField(controller: passwordController),
+                const VerticalGap(9),
+                Text(
+                  LocaleKeys.authLoginForgotPassword.tr(),
+                  style: AppTextStyles.getTextStyle(11).copyWith(
+                    color: textPalette.secondaryColor,
+                    fontWeight: FontWeight.w300,
+                    decoration: TextDecoration.underline,
+                    decorationColor: textPalette.secondaryColor,
+                  ),
+                ),
+                const VerticalGap(33),
+                CustomButton(
+                  text: LocaleKeys.authLoginLogin.tr(),
+                  textColor: textPalette.contentBackgroundColor,
+                  borderRadius: 21,
+                  onPressed: submitLoginForm,
+                  isDisabled: !isButtonEnabled,
+                ),
+                const VerticalGap(16),
+                AuthSocialButton(
+                  description: LocaleKeys.authLoginLoginWithGoogle.tr(),
+                  image: AppImages.googleLogo,
+                ),
+                const VerticalGap(16),
+                Text(
+                  LocaleKeys.authLoginCreateNewAccount.tr(),
+                  style: AppTextStyles.getTextStyle(16).copyWith(
+                    color: Theme.of(context).primaryColor,
+                    decoration: TextDecoration.underline,
+                    decorationColor: Theme.of(context).primaryColor,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
