@@ -1,0 +1,112 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:san3a_app/core/constants/locale_keys.dart';
+import 'package:san3a_app/core/helpers/get_text_palette.dart';
+import 'package:san3a_app/core/utils/app_routes.dart';
+import 'package:san3a_app/core/utils/app_text_styles.dart';
+import 'package:san3a_app/core/widgets/custom_button.dart';
+import 'package:san3a_app/core/widgets/custom_password_text_field.dart';
+import 'package:san3a_app/core/widgets/vertical_gap.dart';
+
+class ResetPasswordBody extends StatefulWidget {
+  const ResetPasswordBody({super.key});
+
+  @override
+  State<ResetPasswordBody> createState() => _ResetPasswordBodyState();
+}
+
+class _ResetPasswordBodyState extends State<ResetPasswordBody> {
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+
+  bool isButtonEnabled = false;
+
+  @override
+  void initState() {
+    super.initState();
+    passwordController.addListener(checkPassword);
+    confirmPasswordController.addListener(checkPassword);
+  }
+
+  void checkPassword() {
+    final isFilled =
+        passwordController.text.isNotEmpty &&
+        confirmPasswordController.text.isNotEmpty;
+    if (isFilled != isButtonEnabled) {
+      setState(() {
+        isButtonEnabled = isFilled;
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    passwordController.removeListener(checkPassword);
+    confirmPasswordController.removeListener(checkPassword);
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  void onSendCodeTap() async {
+    goToLoginScreen();
+  }
+
+  void goToLoginScreen() {
+    Navigator.pushNamed(context, Routes.initialAuthScreen);
+    Navigator.pushNamed(context, Routes.loginScreen);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final textPalette = getTextPalette(context);
+
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 19.w),
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const VerticalGap(45),
+            Text(
+              LocaleKeys.authForgetPasswordResetPassword.tr(),
+              style: AppTextStyles.getTextStyle(24).copyWith(
+                fontWeight: FontWeight.w700,
+                color: textPalette.primaryColor,
+              ),
+            ),
+            const VerticalGap(65),
+            Row(
+              children: [
+                Text(
+                  LocaleKeys.authResetPasswordEnterNewPassword.tr(),
+                  style: AppTextStyles.getTextStyle(
+                    20,
+                  ).copyWith(color: textPalette.headingColor),
+                ),
+              ],
+            ),
+            const VerticalGap(10),
+            CustomPasswordTextField(
+              controller: passwordController,
+              hintText: LocaleKeys.authResetPasswordPassword.tr(),
+            ),
+            const VerticalGap(16),
+            CustomPasswordTextField(
+              controller: confirmPasswordController,
+              hintText: LocaleKeys.authResetPasswordConfirmPassword.tr(),
+            ),
+            const VerticalGap(28),
+            CustomButton(
+              onPressed: onSendCodeTap,
+              isDisabled: !isButtonEnabled,
+              text: LocaleKeys.authResetPasswordConfirm.tr(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

@@ -14,6 +14,10 @@ class CustomPasswordTextField extends StatefulWidget {
     this.focusNode,
     this.autovalidateMode = AutovalidateMode.disabled,
     this.keyboardType = TextInputType.text,
+    this.textStyle,
+    this.hintTextStyle,
+    this.helperTextStyle,
+    this.labelTextStyle,
   });
 
   final String? labelText;
@@ -25,6 +29,10 @@ class CustomPasswordTextField extends StatefulWidget {
   final FocusNode? focusNode;
   final AutovalidateMode autovalidateMode;
   final TextInputType? keyboardType;
+  final TextStyle? textStyle;
+  final TextStyle? hintTextStyle;
+  final TextStyle? helperTextStyle;
+  final TextStyle? labelTextStyle;
 
   @override
   State<CustomPasswordTextField> createState() =>
@@ -51,6 +59,9 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
         fillColor: appTextFieldTheme.backgroundColor,
         labelText: widget.labelText,
         hintText: widget.hintText,
+        labelStyle: widget.labelTextStyle,
+        hintStyle: widget.hintTextStyle,
+        helperStyle: widget.helperTextStyle,
         suffixIcon: IconButton(
           icon: Icon(isObscure ? Icons.visibility : Icons.visibility_off),
           onPressed: () {
