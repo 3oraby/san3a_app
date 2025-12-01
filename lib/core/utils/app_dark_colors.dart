@@ -22,14 +22,20 @@ class AppDarkColors {
   static const Color buttonBackgroundColor = Color(0xFF1E1E1E);
   static const Color disabledButtonBackgroundColor = Color(0xFF374151);
 
+  // text field colors
   static const Color textFieldBackgroundColor = Color(0xFF000000);
   static const Color textFieldHighLightBackgroundColor = Color(0xFF000000);
   static Color textFieldBorderColor = const Color(
     0xFFFFFFFF,
   ).withValues(alpha: 0.1);
 
+  // pin field colors
+  static const Color activePinFieldBackground = Color(0xFF2C2C2C);
+  static Color inActivePinFieldBackground = const Color(
+    0xFF2C2C2C,
+  ).withValues(alpha: 0.5);
+
   static const Color selectedColor = Color(0xFF343A47);
-  static const Color pinFieldBackground = Color(0xFF2C2C2C);
   static const Color inActiveIndicatorColor = Color(0xFF4B5563);
   static const Color dropDownIconColor = Color(0xFF9CA3AF);
 

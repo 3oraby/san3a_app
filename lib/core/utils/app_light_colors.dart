@@ -21,14 +21,20 @@ class AppLightColors {
   static const Color buttonBackgroundColor = Color(0xFFF9FAFB);
   static const Color disabledButtonBackgroundColor = Color(0xFFC0C4CA);
 
+  // text field colors
   static const Color textFieldBackgroundColor = Color(0xFFFFFFFF);
   static const Color textFieldHighLightBackgroundColor = Color(0xFFF5F5F5);
   static Color textFieldBorderColor = const Color(
     0xFF000000,
   ).withValues(alpha: 0.1);
 
+  // pin field colors
+  static const Color activePinFieldBackground = Color(0xFFF6F6F6);
+  static Color inActivePinFieldBackground = const Color(
+    0xFFD9D9D9,
+  ).withValues(alpha: 0.5);
+
   static const Color selectedColor = Color(0xFF343A47);
-  static const Color pinFieldBackground = Color(0xFFD9D9D9);
   static const Color inActiveIndicatorColor = Color(0xFFD8D9DE);
   static const Color dropDownIconColor = Color(0xFF6B7280);
   static Color dividerColor = const Color(0xFFE5E7EB).withValues(alpha: 0.3);

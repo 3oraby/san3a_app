@@ -25,6 +25,7 @@ dependencies:
   google_fonts: ^6.3.2
   image_picker: ^1.2.1
   path_provider: ^2.1.5
+  pinput: ^6.0.1
   shared_preferences: ^2.5.3
 
 dev_dependencies:
@@ -52,7 +53,6 @@ flutter_assets:
 #   filename: app_images.dart
 #   field_prefix: null
 #   classname: AppImages
-
 # flutter_assets:
 #   assets_path: assets/animations
 #   output_path: lib/core/utils
