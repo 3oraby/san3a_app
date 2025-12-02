@@ -67,7 +67,7 @@ class _LoginBodyState extends State<LoginBody> {
   void onGoogleLoginTap() {}
 
   void onCreateNewAccountTap() {
-    Navigator.pushNamed(context, Routes.signUpScreen);
+    Navigator.pushNamed(context, Routes.createNewAccountScreen);
   }
 
   @override

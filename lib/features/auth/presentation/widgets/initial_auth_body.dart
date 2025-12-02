@@ -58,7 +58,7 @@ class InitialAuthBody extends StatelessWidget {
                 isOutline: true,
                 borderRadius: 8,
                 onPressed: () {
-                  Navigator.pushNamed(context, Routes.signUpScreen);
+                  Navigator.pushNamed(context, Routes.createNewAccountScreen);
                 },
               ),
             ],

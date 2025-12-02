@@ -71,5 +71,63 @@
         "password": "كلمة المرور",
         "confirm_password": "تأكيد كلمة المرور",
         "confirm": "تأكيد"
+    },
+    "create_new_account": {
+        "title": "إنشاء حساب جديد",
+        "choose_user_role": {
+            "customer": "زبون",
+            "customer_description": "إنشاء حساب علشان تطلب خدمة",
+            "craftsman": "حرفي",
+            "craftsman_description": ".إنشاء حساب  علشان تقدّم خدماتك"
+        },
+        "customer_signup": {
+            "name": "الاسم",
+            "name_hint": "اسمك بالكامل",
+            "email": "البريد الإلكتروني",
+            "email_hint": "san3a@gmail.com",
+            "national_id": "الرقم القومي",
+            "national_id_hint": "0 0000 0000 00000",
+            "governorate": "المحافظة",
+            "governorate_hint": "القاهرة",
+            "password": "كلمة المرور",
+            "password_hint": "********",
+            "confirm_password": "تأكيد كلمة المرور",
+            "confirm_password_hint": "********",
+            "agree_terms": "بإنشاء حساب جديد, فأنت موافق علي الشروط و الأحكام",
+            "create_account_button": "إنشاء حساب جديد",
+            "already_have_account": "لديك حساب بالفعل",
+            "login_button": "تسجيل دخول"
+        },
+        "craftsman_signup": {
+            "craft": "الحرفة",
+            "other": "اخري",
+            "enter_craft": "اكتب حرفتك",
+            "sample_craft": "تصليح ماتور",
+            "name": "الاسم",
+            "name_hint": "اسمك بالكامل",
+            "email": "البريد الإلكتروني",
+            "email_hint": "san3a@gmail.com",
+            "national_id": "الرقم القومي",
+            "national_id_hint": "0 0000 0000 00000",
+            "governorate": "المحافظة",
+            "governorate_hint": "القاهرة",
+            "password": "كلمة المرور",
+            "password_hint": "********",
+            "confirm_password": "تأكيد كلمة المرور",
+            "confirm_password_hint": "********",
+            "agree_terms": "بإنشاء حساب جديد, فأنت موافق علي الشروط و الأحكام",
+            "create_account_button": "إنشاء حساب جديد",
+            "already_have_account": "لديك حساب بالفعل",
+            "login_button": "تسجيل دخول"
+        },
+        "verify_email": {
+            "title": "تأكيد البريد الإلكتروني",
+            "enter_code": "ادخل الكود المكون من 4 أرقام لتأكيد البريد الإلكتروني",
+            "enter_code_sent": "قم بادخال الكود المكون من 4 أرقام المرسل الي البريد الإلكتروني",
+            "confirm": "تأكيد",
+            "resend_code": "إعادة ارسال الكود",
+            "invalid_code": "الكود خطأ ادخل الكود بشكل صحيح",
+            "success_registration": "تم التسجيل بنجاح"
+        }
     }
 }

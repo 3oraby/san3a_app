@@ -6,7 +6,7 @@ import 'package:san3a_app/features/auth/presentation/screens/forget_password_scr
 import 'package:san3a_app/features/auth/presentation/screens/initial_auth_screen.dart';
 import 'package:san3a_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:san3a_app/features/auth/presentation/screens/reset_password_screen.dart';
-import 'package:san3a_app/features/auth/presentation/screens/sign_up_screen.dart';
+import 'package:san3a_app/features/auth/presentation/screens/create_new_account_screen.dart';
 import 'package:san3a_app/features/auth/presentation/screens/verify_forget_password_otp_screen.dart';
 
 Route<dynamic> onGenerateRoutes(RouteSettings settings, BuildContext context) {
@@ -29,8 +29,8 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings, BuildContext context) {
     case Routes.loginScreen:
       return MaterialPageRoute(builder: (_) => const LoginScreen());
 
-    case Routes.signUpScreen:
-      return MaterialPageRoute(builder: (_) => const SignUpScreen());
+    case Routes.createNewAccountScreen:
+      return MaterialPageRoute(builder: (_) => const CreateNewAccountScreen());
 
     case Routes.forgetPasswordScreen:
       return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());

@@ -71,5 +71,63 @@
         "password": "Password",
         "confirm_password": "Confirm Password",
         "confirm": "Confirm"
+    },
+    "create_new_account": {
+        "title": "Create New Account",
+        "choose_user_role": {
+            "customer": "Customer",
+            "customer_description": "Create an account to request services",
+            "craftsman": "Craftsman",
+            "craftsman_description": "Create an account to offer your services"
+        },
+        "customer_signup": {
+            "name": "Name",
+            "name_hint": "Your full name",
+            "email": "Email",
+            "email_hint": "san3a@gmail.com",
+            "national_id": "National ID",
+            "national_id_hint": "0 0000 0000 00000",
+            "governorate": "Governorate",
+            "governorate_hint": "Cairo",
+            "password": "Password",
+            "password_hint": "********",
+            "confirm_password": "Confirm Password",
+            "confirm_password_hint": "********",
+            "agree_terms": "By creating a new account, you agree to the Terms & Conditions",
+            "create_account_button": "Create Account",
+            "already_have_account": "Already have an account?",
+            "login_button": "Log In"
+        },
+        "craftsman_signup": {
+            "craft": "Craft",
+            "other": "Other",
+            "enter_craft": "Enter your craft",
+            "sample_craft": "Motor Repair",
+            "name": "Name",
+            "name_hint": "Your full name",
+            "email": "Email",
+            "email_hint": "san3a@gmail.com",
+            "national_id": "National ID",
+            "national_id_hint": "0 0000 0000 00000",
+            "governorate": "Governorate",
+            "governorate_hint": "Cairo",
+            "password": "Password",
+            "password_hint": "********",
+            "confirm_password": "Confirm Password",
+            "confirm_password_hint": "********",
+            "agree_terms": "By creating a new account, you agree to the Terms & Conditions",
+            "create_account_button": "Create Account",
+            "already_have_account": "Already have an account?",
+            "login_button": "Log In"
+        },
+        "verify_email": {
+            "title": "Verify Email",
+            "enter_code": "Enter the 4-digit code to verify your email",
+            "enter_code_sent": "Enter the 4-digit code sent to your email",
+            "confirm": "Confirm",
+            "resend_code": "Resend Code",
+            "invalid_code": "Incorrect code. Please enter the correct code.",
+            "success_registration": "Registration completed successfully"
+        }
     }
 }
