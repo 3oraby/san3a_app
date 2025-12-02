@@ -6,6 +6,11 @@ import 'package:san3a_app/core/helpers/get_text_palette.dart';
 import 'package:san3a_app/core/utils/app_text_styles.dart';
 import 'package:san3a_app/core/widgets/expandable_page_view.dart';
 import 'package:san3a_app/core/widgets/vertical_gap.dart';
+import 'package:san3a_app/features/auth/presentation/widgets/account_created_success_body.dart';
+import 'package:san3a_app/features/auth/presentation/widgets/choose_role_body.dart';
+import 'package:san3a_app/features/auth/presentation/widgets/customer_sign_up_body.dart';
+import 'package:san3a_app/features/auth/presentation/widgets/vendor_sign_up_body.dart';
+import 'package:san3a_app/features/auth/presentation/widgets/verify_email_body.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class CreateNewAccountBody extends StatefulWidget {
@@ -72,55 +77,5 @@ class _CreateNewAccountBodyState extends State<CreateNewAccountBody> {
         ],
       ),
     );
-  }
-}
-
-class ChooseRoleBody extends StatelessWidget {
-  const ChooseRoleBody({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 2000,
-      width: 100,
-      color: Colors.amber,
-      child: const Text("choose role"),
-    );
-  }
-}
-
-class CustomerSignUpBody extends StatelessWidget {
-  const CustomerSignUpBody({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Text("customer sign up");
-  }
-}
-
-class VendorSignUpBody extends StatelessWidget {
-  const VendorSignUpBody({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Text("vendor sign up");
-  }
-}
-
-class VerifyEmailBody extends StatelessWidget {
-  const VerifyEmailBody({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Text("verify email");
-  }
-}
-
-class AccountCreatedSuccessBody extends StatelessWidget {
-  const AccountCreatedSuccessBody({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Text("account created success");
   }
 }
