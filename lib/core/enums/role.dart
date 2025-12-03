@@ -1,1 +1,1 @@
-enum Role { user, brand, admin }
+enum Role { customer, vendor, admin }

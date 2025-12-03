@@ -9,8 +9,7 @@ import 'package:san3a_app/core/widgets/expandable_page_view.dart';
 import 'package:san3a_app/core/widgets/vertical_gap.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/account_created_success_body.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/choose_role_body.dart';
-import 'package:san3a_app/features/auth/presentation/widgets/customer_sign_up_body.dart';
-import 'package:san3a_app/features/auth/presentation/widgets/vendor_sign_up_body.dart';
+import 'package:san3a_app/features/auth/presentation/widgets/sign_up_body.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/verify_email_body.dart';
 
 class CreateNewAccountBody extends StatefulWidget {
@@ -65,8 +64,7 @@ class _CreateNewAccountBodyState extends State<CreateNewAccountBody> {
                 controller: pageController,
                 children: const [
                   ChooseRoleBody(),
-                  CustomerSignUpBody(),
-                  VendorSignUpBody(),
+                  SignUpBody(),
                   VerifyEmailBody(),
                   AccountCreatedSuccessBody(),
                 ],
