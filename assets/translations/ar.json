@@ -72,7 +72,7 @@
         "confirm_password": "تأكيد كلمة المرور",
         "confirm": "تأكيد"
     },
-    "create_new_account": {
+    "auth_create_account": {
         "title": "إنشاء حساب جديد",
         "choose_user_role": {
             "customer": "زبون",
