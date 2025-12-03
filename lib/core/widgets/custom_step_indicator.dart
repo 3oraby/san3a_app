@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:san3a_app/core/utils/app_dark_colors.dart';
+import 'package:san3a_app/core/utils/app_light_colors.dart';
 
 class CustomStepIndicator extends StatelessWidget {
   final int count;
   final int currentIndex;
-  final Color activeColor;
-  final Color inactiveColor;
+  final Color? activeColor;
+  final Color? inactiveColor;
   final double dotSize;
   final double lineLength;
   final double lineWidth;
@@ -16,17 +18,29 @@ class CustomStepIndicator extends StatelessWidget {
     super.key,
     required this.count,
     required this.currentIndex,
-    required this.activeColor,
-    required this.inactiveColor,
+    this.activeColor,
+    this.inactiveColor,
     this.dotSize = 20,
     this.lineLength = 49,
     this.lineWidth = 2,
     this.dashWidth = 6,
     this.dashSpace = 2,
   });
- 
+
   @override
   Widget build(BuildContext context) {
+    Color activeColor =
+        this.activeColor ??
+        (Theme.of(context).brightness == Brightness.light
+            ? AppLightColors.activeIndicatorColor
+            : AppDarkColors.activeIndicatorColor);
+
+    Color inactiveColor =
+        this.inactiveColor ??
+        (Theme.of(context).brightness == Brightness.light
+            ? AppLightColors.inActiveIndicatorColor
+            : AppDarkColors.inActiveIndicatorColor);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(count * 2 - 1, (index) {

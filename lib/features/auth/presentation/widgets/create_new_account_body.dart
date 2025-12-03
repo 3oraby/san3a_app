@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:san3a_app/core/constants/locale_keys.dart';
 import 'package:san3a_app/core/helpers/get_text_palette.dart';
-import 'package:san3a_app/core/utils/app_light_colors.dart';
 import 'package:san3a_app/core/utils/app_text_styles.dart';
 import 'package:san3a_app/core/widgets/custom_step_indicator.dart';
 import 'package:san3a_app/core/widgets/expandable_page_view.dart';
@@ -46,7 +45,7 @@ class _CreateNewAccountBodyState extends State<CreateNewAccountBody> {
                 LocaleKeys.createNewAccountTitle.tr(),
                 style: AppTextStyles.getTextStyle(28).copyWith(
                   fontWeight: FontWeight.w700,
-                  color: textPalette.primaryColor,
+                  color: textPalette.headingColor,
                 ),
               ),
               const VerticalGap(32),
@@ -54,12 +53,10 @@ class _CreateNewAccountBodyState extends State<CreateNewAccountBody> {
                 animation: pageController,
                 builder: (context, child) {
                   return CustomStepIndicator(
-                    count: 5,
+                    count: 4,
                     currentIndex: pageController.hasClients
                         ? (pageController.page?.round() ?? 0)
                         : 0,
-                    activeColor: textPalette.primaryColor,
-                    inactiveColor: AppLightColors.inActiveIndicatorColor,
                   );
                 },
               ),

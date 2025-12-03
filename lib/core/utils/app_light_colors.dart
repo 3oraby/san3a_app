@@ -34,8 +34,11 @@ class AppLightColors {
     0xFFD9D9D9,
   ).withValues(alpha: 0.5);
 
-  static const Color selectedColor = Color(0xFF343A47);
+  // indicator colors
+  static const Color activeIndicatorColor = Color(0xFFF59E0B);
   static const Color inActiveIndicatorColor = Color(0xFFD8D9DE);
+
+  static const Color selectedColor = Color(0xFF343A47);
   static const Color dropDownIconColor = Color(0xFF6B7280);
   static Color dividerColor = const Color(0xFFE5E7EB).withValues(alpha: 0.3);
   static const Color errorColor = Color(0xFFEF4444);

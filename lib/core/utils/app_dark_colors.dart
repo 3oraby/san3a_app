@@ -35,8 +35,11 @@ class AppDarkColors {
     0xFF2C2C2C,
   ).withValues(alpha: 0.5);
 
+  // indicator colors
+  static const Color activeIndicatorColor = Color(0xFFFBBF24);
+  static const Color inActiveIndicatorColor = Color(0xFF9CA3AF);
+
   static const Color selectedColor = Color(0xFF343A47);
-  static const Color inActiveIndicatorColor = Color(0xFF4B5563);
   static const Color dropDownIconColor = Color(0xFF9CA3AF);
 
   static Color dividerColor = const Color(0xFF374151).withValues(alpha: 0.3);
