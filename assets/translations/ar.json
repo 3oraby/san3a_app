@@ -78,7 +78,7 @@
             "customer": "زبون",
             "customer_description": "إنشاء حساب علشان تطلب خدمة",
             "craftsman": "حرفي",
-            "craftsman_description": ".إنشاء حساب  علشان تقدّم خدماتك"
+            "craftsman_description": "إنشاء حساب  علشان تقدّم خدماتك"
         },
         "customer_signup": {
             "name": "الاسم",
