@@ -11,6 +11,17 @@ class AppTheme {
     primaryColor: AppLightColors.primaryColor,
     scaffoldBackgroundColor: AppLightColors.scaffoldBackgroundColor,
     dividerColor: AppLightColors.dividerColor,
+    colorScheme: const ColorScheme(
+      brightness: Brightness.light,
+      primary: AppLightColors.primaryColor,
+      onPrimary: AppLightColors.textBackgroundColor,
+      secondary: AppLightColors.textSecondaryColor,
+      onSecondary: AppLightColors.textBackgroundColor,
+      error: AppLightColors.errorColor,
+      onError: AppLightColors.textBackgroundColor,
+      surface: AppLightColors.headingColor,
+      onSurface: Colors.white, // using for text which on dark surfaces
+    ),
     extensions: [
       TextPalette(
         primaryColor: AppLightColors.textPrimaryColor,
@@ -33,6 +44,7 @@ class AppTheme {
       ),
     ],
     iconTheme: const IconThemeData(color: Color(0xFF0A73FF)),
+    cardColor: AppLightColors.headingColor,
     buttonTheme: ButtonThemeData(
       colorScheme: ColorScheme.fromSwatch().copyWith(
         primary: AppLightColors.primaryColor,
@@ -61,6 +73,17 @@ class AppTheme {
     primaryColor: AppDarkColors.primaryColor,
     scaffoldBackgroundColor: AppDarkColors.scaffoldBackgroundColor,
     dividerColor: AppDarkColors.dividerColor,
+    colorScheme: const ColorScheme(
+      brightness: Brightness.dark,
+      primary: AppDarkColors.primaryColor,
+      onPrimary: AppDarkColors.textBackgroundColor,
+      secondary: AppDarkColors.textSecondaryColor,
+      onSecondary: AppDarkColors.textBackgroundColor,
+      error: AppDarkColors.errorColor,
+      onError: AppDarkColors.textBackgroundColor,
+      surface: AppDarkColors.headingColor,
+      onSurface: Colors.black, // using for text which on light surfaces
+    ),
     extensions: [
       TextPalette(
         primaryColor: AppDarkColors.textPrimaryColor,
@@ -83,6 +106,7 @@ class AppTheme {
       ),
     ],
     iconTheme: const IconThemeData(color: Colors.white),
+    cardColor: AppDarkColors.headingColor,
     disabledColor: AppDarkColors.disabledColor,
     inputDecorationTheme: InputDecorationTheme(
       suffixIconColor: AppDarkColors.paragraphColor,

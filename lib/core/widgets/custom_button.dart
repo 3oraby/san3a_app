@@ -37,21 +37,19 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appSemanticColors = getTextPalette(context);
+    final textPalette = getTextPalette(context);
 
-    return SizedBox(
-      height: height.h,
-      width: width?.w ?? double.infinity,
-      child: ElevatedButton(
-        onPressed: isDisabled ? null : onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: isDisabled
+    return InkWell(
+      onTap: isDisabled ? null : onPressed,
+      child: Container(
+        height: height.h,
+        width: width?.w ?? double.infinity,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(borderRadius.r),
+          color: isDisabled
               ? Theme.of(context).disabledColor
               : backgroundColor ?? Theme.of(context).primaryColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(borderRadius.r),
-          ),
-          side: BorderSide(
+          border: Border.all(
             color: isOutline
                 ? borderColor ?? Theme.of(context).primaryColor
                 : Colors.transparent,
@@ -60,10 +58,12 @@ class CustomButton extends StatelessWidget {
         ),
         child:
             child ??
-            Text(
-              text ?? '',
-              style: AppTextStyles.getTextStyle(textFontSize).copyWith(
-                color: textColor ?? appSemanticColors.contentBackgroundColor,
+            Center(
+              child: Text(
+                text ?? '',
+                style: AppTextStyles.getTextStyle(textFontSize).copyWith(
+                  color: textColor ?? textPalette.contentBackgroundColor,
+                ),
               ),
             ),
       ),

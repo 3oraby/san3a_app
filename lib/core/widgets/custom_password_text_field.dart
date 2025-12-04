@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:san3a_app/core/helpers/get_text_palette.dart';
 import 'package:san3a_app/core/utils/app_text_field_theme.dart';
+import 'package:san3a_app/core/utils/app_text_styles.dart';
 
 class CustomPasswordTextField extends StatefulWidget {
   const CustomPasswordTextField({
@@ -45,6 +47,7 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
   @override
   Widget build(BuildContext context) {
     final appTextFieldTheme = Theme.of(context).extension<AppTextFieldTheme>()!;
+    final textPalette = getTextPalette(context);
 
     return TextFormField(
       controller: widget.controller,
@@ -54,6 +57,9 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
       onSaved: widget.onSaved,
       validator: widget.validator,
       keyboardType: widget.keyboardType,
+      style: AppTextStyles.getTextStyle(
+        16,
+      ).copyWith(color: textPalette.headingColor),
       decoration: InputDecoration(
         filled: true,
         fillColor: appTextFieldTheme.backgroundColor,
