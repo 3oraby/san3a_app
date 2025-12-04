@@ -55,7 +55,11 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
   }
 
   void goToLoginScreen() {
-    Navigator.pushNamed(context, Routes.initialAuthScreen);
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      Routes.initialAuthScreen,
+      (route) => false,
+    );
     Navigator.pushNamed(context, Routes.loginScreen);
   }
 
