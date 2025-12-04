@@ -5,6 +5,7 @@ import 'package:san3a_app/core/utils/app_text_field_theme.dart';
 import 'package:san3a_app/core/utils/app_text_styles.dart';
 
 class CustomTextFormField extends StatelessWidget {
+  final double height;
   final String? hintText;
   final String? labelText;
   final String? helperText;
@@ -25,9 +26,18 @@ class CustomTextFormField extends StatelessWidget {
   final bool removeBorders;
   final double? labelTextSize;
   final ValueChanged<String>? onChanged;
+  final double borderRadius;
+  final double? borderWidth;
+  final Color? borderColor;
+  final Color? focusedBorderColor;
+  final Color? backgroundColor;
+  final TextStyle? hintStyle;
+  final TextStyle? labelStyle;
+  final TextStyle? helperStyle;
 
   const CustomTextFormField({
     super.key,
+    this.height = 46,
     this.ontTap,
     this.readOnly,
     this.hintText,
@@ -43,11 +53,19 @@ class CustomTextFormField extends StatelessWidget {
     this.autovalidateMode,
     this.maxLines = 1,
     this.contentHorizontalPadding = 16,
-    this.contentVerticalPadding = 14,
+    this.contentVerticalPadding = 12,
     this.focusNode,
     this.removeBorders = false,
     this.labelTextSize = 16,
     this.onChanged,
+    this.borderRadius = 21,
+    this.borderWidth,
+    this.borderColor,
+    this.focusedBorderColor,
+    this.backgroundColor,
+    this.hintStyle,
+    this.labelStyle,
+    this.helperStyle,
   });
 
   @override
@@ -55,54 +73,60 @@ class CustomTextFormField extends StatelessWidget {
     final textPalette = getTextPalette(context);
     final appTextFieldTheme = Theme.of(context).extension<AppTextFieldTheme>()!;
 
-    return TextFormField(
-      focusNode: focusNode,
-      readOnly: readOnly ?? false,
-      controller: controller,
-      keyboardType: keyboardType,
-      obscureText: obscureText,
-      validator: validator,
-      onTap: ontTap,
-      onTapAlwaysCalled: true,
-      autovalidateMode: autovalidateMode,
-      maxLines: maxLines,
-      onChanged: onChanged,
-      style: AppTextStyles.getTextStyle(
-        16,
-      ).copyWith(color: textPalette.headingColor),
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: appTextFieldTheme.backgroundColor,
-        hintText: hintText,
-        labelText: labelText,
-        helperText: helperText,
-        prefixIcon: prefixIcon,
-        suffixIcon: suffixIcon != null
-            ? GestureDetector(onTap: onSuffixTap, child: suffixIcon)
-            : null,
-        contentPadding: EdgeInsets.symmetric(
-          vertical: contentVerticalPadding.r,
-          horizontal: contentHorizontalPadding.r,
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(21.r),
-          borderSide: BorderSide(
-            color: appTextFieldTheme.borderColor,
-            width: 1,
+    return SizedBox(
+      height: height.h,
+      child: TextFormField(
+        focusNode: focusNode,
+        readOnly: readOnly ?? false,
+        controller: controller,
+        keyboardType: keyboardType,
+        obscureText: obscureText,
+        validator: validator,
+        onTap: ontTap,
+        onTapAlwaysCalled: true,
+        autovalidateMode: autovalidateMode,
+        maxLines: maxLines,
+        onChanged: onChanged,
+        style: AppTextStyles.getTextStyle(
+          16,
+        ).copyWith(color: textPalette.headingColor),
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: backgroundColor ?? appTextFieldTheme.backgroundColor,
+          hintText: hintText,
+          labelText: labelText,
+          helperText: helperText,
+          prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon != null
+              ? GestureDetector(onTap: onSuffixTap, child: suffixIcon)
+              : null,
+          contentPadding: EdgeInsets.symmetric(
+            vertical: contentVerticalPadding.r,
+            horizontal: contentHorizontalPadding.r,
           ),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(21.r),
-          borderSide: BorderSide(
-            color: appTextFieldTheme.borderColor,
-            width: 1,
+          hintStyle: hintStyle,
+          labelStyle: labelStyle,
+          helperStyle: helperStyle,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(borderRadius.r),
+            borderSide: BorderSide(
+              color: borderColor ?? appTextFieldTheme.borderColor,
+              width: borderWidth ?? 1,
+            ),
           ),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(21.r),
-          borderSide: BorderSide(
-            color: appTextFieldTheme.focusedBorderColor,
-            width: 2,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(borderRadius.r),
+            borderSide: BorderSide(
+              color: borderColor ?? appTextFieldTheme.borderColor,
+              width: borderWidth ?? 1,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(borderRadius.r),
+            borderSide: BorderSide(
+              color: focusedBorderColor ?? appTextFieldTheme.focusedBorderColor,
+              width: borderWidth ?? 2,
+            ),
           ),
         ),
       ),

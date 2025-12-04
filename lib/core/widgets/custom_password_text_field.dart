@@ -7,6 +7,7 @@ import 'package:san3a_app/core/utils/app_text_styles.dart';
 class CustomPasswordTextField extends StatefulWidget {
   const CustomPasswordTextField({
     super.key,
+    this.height = 46,
     this.labelText,
     this.hintText,
     this.onChanged,
@@ -17,11 +18,19 @@ class CustomPasswordTextField extends StatefulWidget {
     this.autovalidateMode = AutovalidateMode.disabled,
     this.keyboardType = TextInputType.text,
     this.textStyle,
-    this.hintTextStyle,
-    this.helperTextStyle,
-    this.labelTextStyle,
+    this.hintStyle,
+    this.helperStyle,
+    this.labelStyle,
+    this.borderRadius = 21,
+    this.borderWidth,
+    this.borderColor,
+    this.focusedBorderColor,
+    this.backgroundColor,
+    this.contentHorizontalPadding = 16,
+    this.contentVerticalPadding = 12,
   });
 
+  final double height;
   final String? labelText;
   final String? hintText;
   final void Function(String)? onChanged;
@@ -32,9 +41,16 @@ class CustomPasswordTextField extends StatefulWidget {
   final AutovalidateMode autovalidateMode;
   final TextInputType? keyboardType;
   final TextStyle? textStyle;
-  final TextStyle? hintTextStyle;
-  final TextStyle? helperTextStyle;
-  final TextStyle? labelTextStyle;
+  final TextStyle? hintStyle;
+  final TextStyle? helperStyle;
+  final TextStyle? labelStyle;
+  final double borderRadius;
+  final double? borderWidth;
+  final Color? borderColor;
+  final Color? focusedBorderColor;
+  final Color? backgroundColor;
+  final double contentHorizontalPadding;
+  final double contentVerticalPadding;
 
   @override
   State<CustomPasswordTextField> createState() =>
@@ -49,52 +65,64 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
     final appTextFieldTheme = Theme.of(context).extension<AppTextFieldTheme>()!;
     final textPalette = getTextPalette(context);
 
-    return TextFormField(
-      controller: widget.controller,
-      focusNode: widget.focusNode,
-      obscureText: isObscure,
-      onChanged: widget.onChanged,
-      onSaved: widget.onSaved,
-      validator: widget.validator,
-      keyboardType: widget.keyboardType,
-      style: AppTextStyles.getTextStyle(
-        16,
-      ).copyWith(color: textPalette.headingColor),
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: appTextFieldTheme.backgroundColor,
-        labelText: widget.labelText,
-        hintText: widget.hintText,
-        labelStyle: widget.labelTextStyle,
-        hintStyle: widget.hintTextStyle,
-        helperStyle: widget.helperTextStyle,
-        suffixIcon: IconButton(
-          icon: Icon(isObscure ? Icons.visibility : Icons.visibility_off),
-          onPressed: () {
-            setState(() {
-              isObscure = !isObscure;
-            });
-          },
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(21.r),
-          borderSide: BorderSide(
-            color: appTextFieldTheme.borderColor,
-            width: 1,
+    return SizedBox(
+      height: widget.height.h,
+      child: TextFormField(
+        controller: widget.controller,
+        focusNode: widget.focusNode,
+        obscureText: isObscure,
+        onChanged: widget.onChanged,
+        onSaved: widget.onSaved,
+        validator: widget.validator,
+        keyboardType: widget.keyboardType,
+        style:
+            widget.textStyle ??
+            AppTextStyles.getTextStyle(
+              16,
+            ).copyWith(color: textPalette.headingColor),
+        decoration: InputDecoration(
+          filled: true,
+          fillColor:
+              widget.backgroundColor ?? appTextFieldTheme.backgroundColor,
+          labelText: widget.labelText,
+          hintText: widget.hintText,
+          labelStyle: widget.labelStyle,
+          hintStyle: widget.hintStyle,
+          helperStyle: widget.helperStyle,
+          suffixIcon: IconButton(
+            icon: Icon(isObscure ? Icons.visibility : Icons.visibility_off),
+            onPressed: () {
+              setState(() {
+                isObscure = !isObscure;
+              });
+            },
           ),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(21.r),
-          borderSide: BorderSide(
-            color: appTextFieldTheme.borderColor,
-            width: 1,
+          contentPadding: EdgeInsets.symmetric(
+            vertical: widget.contentVerticalPadding.r,
+            horizontal: widget.contentHorizontalPadding.r,
           ),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(21.r),
-          borderSide: BorderSide(
-            color: appTextFieldTheme.focusedBorderColor,
-            width: 2,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(widget.borderRadius.r),
+            borderSide: BorderSide(
+              color: widget.borderColor ?? appTextFieldTheme.borderColor,
+              width: widget.borderWidth ?? 1,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(widget.borderRadius.r),
+            borderSide: BorderSide(
+              color: widget.borderColor ?? appTextFieldTheme.borderColor,
+              width: widget.borderWidth ?? 1,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(widget.borderRadius.r),
+            borderSide: BorderSide(
+              color:
+                  widget.focusedBorderColor ??
+                  appTextFieldTheme.focusedBorderColor,
+              width: widget.borderWidth ?? 2,
+            ),
           ),
         ),
       ),
