@@ -4,7 +4,7 @@ import 'package:san3a_app/core/enums/role.dart';
 import 'package:san3a_app/core/helpers/app_storage_helper.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/choose_role_body.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/customer_sign_up_body.dart';
-import 'package:san3a_app/features/auth/presentation/widgets/vendor_sign_up_body.dart';
+import 'package:san3a_app/features/auth/presentation/widgets/craftsman_sign_up_body.dart';
 
 class SignUpBody extends StatefulWidget {
   const SignUpBody({super.key});
@@ -23,7 +23,7 @@ class _SignUpBodyState extends State<SignUpBody> {
   }
 
   getUserRole() {
-    String? role = AppStorageHelper.getString(StorageKeys.selectedRole);
+    String? role = AppStorageHelper.getString(StorageKeys.userRole);
     if (role != null) {
       selectedRole = Role.values.firstWhere((element) => element.name == role);
     } else {
@@ -35,8 +35,8 @@ class _SignUpBodyState extends State<SignUpBody> {
   Widget build(BuildContext context) {
     if (selectedRole == Role.customer) {
       return const CustomerSignUpBody();
-    } else if (selectedRole == Role.vendor) {
-      return const VendorSignUpBody();
+    } else if (selectedRole == Role.craftsman) {
+      return const CraftsmanSignUpBody();
     } else {
       return const ChooseRoleBody();
     }

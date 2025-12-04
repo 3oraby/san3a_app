@@ -5,6 +5,6 @@ class CustomerSignUpBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text("customer sign up");
+    return Container(height: 100, width: 100, color: Colors.red);
   }
 }

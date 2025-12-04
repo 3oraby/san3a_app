@@ -41,7 +41,7 @@ class _CreateNewAccountBodyState extends State<CreateNewAccountBody> {
             children: [
               const VerticalGap(37),
               Text(
-                LocaleKeys.createNewAccountTitle.tr(),
+                LocaleKeys.authCreateAccountTitle.tr(),
                 style: AppTextStyles.getTextStyle(28).copyWith(
                   fontWeight: FontWeight.w700,
                   color: textPalette.headingColor,
@@ -59,16 +59,23 @@ class _CreateNewAccountBodyState extends State<CreateNewAccountBody> {
                   );
                 },
               ),
-              const VerticalGap(24),
               ExpandablePageView(
                 controller: pageController,
-                children: const [
-                  ChooseRoleBody(),
+                children: [
+                  ChooseRoleBody(
+                    onRoleSelected: () {
+                      pageController.nextPage(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeInOut,
+                      );
+                    },
+                  ),
                   SignUpBody(),
                   VerifyEmailBody(),
                   AccountCreatedSuccessBody(),
                 ],
               ),
+              const VerticalGap(64),
             ],
           ),
         ],
