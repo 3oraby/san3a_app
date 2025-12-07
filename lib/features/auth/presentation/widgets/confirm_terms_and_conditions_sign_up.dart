@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:san3a_app/core/constants/locale_keys.dart';
 import 'package:san3a_app/core/helpers/get_text_palette.dart';
@@ -52,6 +53,8 @@ class _ConfirmTermsAndConditionsSignUpState
           onTap: () => _onChanged(!value),
           behavior: HitTestBehavior.translucent,
           child: SvgPicture.asset(
+            height: 9.h,
+            width: 9.w,
             value ? AppSvgs.activeCheckbox : AppSvgs.inactiveCheckbox,
           ),
         ),

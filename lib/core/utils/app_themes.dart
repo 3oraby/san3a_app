@@ -52,8 +52,12 @@ class AppTheme {
       ),
     ),
     disabledColor: AppLightColors.disabledButtonBackgroundColor,
+
     inputDecorationTheme: InputDecorationTheme(
       suffixIconColor: AppLightColors.paragraphColor,
+      errorStyle: AppTextStyles.getTextStyle(
+        9,
+      ).copyWith(color: AppLightColors.errorColor),
       labelStyle: AppTextStyles.getTextStyle(
         16,
       ).copyWith(color: AppLightColors.headingColor),

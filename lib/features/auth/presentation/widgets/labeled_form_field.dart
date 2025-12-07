@@ -61,10 +61,12 @@ class LabeledFormField extends StatelessWidget {
             validator: validator,
             borderRadius: 8,
             backgroundColor: appTextFieldTheme.highLightBackgroundColor,
-            hintStyle: AppTextStyles.getTextStyle(16).copyWith(
-              fontWeight: FontWeight.w400,
-              color: textPalette.helperColor,
-            ),
+            hintStyle: AppTextStyles.getTextStyle(
+              16,
+            ).copyWith(color: textPalette.helperColor),
+            textStyle: AppTextStyles.getTextStyle(
+              16,
+            ).copyWith(color: textPalette.paragraphColor),
           )
         else
           CustomTextFormField(
@@ -73,10 +75,12 @@ class LabeledFormField extends StatelessWidget {
             hintText: hint.tr(),
             borderRadius: 8,
             backgroundColor: appTextFieldTheme.highLightBackgroundColor,
-            hintStyle: AppTextStyles.getTextStyle(16).copyWith(
-              fontWeight: FontWeight.w400,
-              color: textPalette.helperColor,
-            ),
+            hintStyle: AppTextStyles.getTextStyle(
+              16,
+            ).copyWith(color: textPalette.helperColor),
+            textStyle: AppTextStyles.getTextStyle(
+              16,
+            ).copyWith(color: textPalette.paragraphColor),
           ),
       ],
     );

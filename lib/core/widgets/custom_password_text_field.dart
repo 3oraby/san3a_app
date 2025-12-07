@@ -7,7 +7,6 @@ import 'package:san3a_app/core/utils/app_text_styles.dart';
 class CustomPasswordTextField extends StatefulWidget {
   const CustomPasswordTextField({
     super.key,
-    this.height = 46,
     this.labelText,
     this.hintText,
     this.onChanged,
@@ -30,7 +29,6 @@ class CustomPasswordTextField extends StatefulWidget {
     this.contentVerticalPadding = 12,
   });
 
-  final double height;
   final String? labelText;
   final String? hintText;
   final void Function(String)? onChanged;
@@ -65,64 +63,60 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
     final appTextFieldTheme = Theme.of(context).extension<AppTextFieldTheme>()!;
     final textPalette = getTextPalette(context);
 
-    return SizedBox(
-      height: widget.height.h,
-      child: TextFormField(
-        controller: widget.controller,
-        focusNode: widget.focusNode,
-        obscureText: isObscure,
-        onChanged: widget.onChanged,
-        onSaved: widget.onSaved,
-        validator: widget.validator,
-        keyboardType: widget.keyboardType,
-        style:
-            widget.textStyle ??
-            AppTextStyles.getTextStyle(
-              16,
-            ).copyWith(color: textPalette.headingColor),
-        decoration: InputDecoration(
-          filled: true,
-          fillColor:
-              widget.backgroundColor ?? appTextFieldTheme.backgroundColor,
-          labelText: widget.labelText,
-          hintText: widget.hintText,
-          labelStyle: widget.labelStyle,
-          hintStyle: widget.hintStyle,
-          helperStyle: widget.helperStyle,
-          suffixIcon: IconButton(
-            icon: Icon(isObscure ? Icons.visibility : Icons.visibility_off),
-            onPressed: () {
-              setState(() {
-                isObscure = !isObscure;
-              });
-            },
+    return TextFormField(
+      controller: widget.controller,
+      focusNode: widget.focusNode,
+      obscureText: isObscure,
+      onChanged: widget.onChanged,
+      onSaved: widget.onSaved,
+      validator: widget.validator,
+      keyboardType: widget.keyboardType,
+      style:
+          widget.textStyle ??
+          AppTextStyles.getTextStyle(
+            16,
+          ).copyWith(color: textPalette.headingColor),
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: widget.backgroundColor ?? appTextFieldTheme.backgroundColor,
+        labelText: widget.labelText,
+        hintText: widget.hintText,
+        labelStyle: widget.labelStyle,
+        hintStyle: widget.hintStyle,
+        helperStyle: widget.helperStyle,
+        suffixIcon: IconButton(
+          icon: Icon(isObscure ? Icons.visibility : Icons.visibility_off),
+          onPressed: () {
+            setState(() {
+              isObscure = !isObscure;
+            });
+          },
+        ),
+        contentPadding: EdgeInsets.symmetric(
+          vertical: widget.contentVerticalPadding.r,
+          horizontal: widget.contentHorizontalPadding.r,
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(widget.borderRadius.r),
+          borderSide: BorderSide(
+            color: widget.borderColor ?? appTextFieldTheme.borderColor,
+            width: widget.borderWidth ?? 1,
           ),
-          contentPadding: EdgeInsets.symmetric(
-            vertical: widget.contentVerticalPadding.r,
-            horizontal: widget.contentHorizontalPadding.r,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(widget.borderRadius.r),
+          borderSide: BorderSide(
+            color: widget.borderColor ?? appTextFieldTheme.borderColor,
+            width: widget.borderWidth ?? 1,
           ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(widget.borderRadius.r),
-            borderSide: BorderSide(
-              color: widget.borderColor ?? appTextFieldTheme.borderColor,
-              width: widget.borderWidth ?? 1,
-            ),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(widget.borderRadius.r),
-            borderSide: BorderSide(
-              color: widget.borderColor ?? appTextFieldTheme.borderColor,
-              width: widget.borderWidth ?? 1,
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(widget.borderRadius.r),
-            borderSide: BorderSide(
-              color:
-                  widget.focusedBorderColor ??
-                  appTextFieldTheme.focusedBorderColor,
-              width: widget.borderWidth ?? 2,
-            ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(widget.borderRadius.r),
+          borderSide: BorderSide(
+            color:
+                widget.focusedBorderColor ??
+                appTextFieldTheme.focusedBorderColor,
+            width: widget.borderWidth ?? 2,
           ),
         ),
       ),

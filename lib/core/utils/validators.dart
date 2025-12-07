@@ -79,34 +79,6 @@ class Validators {
     return null;
   }
 
-  static String? validateInstagramLink(String? value) {
-    if (value == null || value.isEmpty) {
-      return null;
-    }
-
-    final regex = RegExp(
-      r'^(https?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9._%-]+\/?$',
-    );
-    if (!regex.hasMatch(value)) {
-      return LocaleKeys.validationPleaseEnterValidInstagram.tr();
-    }
-
-    return null;
-  }
-
-  static String? validateTikTokLink(String? value) {
-    if (value == null || value.isEmpty) {
-      return null;
-    }
-
-    final regex = RegExp(r'^(https?:\/\/)?(www\.)?tiktok\.com\/@[\w.-]+\/?$');
-    if (!regex.hasMatch(value)) {
-      return LocaleKeys.validationPleaseEnterValidTiktok.tr();
-    }
-
-    return null;
-  }
-
   static String? validateNationalId(String? value) {
     if (value == null || value.isEmpty) {
       return null;
@@ -120,29 +92,13 @@ class Validators {
     return null;
   }
 
-  static String? validateCRN(String? value) {
-    if (value == null || value.isEmpty) {
-      return null;
+  static String? validateGovernorate(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return LocaleKeys.validationGovernorateIsRequired.tr();
     }
-
-    final regex = RegExp(r'^[0-9]{9}$');
-    if (!regex.hasMatch(value)) {
-      return LocaleKeys.validationInvalidCrn.tr();
+    if (value.trim().length > 30) {
+      return LocaleKeys.validationGovernorateTooLong.tr();
     }
-
-    return null;
-  }
-
-  static String? validateTaxId(String? value) {
-    if (value == null || value.isEmpty) {
-      return null;
-    }
-
-    final regex = RegExp(r'^[0-9]{9}$');
-    if (!regex.hasMatch(value)) {
-      return LocaleKeys.validationInvalidTaxId.tr();
-    }
-
     return null;
   }
 }
