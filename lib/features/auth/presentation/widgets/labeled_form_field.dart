@@ -16,6 +16,7 @@ class LabeledFormField extends StatelessWidget {
     this.isRequired = true,
     this.isPassword = false,
     this.validator,
+    this.keyboardType,
   });
 
   final TextEditingController? controller;
@@ -24,6 +25,7 @@ class LabeledFormField extends StatelessWidget {
   final bool isRequired;
   final bool isPassword;
   final String? Function(String?)? validator;
+  final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +63,7 @@ class LabeledFormField extends StatelessWidget {
             validator: validator,
             borderRadius: 8,
             backgroundColor: appTextFieldTheme.highLightBackgroundColor,
+            keyboardType: keyboardType,
             hintStyle: AppTextStyles.getTextStyle(
               16,
             ).copyWith(color: textPalette.helperColor),
@@ -73,6 +76,7 @@ class LabeledFormField extends StatelessWidget {
             controller: controller,
             validator: validator,
             hintText: hint.tr(),
+            keyboardType: keyboardType,
             borderRadius: 8,
             backgroundColor: appTextFieldTheme.highLightBackgroundColor,
             hintStyle: AppTextStyles.getTextStyle(

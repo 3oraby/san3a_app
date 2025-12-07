@@ -115,6 +115,7 @@ class _CustomerSignUpBodyState extends State<CustomerSignUpBody> {
             controller: nationalIdController,
             label: LocaleKeys.authCreateAccountCustomerSignupNationalId,
             hint: LocaleKeys.authCreateAccountCustomerSignupNationalIdHint,
+            keyboardType: TextInputType.number,
             validator: Validators.validateNationalId,
           ),
           const VerticalGap(15),
