@@ -93,7 +93,8 @@
             "password_hint": "********",
             "confirm_password": "تأكيد كلمة المرور",
             "confirm_password_hint": "********",
-            "agree_terms": "بإنشاء حساب جديد, فأنت موافق علي الشروط و الأحكام",
+            "agree_terms": "بإنشاء حساب جديد, فأنت موافق علي",
+            "agree_terms_text": "الشروط والأحكام",
             "create_account_button": "إنشاء حساب جديد",
             "already_have_account": "لديك حساب بالفعل",
             "login_button": "تسجيل دخول"
@@ -115,7 +116,8 @@
             "password_hint": "********",
             "confirm_password": "تأكيد كلمة المرور",
             "confirm_password_hint": "********",
-            "agree_terms": "بإنشاء حساب جديد, فأنت موافق علي الشروط و الأحكام",
+            "agree_terms": "بإنشاء حساب جديد, فأنت موافق علي",
+            "agree_terms_text": "الشروط والأحكام",
             "create_account_button": "إنشاء حساب جديد",
             "already_have_account": "لديك حساب بالفعل",
             "login_button": "تسجيل دخول"

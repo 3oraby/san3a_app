@@ -93,7 +93,8 @@
             "password_hint": "********",
             "confirm_password": "Confirm Password",
             "confirm_password_hint": "********",
-            "agree_terms": "By creating a new account, you agree to the Terms & Conditions",
+            "agree_terms": "By creating a new account, you agree to the",
+            "agree_terms_text": "Terms & Conditions",
             "create_account_button": "Create Account",
             "already_have_account": "Already have an account?",
             "login_button": "Log In"
@@ -115,7 +116,8 @@
             "password_hint": "********",
             "confirm_password": "Confirm Password",
             "confirm_password_hint": "********",
-            "agree_terms": "By creating a new account, you agree to the Terms & Conditions",
+            "agree_terms": "By creating a new account, you agree to the",
+            "agree_terms_text": "Terms & Conditions",
             "create_account_button": "Create Account",
             "already_have_account": "Already have an account?",
             "login_button": "Log In"

@@ -140,6 +140,8 @@ abstract class LocaleKeys {
       "auth_create_account.customer_signup.confirm_password_hint";
   static const authCreateAccountCustomerSignupAgreeTerms =
       "auth_create_account.customer_signup.agree_terms";
+  static const authCreateAccountCustomerSignupAgreeTermsText =
+      "auth_create_account.customer_signup.agree_terms_text";
   static const authCreateAccountCustomerSignupCreateAccountButton =
       "auth_create_account.customer_signup.create_account_button";
   static const authCreateAccountCustomerSignupAlreadyHaveAccount =
