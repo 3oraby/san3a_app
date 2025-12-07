@@ -61,13 +61,14 @@ class _CreateNewAccountBodyState extends State<CreateNewAccountBody> {
               ),
               ExpandablePageView(
                 controller: pageController,
+                physics: const NeverScrollableScrollPhysics(),
                 children: [
                   ChooseRoleBody(
                     onRoleSelected: () {
                       pageController.nextPage(
                         duration: const Duration(milliseconds: 500),
                         curve: Curves.easeInOut,
-                      );
+                      ); 
                     },
                   ),
                   SignUpBody(),
