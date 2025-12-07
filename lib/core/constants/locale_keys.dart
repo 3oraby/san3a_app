@@ -41,15 +41,12 @@ abstract class LocaleKeys {
       "validation.passwords_do_not_match";
   static const validationPasswordMustContain6Chars =
       "validation.password_must_contain_6_chars";
-  static const validationPleaseEnterValidInstagram =
-      "validation.please_enter_valid_instagram";
-  static const validationPleaseEnterValidTiktok =
-      "validation.please_enter_valid_tiktok";
   static const validationInvalidNationalId = "validation.invalid_national_id";
-  static const validationInvalidCrn = "validation.invalid_crn";
-  static const validationInvalidTaxId = "validation.invalid_tax_id";
   static const validationEnterYourEmailToResetPassword =
       "validation.enter_your_email_to_reset_password";
+  static const validationGovernorateIsRequired =
+      "validation.governorate_is_required";
+  static const validationGovernorateTooLong = "validation.governorate_too_long";
 
   // auth_initial
   static const authInitialLetStart = "auth_initial.let`s_start";

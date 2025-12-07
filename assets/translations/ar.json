@@ -31,7 +31,10 @@
         "confirm_password_is_required": "تأكيد كلمة المرور مطلوب.",
         "passwords_do_not_match": "كلمتا المرور غير متطابقتين.",
         "password_must_contain_6_chars": "يجب أن تحتوي كلمة المرور على 6 أحرف على الأقل",
-        "enter_your_email_to_reset_password": "يرجى إدخال بريدك الإلكتروني لإعادة تعيين كلمة المرور"
+        "enter_your_email_to_reset_password": "يرجى إدخال بريدك الإلكتروني لإعادة تعيين كلمة المرور",
+        "governorate_is_required": "المحافظة مطلوبة",
+        "governorate_too_long": "المحافظة يجب أن لا تتجاوز 30 حرفًا",
+        "invalid_national_id": "الرقم القومى يجب أن يكون 14 رقم"
     },
     "auth_initial": {
         "let`s_start": "يلا نبدأ",

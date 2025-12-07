@@ -31,7 +31,10 @@
         "confirm_password_is_required": "Confirm password is required.",
         "passwords_do_not_match": "Passwords do not match.",
         "password_must_contain_6_chars": "Password must contain at least 6 characters",
-        "enter_your_email_to_reset_password": "please Enter your E-mail to reset password"
+        "enter_your_email_to_reset_password": "please Enter your E-mail to reset password",
+        "governorate_is_required": "Governorate is required",
+        "governorate_too_long": "Governorate must be at most 30 characters",
+        "invalid_national_id": "National ID must be 14 digits"
     },
     "auth_initial": {
         "let`s_start": "Let`s Start",
