@@ -2,7 +2,7 @@ class EndPoints {
   // Auth
   static const String refreshToken = "auth/refresh";
   static const String login = "auths/login";
-  static const String signUp = "auths/signup";
+  static const String signUp = "auths/signUp";
   static const String logout = "auths/logout";
   static const String verifyEmail = "auths/verify-email";
   static const String resendVerifyOtp = "auths/resend-verification";

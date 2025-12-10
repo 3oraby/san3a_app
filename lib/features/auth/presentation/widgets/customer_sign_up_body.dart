@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:san3a_app/core/constants/locale_keys.dart';
 import 'package:san3a_app/core/helpers/show_custom_snack_bar.dart';
+
 import 'package:san3a_app/core/utils/validators.dart';
 import 'package:san3a_app/core/widgets/custom_button.dart';
-import 'package:san3a_app/core/widgets/custom_modal_progress_hud.dart';
 import 'package:san3a_app/core/widgets/vertical_gap.dart';
 import 'package:san3a_app/features/auth/data/models/customer_sign_up_request_model.dart';
 import 'package:san3a_app/features/auth/domain/repos/customer_sign_up_request_entity.dart';
@@ -116,8 +116,14 @@ class _CustomerSignUpBodyState extends ConsumerState<CustomerSignUpBody> {
   @override
   Widget build(BuildContext context) {
     ref.listen(signUpProvider, (previous, next) {
+      log("previous: $previous");
+      log("next: $next");
       if (next.hasError) {
         showCustomSnackBar(context, next.error.toString());
+      } else if (next.hasValue &&
+          !next.isLoading &&
+          previous?.hasValue != next.hasValue) {
+        showCustomSnackBar(context, "success");
       }
     });
     return Form(

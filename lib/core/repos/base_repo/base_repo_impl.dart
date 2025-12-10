@@ -36,7 +36,7 @@ class BaseRepoImpl implements BaseRepo {
       return Left(CustomFailure(message: message));
     } catch (e) {
       log("Unhandled exception in BaseRepoImpl: $e");
-      return Left(CustomFailure());
+      return const Left(CustomFailure());
     }
   }
 }

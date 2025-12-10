@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:san3a_app/core/constants/locale_keys.dart';
 import 'package:san3a_app/core/helpers/get_text_palette.dart';
@@ -12,15 +13,21 @@ import 'package:san3a_app/features/auth/presentation/widgets/choose_role_body.da
 import 'package:san3a_app/features/auth/presentation/widgets/sign_up_body.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/verify_email_body.dart';
 
-class CreateNewAccountBody extends StatefulWidget {
+class CreateNewAccountBody extends ConsumerStatefulWidget {
   const CreateNewAccountBody({super.key});
 
   @override
-  State<CreateNewAccountBody> createState() => _CreateNewAccountBodyState();
+  ConsumerState<CreateNewAccountBody> createState() =>
+      _CreateNewAccountBodyState();
 }
 
-class _CreateNewAccountBodyState extends State<CreateNewAccountBody> {
+class _CreateNewAccountBodyState extends ConsumerState<CreateNewAccountBody> {
   final PageController pageController = PageController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -68,7 +75,7 @@ class _CreateNewAccountBodyState extends State<CreateNewAccountBody> {
                       pageController.nextPage(
                         duration: const Duration(milliseconds: 500),
                         curve: Curves.easeInOut,
-                      ); 
+                      );
                     },
                   ),
                   SignUpBody(),
