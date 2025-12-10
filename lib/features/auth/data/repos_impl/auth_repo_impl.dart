@@ -22,7 +22,10 @@ class AuthRepoImpl extends BaseRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, void>> signUp({required Map<String, dynamic> data}) {
+  Future<Either<Failure, void>> signUp({
+    required Map<String, dynamic> data,
+  }) async {
+    await Future.delayed(const Duration(seconds: 2));
     return handleApi(() => api.post(EndPoints.signUp, data: data));
   }
 

@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:san3a_app/core/widgets/back_help_app_bar.dart';
+import 'package:san3a_app/core/widgets/custom_modal_progress_hud.dart';
+import 'package:san3a_app/features/auth/presentation/providers/sign_up_provider.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/create_new_account_body.dart';
 
-class CreateNewAccountScreen extends StatelessWidget {
+class CreateNewAccountScreen extends ConsumerWidget {
   const CreateNewAccountScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: BackHelpAppBar(),
-      body: CreateNewAccountBody(),
+  Widget build(BuildContext context, WidgetRef ref) {
+    return CustomModalProgressHUD(
+      inAsyncCall: ref.watch(signUpProvider).isLoading,
+      child: const Scaffold(
+        appBar: BackHelpAppBar(),
+        body: CreateNewAccountBody(),
+      ),
     );
   }
 }

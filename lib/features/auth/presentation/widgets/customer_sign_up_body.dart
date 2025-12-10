@@ -2,22 +2,28 @@ import 'dart:developer';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:san3a_app/core/constants/locale_keys.dart';
+import 'package:san3a_app/core/helpers/show_custom_snack_bar.dart';
 import 'package:san3a_app/core/utils/validators.dart';
 import 'package:san3a_app/core/widgets/custom_button.dart';
+import 'package:san3a_app/core/widgets/custom_modal_progress_hud.dart';
 import 'package:san3a_app/core/widgets/vertical_gap.dart';
+import 'package:san3a_app/features/auth/data/models/customer_sign_up_request_model.dart';
+import 'package:san3a_app/features/auth/domain/repos/customer_sign_up_request_entity.dart';
+import 'package:san3a_app/features/auth/presentation/providers/sign_up_provider.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/auth_switch_widget.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/confirm_terms_and_conditions_sign_up.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/labeled_form_field.dart';
 
-class CustomerSignUpBody extends StatefulWidget {
+class CustomerSignUpBody extends ConsumerStatefulWidget {
   const CustomerSignUpBody({super.key});
 
   @override
-  State<CustomerSignUpBody> createState() => _CustomerSignUpBodyState();
+  ConsumerState<CustomerSignUpBody> createState() => _CustomerSignUpBodyState();
 }
 
-class _CustomerSignUpBodyState extends State<CustomerSignUpBody> {
+class _CustomerSignUpBodyState extends ConsumerState<CustomerSignUpBody> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController nationalIdController = TextEditingController();
@@ -66,8 +72,27 @@ class _CustomerSignUpBodyState extends State<CustomerSignUpBody> {
 
   void onCreateAccountPressed() {
     if (formKey.currentState!.validate()) {
+      final CustomerSignUpRequestEntity customerSignUpRequestEntity =
+          CustomerSignUpRequestEntity(
+            name: nameController.text,
+            email: emailController.text,
+            password: passwordController.text,
+            passwordConfirm: confirmPasswordController.text,
+            nationalId: nationalIdController.text,
+            governorate: governorateController.text,
+          );
+
+      final data = CustomerSignUpRequestModel.fromEntity(
+        customerSignUpRequestEntity,
+      ).toJson();
+      ref.watch(signUpProvider.notifier).signUp(data: data);
+
       log("Form is valid");
     }
+  }
+
+  void onLoginButtonPressed() {
+    Navigator.pop(context);
   }
 
   @override
@@ -90,6 +115,11 @@ class _CustomerSignUpBodyState extends State<CustomerSignUpBody> {
 
   @override
   Widget build(BuildContext context) {
+    ref.listen(signUpProvider, (previous, next) {
+      if (next.hasError) {
+        showCustomSnackBar(context, next.error.toString());
+      }
+    });
     return Form(
       key: formKey,
       child: Column(
@@ -166,9 +196,7 @@ class _CustomerSignUpBodyState extends State<CustomerSignUpBody> {
             buttonDescription: LocaleKeys
                 .authCreateAccountCustomerSignupLoginButton
                 .tr(),
-            onButtonPressed: () {
-              Navigator.pop(context);
-            },
+            onButtonPressed: onLoginButtonPressed,
           ),
         ],
       ),
