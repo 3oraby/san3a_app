@@ -3,6 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:san3a_app/core/api/api_consumer.dart';
 import 'package:san3a_app/core/api/dio_consumer.dart';
+import 'package:san3a_app/features/auth/data/repos_impl/auth_repo_impl.dart';
+import 'package:san3a_app/features/auth/domain/repos/auth_repo.dart';
 
 final getIt = GetIt.instance;
 
@@ -14,4 +16,6 @@ Future<void> setupGetIt() async {
   await dioConsumer.init();
   getIt.registerSingleton<Dio>(dio);
   getIt.registerSingleton<ApiConsumer>(dioConsumer);
+
+  getIt.registerSingleton<AuthRepo>(AuthRepoImpl(api: dioConsumer));
 }
