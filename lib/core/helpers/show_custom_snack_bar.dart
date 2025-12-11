@@ -11,6 +11,7 @@ void showCustomSnackBar(
 }) {
   final snackBar = SnackBar(
     content: Text(
+      // TODO: use .tr() later after api
       message,
       style: AppTextStyles.getTextStyle(16).copyWith(color: Colors.white),
     ),

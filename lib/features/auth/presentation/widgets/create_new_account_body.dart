@@ -4,10 +4,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:san3a_app/core/constants/locale_keys.dart';
 import 'package:san3a_app/core/helpers/get_text_palette.dart';
+import 'package:san3a_app/core/helpers/show_custom_snack_bar.dart';
 import 'package:san3a_app/core/utils/app_text_styles.dart';
+import 'package:san3a_app/core/utils/success.dart';
 import 'package:san3a_app/core/widgets/custom_step_indicator.dart';
 import 'package:san3a_app/core/widgets/expandable_page_view.dart';
 import 'package:san3a_app/core/widgets/vertical_gap.dart';
+import 'package:san3a_app/features/auth/presentation/providers/sign_up_provider.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/account_created_success_body.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/choose_role_body.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/sign_up_body.dart';
@@ -25,19 +28,34 @@ class _CreateNewAccountBodyState extends ConsumerState<CreateNewAccountBody> {
   final PageController pageController = PageController();
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   void dispose() {
     pageController.dispose();
     super.dispose();
   }
 
+  void goToNextPage() {
+    pageController.nextPage(
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  // TODO: use listenManual later
+  void listenOnSignUpProvider() {
+    ref.listen(signUpProvider, (previous, next) {
+      if (next is AsyncError) {
+        showCustomSnackBar(context, next.error.toString());
+      } else if (next is AsyncData && next.value is Success) {
+        showCustomSnackBar(context, "success");
+        goToNextPage();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final textPalette = getTextPalette(context);
+    listenOnSignUpProvider();
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -70,17 +88,10 @@ class _CreateNewAccountBodyState extends ConsumerState<CreateNewAccountBody> {
                 controller: pageController,
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
-                  ChooseRoleBody(
-                    onRoleSelected: () {
-                      pageController.nextPage(
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeInOut,
-                      );
-                    },
-                  ),
-                  SignUpBody(),
-                  VerifyEmailBody(),
-                  AccountCreatedSuccessBody(),
+                  ChooseRoleBody(onRoleSelected: goToNextPage),
+                  const SignUpBody(),
+                  const VerifyEmailBody(),
+                  const AccountCreatedSuccessBody(),
                 ],
               ),
               const VerticalGap(64),

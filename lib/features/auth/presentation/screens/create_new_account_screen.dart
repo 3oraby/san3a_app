@@ -1,8 +1,5 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:san3a_app/core/helpers/show_custom_snack_bar.dart';
 import 'package:san3a_app/core/widgets/back_help_app_bar.dart';
 import 'package:san3a_app/core/widgets/custom_modal_progress_hud.dart';
 import 'package:san3a_app/features/auth/presentation/providers/sign_up_provider.dart';

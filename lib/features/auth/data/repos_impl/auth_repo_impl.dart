@@ -26,7 +26,8 @@ class AuthRepoImpl extends BaseRepoImpl implements AuthRepo {
     required Map<String, dynamic> data,
   }) async {
     await Future.delayed(const Duration(seconds: 2));
-    return handleApi(() => api.post(EndPoints.signUp, data: data));
+    // return handleApi(() => api.post(EndPoints.signUp, data: data));
+    return const Right(null);
   }
 
   @override
