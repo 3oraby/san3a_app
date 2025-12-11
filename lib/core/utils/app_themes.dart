@@ -52,7 +52,11 @@ class AppTheme {
       ),
     ),
     disabledColor: AppLightColors.disabledButtonBackgroundColor,
-
+    dropdownMenuTheme: DropdownMenuThemeData(
+      inputDecorationTheme: InputDecorationTheme(
+        suffixIconColor: AppLightColors.dropDownIconColor,
+      ),
+    ),
     inputDecorationTheme: InputDecorationTheme(
       suffixIconColor: AppLightColors.paragraphColor,
       errorStyle: AppTextStyles.getTextStyle(
@@ -112,6 +116,11 @@ class AppTheme {
     iconTheme: const IconThemeData(color: Colors.white),
     cardColor: AppDarkColors.headingColor,
     disabledColor: AppDarkColors.disabledColor,
+    dropdownMenuTheme: const DropdownMenuThemeData(
+      inputDecorationTheme: InputDecorationTheme(
+        suffixIconColor: AppDarkColors.dropDownIconColor,
+      ),
+    ),
     inputDecorationTheme: InputDecorationTheme(
       suffixIconColor: AppDarkColors.paragraphColor,
       labelStyle: AppTextStyles.getTextStyle(
