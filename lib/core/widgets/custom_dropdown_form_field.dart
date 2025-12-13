@@ -72,7 +72,7 @@ class CustomDropdownFormField extends StatelessWidget {
           ),
         ),
         menuItemStyleData: MenuItemStyleData(
-          height: 21.h,
+          height: 30.h,
           padding: EdgeInsets.zero,
         ),
         selectedItemBuilder: (context) => items.map((value) {

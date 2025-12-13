@@ -48,6 +48,84 @@ abstract class LocaleKeys {
       "validation.governorate_is_required";
   static const validationGovernorateTooLong = "validation.governorate_too_long";
 
+  // crafts
+  static const craftCarpenter = "crafts.carpenter";
+  static const craftPlumber = "crafts.plumber";
+  static const craftElectrician = "crafts.electrician";
+  static const craftBlacksmith = "crafts.blacksmith";
+  static const craftPainter = "crafts.painter";
+  static const craftPlasterer = "crafts.plasterer";
+  static const craftWallFinisher = "crafts.wall_finisher";
+  static const craftTailor = "crafts.tailor";
+  static const craftDressmaker = "crafts.dressmaker";
+  static const craftHairdresser = "crafts.hairdresser";
+  static const craftBarber = "crafts.barber";
+
+  static const craftCarMechanic = "crafts.car_mechanic";
+  static const craftHeavyEquipmentMechanic = "crafts.heavy_equipment_mechanic";
+  static const craftTinSmith = "crafts.tin_smith";
+  static const craftAirConditionTechnician = "crafts.air_condition_technician";
+  static const craftRefrigerationTechnician = "crafts.refrigeration_technician";
+  static const craftWashingMachineTechnician =
+      "crafts.washing_machine_technician";
+  static const craftRefrigeratorTechnician = "crafts.refrigerator_technician";
+  static const craftWaterHeaterTechnician = "crafts.water_heater_technician";
+  static const craftElevatorTechnician = "crafts.elevator_technician";
+
+  static const craftBuilder = "crafts.builder";
+  static const craftContractor = "crafts.contractor";
+  static const craftSiteSupervisor = "crafts.site_supervisor";
+  static const craftFinishingTechnician = "crafts.finishing_technician";
+  static const craftGypsumBoardTechnician = "crafts.gypsum_board_technician";
+  static const craftCeramicTechnician = "crafts.ceramic_technician";
+  static const craftMarbleTechnician = "crafts.marble_technician";
+  static const craftParquetTechnician = "crafts.parquet_technician";
+  static const craftFacadeTechnician = "crafts.facade_technician";
+  static const craftInsulationTechnician = "crafts.insulation_technician";
+  static const craftSuspendedCeilingTechnician =
+      "crafts.suspended_ceiling_technician";
+
+  static const craftGeneralMaintenance = "crafts.general_maintenance";
+  static const craftWaterNetworkTechnician = "crafts.water_network_technician";
+  static const craftElectricNetworkTechnician =
+      "crafts.electric_network_technician";
+  static const craftAlarmTechnician = "crafts.alarm_technician";
+  static const craftCctvTechnician = "crafts.cctv_technician";
+  static const craftNetworkTechnician = "crafts.network_technician";
+  static const craftSmartSystemsTechnician = "crafts.smart_systems_technician";
+  static const craftSolarEnergyTechnician = "crafts.solar_energy_technician";
+
+  static const craftDriver = "crafts.driver";
+  static const craftHeavyDriver = "crafts.heavy_driver";
+  static const craftEquipmentDriver = "crafts.equipment_driver";
+  static const craftDeliveryDriver = "crafts.delivery_driver";
+  static const craftMotorcycleTechnician = "crafts.motorcycle_technician";
+  static const craftTireTechnician = "crafts.tire_technician";
+  static const craftBatteryTechnician = "crafts.battery_technician";
+
+  static const craftFurnitureTechnician = "crafts.furniture_technician";
+  static const craftFurnitureDesigner = "crafts.furniture_designer";
+  static const craftUpholsterer = "crafts.upholsterer";
+  static const craftCurtainTechnician = "crafts.curtain_technician";
+  static const craftKitchenTechnician = "crafts.kitchen_technician";
+  static const craftBedroomTechnician = "crafts.bedroom_technician";
+
+  static const craftCleaner = "crafts.cleaner";
+  static const craftCleaningCompany = "crafts.cleaning_company";
+  static const craftBabysitter = "crafts.babysitter";
+  static const craftNanny = "crafts.nanny";
+  static const craftCook = "crafts.cook";
+  static const craftHouseHelper = "crafts.house_helper";
+  static const craftBuffetWorker = "crafts.buffet_worker";
+
+  static const craftSecurityGuard = "crafts.security_guard";
+  static const craftBuildingGuard = "crafts.building_guard";
+  static const craftDoorman = "crafts.doorman";
+  static const craftGarageWorker = "crafts.garage_worker";
+  static const craftWarehouseWorker = "crafts.warehouse_worker";
+
+  static const craftOther = "crafts.other";
+
   // auth_initial
   static const authInitialLetStart = "auth_initial.let`s_start";
   static const authInitialBestCraftsmenTitle =

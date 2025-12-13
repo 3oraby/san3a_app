@@ -3,17 +3,15 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:san3a_app/core/constants/locale_keys.dart';
-
 import 'package:san3a_app/core/utils/validators.dart';
 import 'package:san3a_app/core/widgets/custom_button.dart';
-import 'package:san3a_app/core/widgets/horizontal_gap.dart';
 import 'package:san3a_app/core/widgets/vertical_gap.dart';
 import 'package:san3a_app/features/auth/data/models/customer_sign_up_request_model.dart';
 import 'package:san3a_app/features/auth/domain/repos/customer_sign_up_request_entity.dart';
 import 'package:san3a_app/features/auth/presentation/providers/sign_up_provider.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/auth_switch_widget.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/confirm_terms_and_conditions_sign_up.dart';
-import 'package:san3a_app/features/auth/presentation/widgets/labeled_dropdown_form_field.dart';
+import 'package:san3a_app/features/auth/presentation/widgets/craft_selection_section.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/labeled_form_field.dart';
 
 class CraftsmanSignUpBody extends ConsumerStatefulWidget {
@@ -32,6 +30,7 @@ class _CraftsmanSignUpBodyState extends ConsumerState<CraftsmanSignUpBody> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
+  final TextEditingController craftController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   bool isTermsAndConditionsChecked = false;
@@ -72,12 +71,6 @@ class _CraftsmanSignUpBodyState extends ConsumerState<CraftsmanSignUpBody> {
     checkFormFilled();
   }
 
-  void onCraftChanged(String? value) {
-    setState(() {
-      selectedCraft = value;
-    });
-  }
-
   void onCreateAccountPressed() {
     if (formKey.currentState!.validate()) {
       final CustomerSignUpRequestEntity customerSignUpRequestEntity =
@@ -103,6 +96,12 @@ class _CraftsmanSignUpBodyState extends ConsumerState<CraftsmanSignUpBody> {
     Navigator.pop(context);
   }
 
+  void onCraftChanged(String? value) {
+    setState(() {
+      selectedCraft = value;
+    });
+  }
+
   @override
   void dispose() {
     nameController.removeListener(checkFormFilled);
@@ -111,6 +110,7 @@ class _CraftsmanSignUpBodyState extends ConsumerState<CraftsmanSignUpBody> {
     governorateController.removeListener(checkFormFilled);
     passwordController.removeListener(checkFormFilled);
     confirmPasswordController.removeListener(checkFormFilled);
+    craftController.removeListener(checkFormFilled);
 
     nameController.dispose();
     emailController.dispose();
@@ -118,6 +118,7 @@ class _CraftsmanSignUpBodyState extends ConsumerState<CraftsmanSignUpBody> {
     governorateController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
+    craftController.dispose();
     super.dispose();
   }
 
@@ -129,39 +130,10 @@ class _CraftsmanSignUpBodyState extends ConsumerState<CraftsmanSignUpBody> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const VerticalGap(24),
-          Row(
-            children: [
-              Expanded(
-                child: LabeledDropdownFormField(
-                  title: LocaleKeys.authCreateAccountCraftsmanSignupCraft,
-                  isRequired: true,
-                  selectedValue: selectedCraft,
-                  hintText:
-                      LocaleKeys.authCreateAccountCraftsmanSignupEnterCraft,
-                  items: const [
-                    "1",
-                    "2",
-                    "3",
-                    "4",
-                    "5",
-                    "6",
-                    "7",
-                    "8",
-                    "9",
-                    "10",
-                  ],
-                  onChanged: (value) => onCraftChanged(value),
-                ),
-              ),
-
-              const HorizontalGap(17),
-              const Expanded(
-                child: LabeledFormField(
-                  label: LocaleKeys.authCreateAccountCraftsmanSignupWriteCraft,
-                  hint: LocaleKeys.authCreateAccountCraftsmanSignupSampleCraft,
-                ),
-              ),
-            ],
+          CraftSelectionSection(
+            selectedCraft: selectedCraft,
+            onCraftChanged: onCraftChanged,
+            craftController: craftController,
           ),
           const VerticalGap(16),
           LabeledFormField(
