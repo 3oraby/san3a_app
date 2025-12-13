@@ -105,7 +105,8 @@
         "craftsman_signup": {
             "craft": "الحرفة",
             "other": "اخري",
-            "enter_craft": "اكتب حرفتك",
+            "enter_craft": "اختار حرفتك",
+            "write_craft": "اكتب حرفتك",
             "sample_craft": "تصليح ماتور",
             "name": "الاسم",
             "name_hint": "اسمك بالكامل",

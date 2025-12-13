@@ -106,6 +106,7 @@
             "craft": "Craft",
             "other": "Other",
             "enter_craft": "Enter your craft",
+            "write_craft": "Write your craft",
             "sample_craft": "Motor Repair",
             "name": "Name",
             "name_hint": "Your full name",

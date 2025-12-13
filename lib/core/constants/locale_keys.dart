@@ -153,6 +153,8 @@ abstract class LocaleKeys {
       "auth_create_account.craftsman_signup.other";
   static const authCreateAccountCraftsmanSignupEnterCraft =
       "auth_create_account.craftsman_signup.enter_craft";
+  static const authCreateAccountCraftsmanSignupWriteCraft =
+      "auth_create_account.craftsman_signup.write_craft";
   static const authCreateAccountCraftsmanSignupSampleCraft =
       "auth_create_account.craftsman_signup.sample_craft";
   static const authCreateAccountCraftsmanSignupName =
