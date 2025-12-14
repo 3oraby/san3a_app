@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -85,8 +83,6 @@ class _CustomerSignUpBodyState extends ConsumerState<CustomerSignUpBody> {
         customerSignUpRequestEntity,
       ).toJson();
       ref.watch(signUpProvider.notifier).signUp(data: data);
-
-      log("Form is valid");
     }
   }
 

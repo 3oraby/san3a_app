@@ -1,7 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:san3a_app/core/api/api_keys.dart';
 import 'package:san3a_app/core/api/end_points.dart';
+import 'package:san3a_app/core/constants/storage_keys.dart';
 import 'package:san3a_app/core/errors/failures.dart';
+import 'package:san3a_app/core/helpers/app_storage_helper.dart';
 import 'package:san3a_app/core/repos/base_repo/base_repo_impl.dart';
 import 'package:san3a_app/features/auth/domain/repos/auth_repo.dart';
 
@@ -27,6 +29,8 @@ class AuthRepoImpl extends BaseRepoImpl implements AuthRepo {
   }) async {
     await Future.delayed(const Duration(seconds: 2));
     // return handleApi(() => api.post(EndPoints.signUp, data: data));
+
+    await AppStorageHelper.setString(StorageKeys.userEmail, data['email']);
     return const Right(null);
   }
 
@@ -36,11 +40,13 @@ class AuthRepoImpl extends BaseRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, void>> verifyOtp({
+  Future<Either<Failure, void>> verifyEmail({
     required String email,
-    required String code,
-  }) {
-    throw UnimplementedError();
+    required String otp,
+  }) async {
+    await Future.delayed(const Duration(seconds: 2));
+
+    return const Right(null);
   }
 
   @override

@@ -11,6 +11,7 @@ import 'package:san3a_app/core/widgets/custom_step_indicator.dart';
 import 'package:san3a_app/core/widgets/expandable_page_view.dart';
 import 'package:san3a_app/core/widgets/vertical_gap.dart';
 import 'package:san3a_app/features/auth/presentation/providers/sign_up_provider.dart';
+import 'package:san3a_app/features/auth/presentation/providers/verify_email_provider.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/account_created_success_body.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/choose_role_body.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/sign_up_body.dart';
@@ -26,6 +27,8 @@ class CreateNewAccountBody extends ConsumerStatefulWidget {
 
 class _CreateNewAccountBodyState extends ConsumerState<CreateNewAccountBody> {
   final PageController pageController = PageController();
+
+  String pageTitle = LocaleKeys.authCreateAccountTitle.tr();
 
   @override
   void dispose() {
@@ -46,7 +49,19 @@ class _CreateNewAccountBodyState extends ConsumerState<CreateNewAccountBody> {
       if (next is AsyncError) {
         showCustomSnackBar(context, next.error.toString());
       } else if (next is AsyncData && next.value is Success) {
-        showCustomSnackBar(context, "success");
+        goToNextPage();
+        setState(() {
+          pageTitle = LocaleKeys.authCreateAccountVerifyEmailTitle.tr();
+        });
+      }
+    });
+  }
+
+  void listenOnVerifyEmailProvider() {
+    ref.listen(verifyEmailProvider, (previous, next) {
+      if (next is AsyncError) {
+        showCustomSnackBar(context, next.error.toString());
+      } else if (next is AsyncData && next.value is Success) {
         goToNextPage();
       }
     });
@@ -56,6 +71,7 @@ class _CreateNewAccountBodyState extends ConsumerState<CreateNewAccountBody> {
   Widget build(BuildContext context) {
     final textPalette = getTextPalette(context);
     listenOnSignUpProvider();
+    listenOnVerifyEmailProvider();
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -66,7 +82,7 @@ class _CreateNewAccountBodyState extends ConsumerState<CreateNewAccountBody> {
             children: [
               const VerticalGap(37),
               Text(
-                LocaleKeys.authCreateAccountTitle.tr(),
+                pageTitle,
                 style: AppTextStyles.getTextStyle(28).copyWith(
                   fontWeight: FontWeight.w700,
                   color: textPalette.headingColor,

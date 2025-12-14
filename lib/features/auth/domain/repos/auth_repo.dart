@@ -9,9 +9,9 @@ abstract class AuthRepo {
   Future<Either<Failure, void>> signUp({required Map<String, dynamic> data});
   Future<Either<Failure, void>> logOut();
 
-  Future<Either<Failure, void>> verifyOtp({
+  Future<Either<Failure, void>> verifyEmail({
     required String email,
-    required String code,
+    required String otp,
   });
 
   Future<Either<Failure, void>> resendVerifyOtp({required String email});

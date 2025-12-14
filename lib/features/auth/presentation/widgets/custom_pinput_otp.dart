@@ -39,7 +39,7 @@ class CustomPinputOtp extends StatelessWidget {
         decoration: BoxDecoration(
           color: Theme.of(context).brightness == Brightness.dark
               ? AppDarkColors.inActivePinFieldBackground
-              : AppLightColors.inActiveIndicatorColor,
+              : AppLightColors.inActivePinFieldBackground,
           borderRadius: BorderRadius.circular(8.r),
         ),
         textStyle: AppTextStyles.getTextStyle(32).copyWith(
