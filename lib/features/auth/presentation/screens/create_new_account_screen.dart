@@ -14,6 +14,7 @@ class CreateNewAccountScreen extends ConsumerWidget {
     return CustomModalProgressHUD(
       inAsyncCall:
           ref.watch(signUpProvider).isLoading ||
+
           ref.watch(verifyEmailProvider).isLoading,
       child: const Scaffold(
         appBar: BackHelpAppBar(),

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -113,7 +111,6 @@ class _CraftsmanSignUpBodyState extends ConsumerState<CraftsmanSignUpBody> {
 
       final data = CraftmanSignUpRequestModel.fromEntity(entity).toJson();
 
-      log(data.toString());
       ref.watch(signUpProvider.notifier).signUp(data: data);
     }
   }

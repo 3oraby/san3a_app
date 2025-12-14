@@ -46,6 +46,8 @@ class AuthRepoImpl extends BaseRepoImpl implements AuthRepo {
   }) async {
     await Future.delayed(const Duration(seconds: 2));
 
+    await AppStorageHelper.setBool(StorageKeys.isLoggedIn, true);
+
     return const Right(null);
   }
 

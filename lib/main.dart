@@ -10,12 +10,12 @@ import 'package:san3a_app/core/cubits/app_theme_cubit/app_theme_cubit.dart';
 import 'package:san3a_app/core/cubits/app_theme_cubit/app_theme_state.dart';
 import 'package:san3a_app/core/cubits/internet/internet_connection_cubit.dart';
 import 'package:san3a_app/core/helpers/app_storage_helper.dart';
+import 'package:san3a_app/core/helpers/get_initial_route.dart';
 import 'package:san3a_app/core/helpers/on_generate_routes.dart';
 import 'package:san3a_app/core/services/custom_bloc_observer.dart';
 import 'package:san3a_app/core/services/get_it_service.dart';
 import 'package:san3a_app/core/utils/app_themes.dart';
 import 'package:san3a_app/core/widgets/developer_overlay.dart';
-import 'package:san3a_app/features/auth/presentation/screens/initial_auth_screen.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -81,7 +81,7 @@ class _San3aAppState extends State<San3aApp> {
                 localizationsDelegates: context.localizationDelegates,
                 onGenerateRoute: (settings) =>
                     onGenerateRoutes(settings, context),
-                home: const InitialAuthScreen(),
+                home: getInitialRoute(),
                 builder: kDebugMode
                     ? (context, child) {
                         return DeveloperOverlay(child: child!);
