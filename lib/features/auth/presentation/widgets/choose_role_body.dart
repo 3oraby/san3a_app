@@ -40,7 +40,7 @@ class _ChooseRoleBodyState extends State<ChooseRoleBody> {
           role: LocaleKeys.authCreateAccountChooseUserRoleCraftsman,
           description:
               LocaleKeys.authCreateAccountChooseUserRoleCraftsmanDescription,
-          onTap: () => onRoleSelected(Role.craftsman),
+          onTap: () => onRoleSelected(Role.craftman),
         ),
       ],
     );

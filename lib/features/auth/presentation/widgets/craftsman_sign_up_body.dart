@@ -1,4 +1,5 @@
 import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,8 +7,8 @@ import 'package:san3a_app/core/constants/locale_keys.dart';
 import 'package:san3a_app/core/utils/validators.dart';
 import 'package:san3a_app/core/widgets/custom_button.dart';
 import 'package:san3a_app/core/widgets/vertical_gap.dart';
-import 'package:san3a_app/features/auth/data/models/customer_sign_up_request_model.dart';
-import 'package:san3a_app/features/auth/domain/repos/customer_sign_up_request_entity.dart';
+import 'package:san3a_app/features/auth/data/models/craftman_sign_up_request_model.dart';
+import 'package:san3a_app/features/auth/domain/entities/craftman_sign_up_request_entity.dart';
 import 'package:san3a_app/features/auth/presentation/providers/sign_up_provider.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/auth_switch_widget.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/confirm_terms_and_conditions_sign_up.dart';
@@ -90,24 +91,30 @@ class _CraftsmanSignUpBodyState extends ConsumerState<CraftsmanSignUpBody> {
     checkFormFilled();
   }
 
+  String get finalCraft {
+    if (selectedCraft == null) return '';
+    if (selectedCraft == LocaleKeys.craftOther.tr()) {
+      return craftController.text.trim();
+    }
+    return selectedCraft!;
+  }
+
   void onCreateAccountPressed() {
     if (formKey.currentState!.validate()) {
-      final CustomerSignUpRequestEntity customerSignUpRequestEntity =
-          CustomerSignUpRequestEntity(
-            name: nameController.text,
-            email: emailController.text,
-            password: passwordController.text,
-            passwordConfirm: confirmPasswordController.text,
-            nationalId: nationalIdController.text,
-            governorate: governorateController.text,
-          );
+      final CraftmanSignUpRequestEntity entity = CraftmanSignUpRequestEntity(
+        name: nameController.text,
+        craft: finalCraft,
+        email: emailController.text,
+        password: passwordController.text,
+        passwordConfirm: confirmPasswordController.text,
+        nationalId: nationalIdController.text,
+        governorate: governorateController.text,
+      );
 
-      final data = CustomerSignUpRequestModel.fromEntity(
-        customerSignUpRequestEntity,
-      ).toJson();
+      final data = CraftmanSignUpRequestModel.fromEntity(entity).toJson();
+
+      log(data.toString());
       ref.watch(signUpProvider.notifier).signUp(data: data);
-
-      log("Form is valid");
     }
   }
 

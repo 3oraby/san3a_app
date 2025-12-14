@@ -9,7 +9,7 @@ import 'package:san3a_app/core/utils/validators.dart';
 import 'package:san3a_app/core/widgets/custom_button.dart';
 import 'package:san3a_app/core/widgets/vertical_gap.dart';
 import 'package:san3a_app/features/auth/data/models/customer_sign_up_request_model.dart';
-import 'package:san3a_app/features/auth/domain/repos/customer_sign_up_request_entity.dart';
+import 'package:san3a_app/features/auth/domain/entities/customer_sign_up_request_entity.dart';
 import 'package:san3a_app/features/auth/presentation/providers/sign_up_provider.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/auth_switch_widget.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/confirm_terms_and_conditions_sign_up.dart';

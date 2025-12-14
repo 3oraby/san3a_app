@@ -35,7 +35,7 @@ class _SignUpBodyState extends State<SignUpBody> {
   Widget build(BuildContext context) {
     if (selectedRole == Role.customer) {
       return const CustomerSignUpBody();
-    } else if (selectedRole == Role.craftsman) {
+    } else if (selectedRole == Role.craftman) {
       return const CraftsmanSignUpBody();
     } else {
       return const ChooseRoleBody();
