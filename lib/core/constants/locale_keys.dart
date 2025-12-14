@@ -126,6 +126,35 @@ abstract class LocaleKeys {
 
   static const craftOther = "crafts.other";
 
+  // governorates
+  static const governorateCairo = "governorates.cairo";
+  static const governorateGiza = "governorates.giza";
+  static const governorateAlexandria = "governorates.alexandria";
+  static const governorateDakahlia = "governorates.dakahlia";
+  static const governorateRedSea = "governorates.red_sea";
+  static const governorateBeheira = "governorates.beheira";
+  static const governorateFayoum = "governorates.fayoum";
+  static const governorateGharbia = "governorates.gharbia";
+  static const governorateIsmailia = "governorates.ismailia";
+  static const governorateMenofia = "governorates.menofia";
+  static const governorateMinya = "governorates.minya";
+  static const governorateQaliubiya = "governorates.qaliubiya";
+  static const governorateNewValley = "governorates.new_valley";
+  static const governorateSuez = "governorates.suez";
+  static const governorateAswan = "governorates.aswan";
+  static const governorateAssiut = "governorates.assiut";
+  static const governorateBeniSuef = "governorates.beni_suef";
+  static const governoratePortSaid = "governorates.port_said";
+  static const governorateDamietta = "governorates.damietta";
+  static const governorateSharkia = "governorates.sharkia";
+  static const governorateSouthSinai = "governorates.south_sinai";
+  static const governorateKafrElSheikh = "governorates.kafr_el_sheikh";
+  static const governorateMatrouh = "governorates.matrouh";
+  static const governorateLuxor = "governorates.luxor";
+  static const governorateQena = "governorates.qena";
+  static const governorateNorthSinai = "governorates.north_sinai";
+  static const governorateSohag = "governorates.sohag";
+
   // auth_initial
   static const authInitialLetStart = "auth_initial.let`s_start";
   static const authInitialBestCraftsmenTitle =

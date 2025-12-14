@@ -14,6 +14,7 @@ class LabeledDropdownFormField extends StatelessWidget {
   final ValueChanged<String?> onChanged;
   final EdgeInsetsGeometry? contentPadding;
   final String? selectedValue;
+  final TextStyle? valueStyle;
 
   const LabeledDropdownFormField({
     super.key,
@@ -25,6 +26,7 @@ class LabeledDropdownFormField extends StatelessWidget {
     this.helperText,
     this.contentPadding,
     this.selectedValue,
+    this.valueStyle,
   });
 
   @override
@@ -61,6 +63,7 @@ class LabeledDropdownFormField extends StatelessWidget {
           onChanged: onChanged,
           contentPadding: contentPadding,
           selectedValue: selectedValue,
+          valueStyle: valueStyle,
         ),
       ],
     );

@@ -13,6 +13,7 @@ class CustomDropdownFormField extends StatelessWidget {
   final ValueChanged<String?>? onChanged;
   final EdgeInsetsGeometry? contentPadding;
   final String? selectedValue;
+  final TextStyle? valueStyle;
 
   const CustomDropdownFormField({
     super.key,
@@ -22,6 +23,7 @@ class CustomDropdownFormField extends StatelessWidget {
     this.onChanged,
     this.contentPadding,
     this.selectedValue,
+    this.valueStyle,
   });
 
   @override
@@ -34,7 +36,6 @@ class CustomDropdownFormField extends StatelessWidget {
       child: DropdownButton2<String>(
         value: selectedValue,
         isExpanded: true,
-
         onChanged: onChanged,
         hint: Text(
           hintText.tr(),
@@ -47,7 +48,7 @@ class CustomDropdownFormField extends StatelessWidget {
         ).copyWith(color: textPalette.primaryColor),
         buttonStyleData: ButtonStyleData(
           height: 46.h,
-          padding: EdgeInsets.only(left: 6.r, right: 7.r),
+          padding: contentPadding ?? EdgeInsets.only(left: 6.r, right: 7.r),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.r),
             border: Border.all(
@@ -78,9 +79,11 @@ class CustomDropdownFormField extends StatelessWidget {
         selectedItemBuilder: (context) => items.map((value) {
           return Text(
             value,
-            style: AppTextStyles.getTextStyle(
-              14,
-            ).copyWith(color: textPalette.primaryColor),
+            style:
+                valueStyle ??
+                AppTextStyles.getTextStyle(
+                  14,
+                ).copyWith(color: textPalette.primaryColor),
           );
         }).toList(),
 

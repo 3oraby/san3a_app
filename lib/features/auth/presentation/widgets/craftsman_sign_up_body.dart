@@ -1,7 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:san3a_app/core/constants/egypt_governorates.dart';
 import 'package:san3a_app/core/constants/locale_keys.dart';
+import 'package:san3a_app/core/helpers/get_text_palette.dart';
+import 'package:san3a_app/core/utils/app_text_styles.dart' show AppTextStyles;
 import 'package:san3a_app/core/utils/validators.dart';
 import 'package:san3a_app/core/widgets/custom_button.dart';
 import 'package:san3a_app/core/widgets/vertical_gap.dart';
@@ -11,6 +15,7 @@ import 'package:san3a_app/features/auth/presentation/providers/sign_up_provider.
 import 'package:san3a_app/features/auth/presentation/widgets/auth_switch_widget.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/confirm_terms_and_conditions_sign_up.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/craft_selection_section.dart';
+import 'package:san3a_app/features/auth/presentation/widgets/labeled_dropdown_form_field.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/labeled_form_field.dart';
 
 class CraftsmanSignUpBody extends ConsumerStatefulWidget {
@@ -25,7 +30,6 @@ class _CraftsmanSignUpBodyState extends ConsumerState<CraftsmanSignUpBody> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController nationalIdController = TextEditingController();
-  final TextEditingController governorateController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
@@ -36,12 +40,13 @@ class _CraftsmanSignUpBodyState extends ConsumerState<CraftsmanSignUpBody> {
   bool isSignUpButtonEnabled = false;
   String? selectedCraft;
 
+  String governorate = LocaleKeys.governorateCairo.tr();
+
   @override
   void initState() {
     super.initState();
     nameController.addListener(checkFormFilled);
     emailController.addListener(checkFormFilled);
-    governorateController.addListener(checkFormFilled);
     nationalIdController.addListener(checkFormFilled);
     passwordController.addListener(checkFormFilled);
     confirmPasswordController.addListener(checkFormFilled);
@@ -63,7 +68,6 @@ class _CraftsmanSignUpBodyState extends ConsumerState<CraftsmanSignUpBody> {
         emailController.text.isNotEmpty &&
         passwordController.text.isNotEmpty &&
         confirmPasswordController.text.isNotEmpty &&
-        governorateController.text.isNotEmpty &&
         nationalIdController.text.isNotEmpty &&
         nameController.text.isNotEmpty &&
         isTermsAndConditionsChecked &&
@@ -106,7 +110,7 @@ class _CraftsmanSignUpBodyState extends ConsumerState<CraftsmanSignUpBody> {
         password: passwordController.text,
         passwordConfirm: confirmPasswordController.text,
         nationalId: nationalIdController.text,
-        governorate: governorateController.text,
+        governorate: governorate,
       );
 
       final data = CraftmanSignUpRequestModel.fromEntity(entity).toJson();
@@ -124,7 +128,6 @@ class _CraftsmanSignUpBodyState extends ConsumerState<CraftsmanSignUpBody> {
     nameController.dispose();
     emailController.dispose();
     nationalIdController.dispose();
-    governorateController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
     craftController.dispose();
@@ -133,6 +136,7 @@ class _CraftsmanSignUpBodyState extends ConsumerState<CraftsmanSignUpBody> {
 
   @override
   Widget build(BuildContext context) {
+    final textPalette = getTextPalette(context);
     return Form(
       key: formKey,
       child: Column(
@@ -168,11 +172,20 @@ class _CraftsmanSignUpBodyState extends ConsumerState<CraftsmanSignUpBody> {
             validator: Validators.validateNationalId,
           ),
           const VerticalGap(15),
-          LabeledFormField(
-            controller: governorateController,
-            label: LocaleKeys.authCreateAccountCraftsmanSignupGovernorate,
-            hint: LocaleKeys.authCreateAccountCraftsmanSignupGovernorateHint,
-            validator: Validators.validateGovernorate,
+          LabeledDropdownFormField(
+            selectedValue: governorate,
+            title: LocaleKeys.authCreateAccountCustomerSignupGovernorate,
+            hintText: LocaleKeys.authCreateAccountCustomerSignupGovernorateHint,
+            contentPadding: EdgeInsets.symmetric(horizontal: 16.r),
+            items: EgyptGovernorates.all.map((e) => e.tr()).toList(),
+            onChanged: (value) {
+              setState(() {
+                governorate = value!;
+              });
+            },
+            valueStyle: AppTextStyles.getTextStyle(
+              16,
+            ).copyWith(color: textPalette.paragraphColor),
           ),
 
           const VerticalGap(15),
