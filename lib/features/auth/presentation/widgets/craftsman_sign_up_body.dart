@@ -46,6 +46,17 @@ class _CraftsmanSignUpBodyState extends ConsumerState<CraftsmanSignUpBody> {
     nationalIdController.addListener(checkFormFilled);
     passwordController.addListener(checkFormFilled);
     confirmPasswordController.addListener(checkFormFilled);
+    craftController.addListener(checkFormFilled);
+  }
+
+  bool get isCraftValid {
+    if (selectedCraft == null) return false;
+
+    if (selectedCraft == LocaleKeys.craftOther.tr()) {
+      return craftController.text.trim().isNotEmpty;
+    }
+
+    return true;
   }
 
   void checkFormFilled() {
@@ -56,12 +67,20 @@ class _CraftsmanSignUpBodyState extends ConsumerState<CraftsmanSignUpBody> {
         governorateController.text.isNotEmpty &&
         nationalIdController.text.isNotEmpty &&
         nameController.text.isNotEmpty &&
-        isTermsAndConditionsChecked;
+        isTermsAndConditionsChecked &&
+        isCraftValid;
     if (isFilled != isSignUpButtonEnabled) {
       setState(() {
         isSignUpButtonEnabled = isFilled;
       });
     }
+  }
+
+  void onCraftChanged(String? value) {
+    setState(() {
+      selectedCraft = value;
+    });
+    checkFormFilled();
   }
 
   void _onTermsAndConditionsChanged(bool value) {
@@ -96,22 +115,8 @@ class _CraftsmanSignUpBodyState extends ConsumerState<CraftsmanSignUpBody> {
     Navigator.pop(context);
   }
 
-  void onCraftChanged(String? value) {
-    setState(() {
-      selectedCraft = value;
-    });
-  }
-
   @override
   void dispose() {
-    nameController.removeListener(checkFormFilled);
-    emailController.removeListener(checkFormFilled);
-    nationalIdController.removeListener(checkFormFilled);
-    governorateController.removeListener(checkFormFilled);
-    passwordController.removeListener(checkFormFilled);
-    confirmPasswordController.removeListener(checkFormFilled);
-    craftController.removeListener(checkFormFilled);
-
     nameController.dispose();
     emailController.dispose();
     nationalIdController.dispose();

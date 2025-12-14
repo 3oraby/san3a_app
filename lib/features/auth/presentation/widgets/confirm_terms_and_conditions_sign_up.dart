@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +34,6 @@ class _ConfirmTermsAndConditionsSignUpState
   }
 
   void _onChanged(bool newValue) {
-    log("value: $newValue");
     setState(() {
       value = newValue;
     });
