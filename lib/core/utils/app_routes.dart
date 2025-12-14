@@ -7,4 +7,7 @@ class Routes {
   static const String resetPasswordScreen = "/resetPasswordScreen";
   static const String verifyForgetPasswordOtpScreen =
       "/verifyForgetPasswordOtpScreen";
+
+  // home
+  static const String homeScreen = '/homeScreen';
 }
