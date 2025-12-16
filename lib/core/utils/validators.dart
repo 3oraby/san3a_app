@@ -31,6 +31,10 @@ class Validators {
       return LocaleKeys.validationPasswordIsRequired.tr();
     } else if (value.length < 8) {
       return LocaleKeys.validationPasswordTooShort.tr();
+    } else if (!RegExp(r'[a-z]').hasMatch(value)) {
+      return LocaleKeys.validationPasswordMustContainLowercase.tr();
+    } else if (!RegExp(r'[A-Z]').hasMatch(value)) {
+      return LocaleKeys.validationPasswordMustContainUppercase.tr();
     }
     return null;
   }

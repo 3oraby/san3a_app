@@ -31,6 +31,8 @@
         "confirm_password_is_required": "Confirm password is required.",
         "passwords_do_not_match": "Passwords do not match.",
         "password_must_contain_6_chars": "Password must contain at least 6 characters",
+        "password_must_contain_lowercase": "Password must contain at least one lowercase letter.",
+        "password_must_contain_uppercase": "Password must contain at least one uppercase letter.",
         "enter_your_email_to_reset_password": "please Enter your E-mail to reset password",
         "governorate_is_required": "Governorate is required",
         "governorate_too_long": "Governorate must be at most 30 characters",

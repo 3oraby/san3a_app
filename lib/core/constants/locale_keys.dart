@@ -41,6 +41,11 @@ abstract class LocaleKeys {
       "validation.passwords_do_not_match";
   static const validationPasswordMustContain6Chars =
       "validation.password_must_contain_6_chars";
+  static const validationPasswordMustContainLowercase =
+      "validation.password_must_contain_lowercase";
+  static const validationPasswordMustContainUppercase =
+      "validation.password_must_contain_uppercase";
+
   static const validationInvalidNationalId = "validation.invalid_national_id";
   static const validationEnterYourEmailToResetPassword =
       "validation.enter_your_email_to_reset_password";
