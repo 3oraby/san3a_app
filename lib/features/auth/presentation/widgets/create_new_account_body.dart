@@ -47,7 +47,7 @@ class _CreateNewAccountBodyState extends ConsumerState<CreateNewAccountBody> {
   void listenOnSignUpProvider() {
     ref.listen(signUpProvider, (previous, next) {
       if (next is AsyncError) {
-        showCustomSnackBar(context, next.error.toString());
+        showCustomSnackBar(context, next.error.toString().tr());
       } else if (next is AsyncData && next.value is Success) {
         goToNextPage();
         setState(() {
@@ -60,7 +60,7 @@ class _CreateNewAccountBodyState extends ConsumerState<CreateNewAccountBody> {
   void listenOnVerifyEmailProvider() {
     ref.listen(verifyEmailProvider, (previous, next) {
       if (next is AsyncError) {
-        showCustomSnackBar(context, next.error.toString());
+        showCustomSnackBar(context, next.error.toString().tr());
       } else if (next is AsyncData && next.value is Success) {
         goToNextPage();
       }
@@ -102,7 +102,7 @@ class _CreateNewAccountBodyState extends ConsumerState<CreateNewAccountBody> {
               ),
               ExpandablePageView(
                 controller: pageController,
-                physics: const NeverScrollableScrollPhysics(),
+                // physics: const NeverScrollableScrollPhysics(),
                 children: [
                   ChooseRoleBody(onRoleSelected: goToNextPage),
                   const SignUpBody(),

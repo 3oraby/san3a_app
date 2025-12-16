@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:san3a_app/core/extensions/either_extensions.dart';
 import 'package:san3a_app/core/utils/success.dart';
 import 'package:san3a_app/features/auth/presentation/providers/get_auth_repo_provider.dart';
 
@@ -15,12 +16,14 @@ class VerifyEmailNotifier extends AsyncNotifier<Success?> {
 
   Future<void> verifyEmail({required String email, required String otp}) async {
     state = const AsyncLoading();
-    final result = await ref
+    await ref
         .read(getAuthRepoProvider)
-        .verifyEmail(email: email, otp: otp);
-    result.fold(
-      (l) => state = AsyncError(l, StackTrace.fromString(l.toString())),
-      (r) => state = const AsyncData(Success()),
-    );
+        .verifyEmail(email: email, otp: otp)
+        .onSuccess((_) async {
+          state = const AsyncData(Success());
+        })
+        .onFailure((l) {
+          state = AsyncError(l, StackTrace.current);
+        });
   }
 }

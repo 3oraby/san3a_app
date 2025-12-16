@@ -1,4 +1,3 @@
-import 'package:san3a_app/core/enums/role.dart';
 import 'package:san3a_app/features/auth/domain/entities/customer_sign_up_request_entity.dart';
 
 class CustomerSignUpRequestModel extends CustomerSignUpRequestEntity {
@@ -13,13 +12,12 @@ class CustomerSignUpRequestModel extends CustomerSignUpRequestEntity {
 
   Map<String, dynamic> toJson() {
     return {
-      'name': name,
+      'fullName': name,
       'email': email,
       'password': password,
-      'passwordConfirm': passwordConfirm,
+      'confirmPassword': passwordConfirm,
       'nationalId': nationalId,
       'governorate': governorate,
-      'role': Role.customer.name,
     };
   }
 

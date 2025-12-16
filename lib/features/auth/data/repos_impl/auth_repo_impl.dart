@@ -1,8 +1,13 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:san3a_app/core/api/api_keys.dart';
 import 'package:san3a_app/core/api/end_points.dart';
+import 'package:san3a_app/core/constants/locale_keys.dart';
 import 'package:san3a_app/core/constants/storage_keys.dart';
+import 'package:san3a_app/core/enums/role.dart';
 import 'package:san3a_app/core/errors/failures.dart';
+import 'package:san3a_app/core/extensions/either_extensions.dart';
 import 'package:san3a_app/core/helpers/app_storage_helper.dart';
 import 'package:san3a_app/core/repos/base_repo/base_repo_impl.dart';
 import 'package:san3a_app/features/auth/domain/repos/auth_repo.dart';
@@ -27,11 +32,24 @@ class AuthRepoImpl extends BaseRepoImpl implements AuthRepo {
   Future<Either<Failure, void>> signUp({
     required Map<String, dynamic> data,
   }) async {
-    await Future.delayed(const Duration(seconds: 2));
-    // return handleApi(() => api.post(EndPoints.signUp, data: data));
+    final userRole = AppStorageHelper.getString(StorageKeys.userRole);
 
-    await AppStorageHelper.setString(StorageKeys.userEmail, data['email']);
-    return const Right(null);
+    log("user role: $userRole");
+    final endPoint = userRole == Role.customer.name
+        ? EndPoints.customerSignUp
+        : EndPoints.craftmanSignUp;
+
+    return handleApi(
+      () => api.post(endPoint, data: data),
+      backendMessageMapping: {
+        'National ID already exists':
+            LocaleKeys.messagesFailuresNationalIdAlreadyExists,
+        'Username \'${data['email'].split('@')[0]}\' is already taken.':
+            LocaleKeys.messagesFailuresAccountAlreadyExists,
+      },
+    ).onSuccess((_) async {
+      await AppStorageHelper.setString(StorageKeys.userEmail, data['email']);
+    }).asVoid();
   }
 
   @override

@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:san3a_app/core/extensions/either_extensions.dart';
 import 'package:san3a_app/core/utils/success.dart';
 import 'package:san3a_app/features/auth/presentation/providers/get_auth_repo_provider.dart';
 
@@ -15,10 +16,14 @@ class SignUpNotifier extends AsyncNotifier<Success?> {
 
   Future<void> signUp({required Map<String, dynamic> data}) async {
     state = const AsyncLoading();
-    final result = await ref.read(getAuthRepoProvider).signUp(data: data);
-    result.fold(
-      (l) => state = AsyncError(l, StackTrace.fromString(l.toString())),
-      (r) => state = const AsyncData(Success()),
-    );
+    await ref
+        .read(getAuthRepoProvider)
+        .signUp(data: data)
+        .onSuccess((_) async {
+          state = const AsyncData(Success());
+        })
+        .onFailure((l) {
+          state = AsyncError(l, StackTrace.current);
+        });
   }
 }

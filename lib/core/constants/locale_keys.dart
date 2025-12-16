@@ -11,6 +11,8 @@ abstract class LocaleKeys {
   static const messagesFailuresInactiveUser = "messages.failures.inactive_user";
   static const messagesFailuresUnexpectedError =
       "messages.failures.unexpected_error";
+  static const messagesFailuresNationalIdAlreadyExists =
+      "messages.failures.national_id_already_exists";
   static const messagesFailuresAccountAlreadyExists =
       "messages.failures.account_already_exists";
   static const messagesFailuresUsernameAlreadyExists =

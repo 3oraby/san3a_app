@@ -23,14 +23,15 @@ class BaseRepoImpl implements BaseRepo {
       log("Handling ServerException in BaseRepoImpl: ${e.errModel.message}");
       String message = e.errModel.message;
 
+      log((backendMessageMapping?[message]).toString());
       if (backendMessageMapping != null &&
           backendMessageMapping.containsKey(message)) {
-        message = backendMessageMapping[message]!;
+        message = backendMessageMapping[message] ?? message;
       }
 
       if (statusCodeMessages != null &&
           statusCodeMessages.containsKey(e.errModel.code)) {
-        message = statusCodeMessages[e.errModel.code]!;
+        message = statusCodeMessages[e.errModel.code] ?? message;
       }
 
       return Left(CustomFailure(message: message));
