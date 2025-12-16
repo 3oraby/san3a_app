@@ -1,15 +1,23 @@
 class EndPoints {
   // Auth
-  static const String refreshToken = "auth/refresh";
-  static const String login = "auths/login";
+  static const String refreshToken = "Auth/RefreshToken/refresh-token";
+  static const String login = "Auth/Login/login";
   static const String customerSignUp =
       "Auth/RegisterCustomer/register/customer";
   static const String craftmanSignUp =
       "Auth/RegisterCrafstman/register/craftman";
-  static const String logout = "auths/logout";
-  static const String verifyEmail = "auths/verify-email";
-  static const String resendVerifyOtp = "auths/resend-verification";
-  static const String resetPassword = "auths/reset-password";
-  static const String verifyResetCode = "auths/verify-reset-code";
-  static const String forgetPassword = "auths/forget-password";
+  static const String logout = "Auth/Logout/logout";
+
+  static const String verifyEmail = "Auth/VerifyEmail/verify";
+  static const String resendVerifyEmail =
+      "Auth/ResendVerification/resend-verification";
+
+  static const String forgetPassword = "Auth/ForgotPassword/forgot-password";
+  static const String resetPassword = "Auth/ResetPassword/reset-password";
+  static const String verifyResetCode =
+      "Auth/VerifyResetCode/verify-reset-code";
+  static const String resendResetCode =
+      "Auth/ResendResetCode/resend-reset-code";
+
+  static const String getMe = "Auth/GetCurrentUser/me";
 }

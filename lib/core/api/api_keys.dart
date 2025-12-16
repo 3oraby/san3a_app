@@ -5,4 +5,5 @@ class ApiKeys {
   static const String email = "email";
   static const String password = "password";
   static const String otp = "otp";
+  static const String token = 'token';
 }

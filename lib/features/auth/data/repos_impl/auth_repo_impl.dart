@@ -25,7 +25,31 @@ class AuthRepoImpl extends BaseRepoImpl implements AuthRepo {
         EndPoints.login,
         data: {ApiKeys.email: email, ApiKeys.password: password},
       ),
-    );
+      backendMessageMapping: {
+        "Invalid credentials": LocaleKeys.messagesFailuresIncorrectCredentials,
+        "Email verification required. A new verification link has been sent to your email.":
+            LocaleKeys.messagesFailuresInactiveUser,
+      },
+    ).onSuccess((data) async {
+      log("user data: ${data.toString()}");
+      final accessToken = data[ApiKeys.accessToken];
+      await AppStorageHelper.setSecureData(
+        StorageKeys.accessToken,
+        accessToken,
+      );
+
+      log("access token is saved in secure data");
+      await AppStorageHelper.setBool(StorageKeys.isLoggedIn, true);
+
+      // await saveJsonDataLocally(
+      //   storageKey: StorageKeys.currentUser,
+      //   json: result["data"]["account"],
+      // );
+
+      final userRole = data["data"]["user"]["role"];
+      log("save current role: $userRole");
+      await AppStorageHelper.setString(StorageKeys.userRole, userRole);
+    }).asVoid();
   }
 
   @override
@@ -53,20 +77,38 @@ class AuthRepoImpl extends BaseRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, void>> logOut() {
-    throw UnimplementedError();
-  }
-
-  @override
   Future<Either<Failure, void>> verifyEmail({
     required String email,
     required String otp,
   }) async {
-    await Future.delayed(const Duration(seconds: 2));
+    await handleApi(
+      () => api.get(
+        EndPoints.verifyEmail,
+        queryParameters: {ApiKeys.token: otp},
+        data: {ApiKeys.email: email},
+      ),
+      backendMessageMapping: {
+        "Verification code has expired":
+            LocaleKeys.messagesFailuresInvalidOrExpiredCode,
+        "Invalid or expired verification code":
+            LocaleKeys.messagesFailuresVerificationCodeNotFound,
+      },
+    ).onSuccess((result) async {
+      final accessToken = result[ApiKeys.accessToken];
+      await AppStorageHelper.setSecureData(
+        StorageKeys.accessToken,
+        accessToken,
+      );
 
-    await AppStorageHelper.setBool(StorageKeys.isLoggedIn, true);
+      await AppStorageHelper.setBool(StorageKeys.isLoggedIn, true);
+    }).asVoid();
 
     return const Right(null);
+  }
+
+  @override
+  Future<Either<Failure, void>> logOut() {
+    throw UnimplementedError();
   }
 
   @override

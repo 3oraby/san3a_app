@@ -34,8 +34,17 @@ class ApiInterceptor extends Interceptor {
     debugPrint("response data: ${err.response?.data}");
     debugPrint("response status code: ${err.response?.statusCode}");
 
-    if (err.response?.data["message"] ==
-        "Invalid or expired token, please login again.") {
+    final data = err.response?.data;
+
+    String? message;
+
+    if (data is Map<String, dynamic>) {
+      message = data['message']?.toString();
+    } else if (data is String) {
+      message = data;
+    }
+
+    if (message == "Invalid or expired token, please login again.") {
       try {
         await handleUnAuthorizedException(err, handler);
         return;
@@ -46,8 +55,7 @@ class ApiInterceptor extends Interceptor {
       }
     }
 
-    if (err.response?.data['message'] ==
-        "You are not logged in! please login to get access.") {
+    if (message == "You are not logged in! please login to get access.") {
       await handleNoRefreshTokenFound(handler, err);
       return;
     }
