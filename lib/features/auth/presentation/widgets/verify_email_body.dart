@@ -55,7 +55,7 @@ class _VerifyEmailBodyState extends ConsumerState<VerifyEmailBody> {
   void onResendOtpTap() {
     // call api to resend otp
   }
-  
+
   @override
   Widget build(BuildContext context) {
     final textPalette = getTextPalette(context);

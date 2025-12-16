@@ -8,7 +8,7 @@ import 'package:san3a_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:san3a_app/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:san3a_app/features/auth/presentation/screens/create_new_account_screen.dart';
 import 'package:san3a_app/features/auth/presentation/screens/verify_forget_password_otp_screen.dart';
-import 'package:san3a_app/features/home/presentation/screens/home_screen.dart';
+import 'package:san3a_app/features/customer_home/presentation/screens/customer_home_screen.dart';
 
 Route<dynamic> onGenerateRoutes(RouteSettings settings, BuildContext context) {
   log("Navigating to ${settings.name}");
@@ -44,8 +44,8 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings, BuildContext context) {
         builder: (_) => const VerifyForgetPasswordOtpScreen(),
       );
 
-    case Routes.homeScreen:
-      return MaterialPageRoute(builder: (_) => const HomeScreen());
+    case Routes.customerHomeScreen:
+      return MaterialPageRoute(builder: (_) => const CustomerHomeScreen());
 
     default:
       return MaterialPageRoute(

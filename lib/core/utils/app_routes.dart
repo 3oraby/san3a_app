@@ -9,5 +9,6 @@ class Routes {
       "/verifyForgetPasswordOtpScreen";
 
   // home
-  static const String homeScreen = '/homeScreen';
+  static const String customerHomeScreen = '/customerHomeScreen';
+  static const String craftmanHomeScreen = '/craftmanHomeScreen';
 }

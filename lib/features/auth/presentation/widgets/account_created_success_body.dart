@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:san3a_app/core/constants/locale_keys.dart';
 import 'package:san3a_app/core/helpers/get_text_palette.dart';
+import 'package:san3a_app/core/helpers/navigate_to_home_screen.dart';
 import 'package:san3a_app/core/utils/app_animations.dart';
-import 'package:san3a_app/core/utils/app_routes.dart';
 import 'package:san3a_app/core/utils/app_text_styles.dart';
 import 'package:san3a_app/core/widgets/vertical_gap.dart';
 
@@ -32,15 +32,9 @@ class _AccountCreatedSuccessBodyState extends State<AccountCreatedSuccessBody>
 
     _animationController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        _navigateToHome();
+        navigateToHomeScreen(context);
       }
     });
-  }
-
-  void _navigateToHome() {
-    Navigator.of(
-      context,
-    ).pushNamedAndRemoveUntil(Routes.homeScreen, (route) => false);
   }
 
   @override
