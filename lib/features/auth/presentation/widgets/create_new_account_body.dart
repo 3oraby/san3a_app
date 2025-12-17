@@ -102,7 +102,7 @@ class _CreateNewAccountBodyState extends ConsumerState<CreateNewAccountBody> {
               ),
               ExpandablePageView(
                 controller: pageController,
-                // physics: const NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 children: [
                   ChooseRoleBody(onRoleSelected: goToNextPage),
                   const SignUpBody(),

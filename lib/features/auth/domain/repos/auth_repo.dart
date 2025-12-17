@@ -11,7 +11,7 @@ abstract class AuthRepo {
 
   Future<Either<Failure, void>> verifyEmail({
     required String email,
-    required String otp,
+    required String code,
   });
 
   Future<Either<Failure, void>> resendVerifyOtp({required String email});

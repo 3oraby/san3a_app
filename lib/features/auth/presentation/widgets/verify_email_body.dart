@@ -49,7 +49,7 @@ class _VerifyEmailBodyState extends ConsumerState<VerifyEmailBody> {
   void onConfirmOtpTap() {
     ref
         .read(verifyEmailProvider.notifier)
-        .verifyEmail(email: userEmail, otp: otpController.text);
+        .verifyEmail(email: userEmail, code: otpController.text);
   }
 
   void onResendOtpTap() {

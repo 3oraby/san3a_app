@@ -14,11 +14,14 @@ class VerifyEmailNotifier extends AsyncNotifier<Success?> {
     return null;
   }
 
-  Future<void> verifyEmail({required String email, required String otp}) async {
+  Future<void> verifyEmail({
+    required String email,
+    required String code,
+  }) async {
     state = const AsyncLoading();
     await ref
         .read(getAuthRepoProvider)
-        .verifyEmail(email: email, otp: otp)
+        .verifyEmail(email: email, code: code)
         .onSuccess((_) async {
           state = const AsyncData(Success());
         })

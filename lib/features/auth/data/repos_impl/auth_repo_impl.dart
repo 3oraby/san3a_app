@@ -23,7 +23,7 @@ class AuthRepoImpl extends BaseRepoImpl implements AuthRepo {
     return handleApi(
       () => api.post(
         EndPoints.login,
-        data: {ApiKeys.email: email, ApiKeys.password: password},
+        data: {ApiKeys.emailOrUsername: email, ApiKeys.password: password},
       ),
       backendMessageMapping: {
         "Invalid credentials": LocaleKeys.messagesFailuresIncorrectCredentials,
@@ -32,10 +32,15 @@ class AuthRepoImpl extends BaseRepoImpl implements AuthRepo {
       },
     ).onSuccess((data) async {
       log("user data: ${data.toString()}");
-      final accessToken = data[ApiKeys.accessToken];
+      final accessToken = data[ApiKeys.token];
       await AppStorageHelper.setSecureData(
         StorageKeys.accessToken,
         accessToken,
+      );
+
+      await AppStorageHelper.setSecureData(
+        StorageKeys.refreshToken,
+        data[ApiKeys.refreshToken],
       );
 
       log("access token is saved in secure data");
@@ -46,7 +51,8 @@ class AuthRepoImpl extends BaseRepoImpl implements AuthRepo {
       //   json: result["data"]["account"],
       // );
 
-      final userRole = data["data"]["user"]["role"];
+      // TODO: update later after back update it
+      final userRole = data["role"] ?? Role.customer.name;
       log("save current role: $userRole");
       await AppStorageHelper.setString(StorageKeys.userRole, userRole);
     }).asVoid();
@@ -79,13 +85,12 @@ class AuthRepoImpl extends BaseRepoImpl implements AuthRepo {
   @override
   Future<Either<Failure, void>> verifyEmail({
     required String email,
-    required String otp,
+    required String code,
   }) async {
     await handleApi(
-      () => api.get(
+      () => api.post(
         EndPoints.verifyEmail,
-        queryParameters: {ApiKeys.token: otp},
-        data: {ApiKeys.email: email},
+        data: {ApiKeys.email: email, ApiKeys.code: code},
       ),
       backendMessageMapping: {
         "Verification code has expired":
@@ -94,11 +99,12 @@ class AuthRepoImpl extends BaseRepoImpl implements AuthRepo {
             LocaleKeys.messagesFailuresVerificationCodeNotFound,
       },
     ).onSuccess((result) async {
-      final accessToken = result[ApiKeys.accessToken];
-      await AppStorageHelper.setSecureData(
-        StorageKeys.accessToken,
-        accessToken,
-      );
+      // TODO: update later after back update it
+      // final accessToken = result[ApiKeys.accessToken];
+      // await AppStorageHelper.setSecureData(
+      //   StorageKeys.accessToken,
+      //   accessToken,
+      // );
 
       await AppStorageHelper.setBool(StorageKeys.isLoggedIn, true);
     }).asVoid();

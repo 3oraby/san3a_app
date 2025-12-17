@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:san3a_app/core/constants/locale_keys.dart';
 import 'package:san3a_app/core/helpers/get_text_palette.dart';
@@ -10,16 +11,17 @@ import 'package:san3a_app/core/widgets/custom_button.dart';
 import 'package:san3a_app/core/widgets/custom_text_form_field.dart';
 import 'package:san3a_app/core/widgets/custom_password_text_field.dart';
 import 'package:san3a_app/core/widgets/vertical_gap.dart';
+import 'package:san3a_app/features/auth/presentation/providers/login_provider.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/auth_social_button.dart';
 
-class LoginBody extends StatefulWidget {
+class LoginBody extends ConsumerStatefulWidget {
   const LoginBody({super.key});
 
   @override
-  State<LoginBody> createState() => _LoginBodyState();
+  ConsumerState<LoginBody> createState() => _LoginBodyState();
 }
 
-class _LoginBodyState extends State<LoginBody> {
+class _LoginBodyState extends ConsumerState<LoginBody> {
   final passwordController = TextEditingController();
 
   final emailController = TextEditingController();
@@ -52,12 +54,12 @@ class _LoginBodyState extends State<LoginBody> {
   }
 
   void submitLoginForm() {
-    // final SignInCubit signInCubit = BlocProvider.of<SignInCubit>(context);
-    // signInCubit.email = emailController.text;
-    // signInCubit.signInWithEmailAndPassword(
-    //   email: emailController.text,
-    //   password: passwordController.text,
-    // );
+    ref
+        .read(loginProvider.notifier)
+        .loginWithEmailAndPassword(
+          email: emailController.text,
+          password: passwordController.text,
+        );
   }
 
   void onForgotPasswordTap() {
