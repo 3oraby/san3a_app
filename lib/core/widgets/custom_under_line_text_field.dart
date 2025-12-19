@@ -4,9 +4,10 @@ import 'package:san3a_app/core/utils/app_text_field_theme.dart';
 import 'package:san3a_app/core/utils/app_text_styles.dart';
 
 class CustomUnderLineTextField extends StatelessWidget {
-  const CustomUnderLineTextField({super.key, this.controller});
+  const CustomUnderLineTextField({super.key, this.controller, this.validator});
 
   final TextEditingController? controller;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +20,7 @@ class CustomUnderLineTextField extends StatelessWidget {
       ).copyWith(color: textPalette.headingColor),
       textAlign: TextAlign.center,
       controller: controller,
+      validator: validator,
       decoration: InputDecoration(
         border: UnderlineInputBorder(
           borderSide: BorderSide(

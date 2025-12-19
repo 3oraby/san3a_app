@@ -132,9 +132,6 @@ class AuthRepoImpl extends BaseRepoImpl implements AuthRepo {
   Future<Either<Failure, void>> forgetPassword({required String email}) {
     return handleApi(
       () => api.post(EndPoints.forgetPassword, data: {ApiKeys.email: email}),
-      backendMessageMapping: {
-        "Invalid email": LocaleKeys.messagesFailuresInvalidEmail,
-      },
     ).asVoid();
   }
 
