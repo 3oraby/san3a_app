@@ -1,22 +1,23 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:san3a_app/core/constants/locale_keys.dart';
 import 'package:san3a_app/core/helpers/get_text_palette.dart';
-import 'package:san3a_app/core/utils/app_routes.dart';
 import 'package:san3a_app/core/utils/app_text_styles.dart';
 import 'package:san3a_app/core/widgets/custom_button.dart';
 import 'package:san3a_app/core/widgets/custom_password_text_field.dart';
 import 'package:san3a_app/core/widgets/vertical_gap.dart';
+import 'package:san3a_app/features/auth/presentation/providers/reset_password_provider.dart';
 
-class ResetPasswordBody extends StatefulWidget {
+class ResetPasswordBody extends ConsumerStatefulWidget {
   const ResetPasswordBody({super.key});
 
   @override
-  State<ResetPasswordBody> createState() => _ResetPasswordBodyState();
+  ConsumerState<ResetPasswordBody> createState() => _ResetPasswordBodyState();
 }
 
-class _ResetPasswordBodyState extends State<ResetPasswordBody> {
+class _ResetPasswordBodyState extends ConsumerState<ResetPasswordBody> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
@@ -51,16 +52,12 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
   }
 
   void onSendCodeTap() async {
-    goToLoginScreen();
-  }
-
-  void goToLoginScreen() {
-    Navigator.pushNamedAndRemoveUntil(
-      context,
-      Routes.initialAuthScreen,
-      (route) => false,
-    );
-    Navigator.pushNamed(context, Routes.loginScreen);
+    ref
+        .read(resetPasswordProvider.notifier)
+        .resetPassword(
+          newPassword: passwordController.text,
+          confirmPassword: confirmPasswordController.text,
+        );
   }
 
   @override
