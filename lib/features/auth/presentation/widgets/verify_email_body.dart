@@ -8,6 +8,7 @@ import 'package:san3a_app/core/helpers/get_text_palette.dart';
 import 'package:san3a_app/core/utils/app_text_styles.dart';
 import 'package:san3a_app/core/widgets/custom_button.dart';
 import 'package:san3a_app/core/widgets/vertical_gap.dart';
+import 'package:san3a_app/features/auth/presentation/providers/resend_reset_code_provider.dart';
 import 'package:san3a_app/features/auth/presentation/providers/verify_email_provider.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/custom_pinput_otp.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/resend_code_button.dart';
@@ -54,7 +55,9 @@ class _VerifyEmailBodyState extends ConsumerState<VerifyEmailBody> {
   }
 
   void onResendOtpTap() {
-    // call api to resend otp
+    ref
+        .read(resendResetCodeProvider.notifier)
+        .resendResetCode(email: userEmail);
   }
 
   @override
