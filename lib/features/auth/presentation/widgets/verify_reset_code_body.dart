@@ -9,8 +9,11 @@ import 'package:san3a_app/core/helpers/get_text_palette.dart';
 import 'package:san3a_app/core/utils/app_text_styles.dart';
 import 'package:san3a_app/core/widgets/custom_button.dart';
 import 'package:san3a_app/core/widgets/vertical_gap.dart';
+import 'package:san3a_app/features/auth/presentation/providers/resend_reset_code_provider.dart';
+import 'package:san3a_app/features/auth/presentation/providers/resend_timer_provider.dart';
 import 'package:san3a_app/features/auth/presentation/providers/verify_reset_code_provider.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/custom_pinput_otp.dart';
+import 'package:san3a_app/features/auth/presentation/widgets/resend_code_button.dart';
 
 class VerifyResetCodeBody extends ConsumerStatefulWidget {
   const VerifyResetCodeBody({super.key});
@@ -30,6 +33,10 @@ class _VerifyResetCodeBodyState extends ConsumerState<VerifyResetCodeBody> {
     super.initState();
     userEmail = AppStorageHelper.getString(StorageKeys.userEmail) ?? "";
     otpController.addListener(checkOtpLength);
+
+    Future.microtask(() {
+      ref.read(resendTimerProvider.notifier).start(0);
+    });
   }
 
   void checkOtpLength() {
@@ -55,9 +62,10 @@ class _VerifyResetCodeBodyState extends ConsumerState<VerifyResetCodeBody> {
         .verifyResetCode(email: userEmail, code: otpController.text);
   }
 
-
   void onResendOtpTap() {
-    // call api to resend otp
+    ref
+        .read(resendResetCodeProvider.notifier)
+        .resendResetCode(email: userEmail);
   }
 
   @override
@@ -105,15 +113,7 @@ class _VerifyResetCodeBodyState extends ConsumerState<VerifyResetCodeBody> {
               text: LocaleKeys.authVerifyOtpConfirm.tr(),
             ),
             const VerticalGap(16),
-            TextButton(
-              onPressed: onResendOtpTap,
-              child: Text(
-                LocaleKeys.authVerifyOtpResendCode.tr(),
-                style: AppTextStyles.getTextStyle(
-                  14,
-                ).copyWith(color: Theme.of(context).primaryColor),
-              ),
-            ),
+            ResendCodeButton(onResend: onResendOtpTap),
             const VerticalGap(24),
           ],
         ),

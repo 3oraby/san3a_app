@@ -146,8 +146,8 @@ class AuthRepoImpl extends BaseRepoImpl implements AuthRepo {
         data: {ApiKeys.email: email, ApiKeys.code: code},
       ),
       backendMessageMapping: {
-        "Invalid email": LocaleKeys.messagesFailuresInvalidEmail,
-        "Invalid or expired verification code":
+        "Invalid email or reset code": LocaleKeys.messagesFailuresInvalidEmail,
+        "Reset code has expired. Please request a new one.":
             LocaleKeys.messagesFailuresVerificationCodeNotFound,
       },
     ).asVoid();

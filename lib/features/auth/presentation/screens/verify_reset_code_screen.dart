@@ -40,6 +40,7 @@ class _VerifyResetCodeScreenState extends ConsumerState<VerifyResetCodeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    listenOnVerifyResetCodeProvider();
     return CustomModalProgressHUD(
       inAsyncCall: ref.watch(verifyResetCodeProvider).isLoading,
       child: const Scaffold(
