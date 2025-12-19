@@ -10,6 +10,7 @@ import 'package:san3a_app/core/widgets/custom_button.dart';
 import 'package:san3a_app/core/widgets/vertical_gap.dart';
 import 'package:san3a_app/features/auth/presentation/providers/verify_email_provider.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/custom_pinput_otp.dart';
+import 'package:san3a_app/features/auth/presentation/widgets/resend_code_button.dart';
 
 class VerifyEmailBody extends ConsumerStatefulWidget {
   const VerifyEmailBody({super.key});
@@ -89,15 +90,7 @@ class _VerifyEmailBodyState extends ConsumerState<VerifyEmailBody> {
             text: LocaleKeys.authVerifyOtpConfirm.tr(),
           ),
           const VerticalGap(16),
-          TextButton(
-            onPressed: onResendOtpTap,
-            child: Text(
-              LocaleKeys.authVerifyOtpResendCode.tr(),
-              style: AppTextStyles.getTextStyle(
-                14,
-              ).copyWith(color: Theme.of(context).primaryColor),
-            ),
-          ),
+          ResendCodeButton(onResend: onResendOtpTap),
           const VerticalGap(24),
         ],
       ),
