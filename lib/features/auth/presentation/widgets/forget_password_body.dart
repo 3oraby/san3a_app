@@ -66,7 +66,7 @@ class _ForgetPasswordBodyState extends ConsumerState<ForgetPasswordBody> {
   }
 
   void goToVerifyCodeScreen() {
-    Navigator.pushNamed(context, Routes.verifyForgetPasswordOtpScreen);
+    Navigator.pushNamed(context, Routes.verifyResetCodeScreen);
   }
 
   void listenOnForgetPasswordProvider() {

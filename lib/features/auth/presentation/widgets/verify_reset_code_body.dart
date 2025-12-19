@@ -1,26 +1,26 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:san3a_app/core/constants/locale_keys.dart';
 import 'package:san3a_app/core/constants/storage_keys.dart';
 import 'package:san3a_app/core/helpers/app_storage_helper.dart';
 import 'package:san3a_app/core/helpers/get_text_palette.dart';
-import 'package:san3a_app/core/utils/app_routes.dart';
 import 'package:san3a_app/core/utils/app_text_styles.dart';
 import 'package:san3a_app/core/widgets/custom_button.dart';
 import 'package:san3a_app/core/widgets/vertical_gap.dart';
+import 'package:san3a_app/features/auth/presentation/providers/verify_reset_code_provider.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/custom_pinput_otp.dart';
 
-class VerifyForgetPasswordOtpBody extends StatefulWidget {
-  const VerifyForgetPasswordOtpBody({super.key});
+class VerifyResetCodeBody extends ConsumerStatefulWidget {
+  const VerifyResetCodeBody({super.key});
 
   @override
-  State<VerifyForgetPasswordOtpBody> createState() =>
-      _VerifyForgetPasswordOtpBodyState();
+  ConsumerState<VerifyResetCodeBody> createState() =>
+      _VerifyResetCodeBodyState();
 }
 
-class _VerifyForgetPasswordOtpBodyState
-    extends State<VerifyForgetPasswordOtpBody> {
+class _VerifyResetCodeBodyState extends ConsumerState<VerifyResetCodeBody> {
   final TextEditingController otpController = TextEditingController();
   bool isButtonEnabled = false;
   late String userEmail;
@@ -50,15 +50,11 @@ class _VerifyForgetPasswordOtpBodyState
   }
 
   void onConfirmOtpTap() async {
-    // call api to verify otp
-
-    // after success response
-    goToResetPasswordScreen();
+    ref
+        .read(verifyResetCodeProvider.notifier)
+        .verifyResetCode(email: userEmail, code: otpController.text);
   }
 
-  void goToResetPasswordScreen() {
-    Navigator.pushNamed(context, Routes.resetPasswordScreen);
-  }
 
   void onResendOtpTap() {
     // call api to resend otp

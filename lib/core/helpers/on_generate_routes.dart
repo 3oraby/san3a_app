@@ -8,23 +8,13 @@ import 'package:san3a_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:san3a_app/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:san3a_app/features/auth/presentation/screens/create_new_account_screen.dart';
 import 'package:san3a_app/features/auth/presentation/screens/verify_email_screen.dart';
-import 'package:san3a_app/features/auth/presentation/screens/verify_forget_password_otp_screen.dart';
+import 'package:san3a_app/features/auth/presentation/screens/verify_reset_code_screen.dart';
 import 'package:san3a_app/features/customer_home/presentation/screens/customer_home_screen.dart';
 
 Route<dynamic> onGenerateRoutes(RouteSettings settings, BuildContext context) {
   log("Navigating to ${settings.name}");
 
   switch (settings.name) {
-    // case Routes.showProductScreen:
-    //   final ProductDetailsArgs productDetailsArgs =
-    //       settings.arguments as ProductDetailsArgs;
-    //   return MaterialPageRoute(
-    //     builder: (_) => BlocProvider.value(
-    //       value: productDetailsArgs.cartCubit,
-    //       child: ShowProductScreen(product: productDetailsArgs.product),
-    //     ),
-    //   );
-
     case Routes.initialAuthScreen:
       return MaterialPageRoute(builder: (_) => const InitialAuthScreen());
 
@@ -40,10 +30,8 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings, BuildContext context) {
     case Routes.resetPasswordScreen:
       return MaterialPageRoute(builder: (_) => const ResetPasswordScreen());
 
-    case Routes.verifyForgetPasswordOtpScreen:
-      return MaterialPageRoute(
-        builder: (_) => const VerifyForgetPasswordOtpScreen(),
-      );
+    case Routes.verifyResetCodeScreen:
+      return MaterialPageRoute(builder: (_) => const VerifyResetCodeScreen());
 
     case Routes.verifyEmailScreen:
       return MaterialPageRoute(builder: (_) => const VerifyEmailScreen());
