@@ -6,7 +6,7 @@ class EndPoints {
       "Auth/RegisterCustomer/register/customer";
   static const String craftmanSignUp =
       "Auth/RegisterCrafstman/register/craftman";
-  static const String logout = "Auth/Logout/logout";
+  static const String logOut = "Auth/Logout/logout";
 
   static const String verifyEmail = "Auth/VerifyEmail/verify";
   static const String resendVerifyEmail =

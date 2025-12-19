@@ -9,31 +9,25 @@ abstract class AuthRepo {
   Future<Either<Failure, void>> signUp({required Map<String, dynamic> data});
   Future<Either<Failure, void>> logOut();
 
+  // verify email
   Future<Either<Failure, void>> verifyEmail({
     required String email,
     required String code,
   });
+  Future<Either<Failure, void>> resendVerifyEmail({required String email});
 
-  Future<Either<Failure, void>> resendVerifyOtp({required String email});
-
-  Future<Either<Failure, void>> updateUserProfile({
-    required Map<String, dynamic> data,
-  });
-
-  Future<Either<Failure, void>> updateBrandProfile({
-    required Map<String, dynamic> data,
-  });
-
+  // forget password
   Future<Either<Failure, void>> forgetPassword({required String email});
 
-  Future<Either<Failure, void>> verifyResetPassword({
+  Future<Either<Failure, void>> verifyResetCode({
     required String email,
     required String code,
   });
 
+  Future<Either<Failure, void>> resendResetCode({required String email});
+
   Future<Either<Failure, void>> resetPassword({
-    required String resetToken,
-    required String email,
-    required String code,
+    required String newPassword,
+    required String confirmPassword,
   });
 }

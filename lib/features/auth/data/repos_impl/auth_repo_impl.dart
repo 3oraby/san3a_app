@@ -113,48 +113,77 @@ class AuthRepoImpl extends BaseRepoImpl implements AuthRepo {
   }
 
   @override
+  Future<Either<Failure, void>> resendVerifyEmail({required String email}) {
+    return handleApi(
+      () => api.post(EndPoints.resendVerifyEmail, data: {ApiKeys.email: email}),
+      backendMessageMapping: {
+        "Invalid email": LocaleKeys.messagesFailuresInvalidEmail,
+        "user already active": LocaleKeys.messagesFailuresUserAlreadyActive,
+      },
+    ).asVoid();
+  }
+
+  @override
   Future<Either<Failure, void>> logOut() {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<Failure, void>> resendVerifyOtp({required String email}) {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<Failure, void>> updateUserProfile({
-    required Map<String, dynamic> data,
-  }) {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<Failure, void>> updateBrandProfile({
-    required Map<String, dynamic> data,
-  }) {
-    throw UnimplementedError();
+    return handleApi(() => api.post(EndPoints.logOut)).asVoid();
   }
 
   @override
   Future<Either<Failure, void>> forgetPassword({required String email}) {
-    throw UnimplementedError();
+    return handleApi(
+      () => api.post(EndPoints.forgetPassword, data: {ApiKeys.email: email}),
+      backendMessageMapping: {
+        "Invalid email": LocaleKeys.messagesFailuresInvalidEmail,
+      },
+    ).asVoid();
   }
 
   @override
-  Future<Either<Failure, void>> verifyResetPassword({
+  Future<Either<Failure, void>> verifyResetCode({
     required String email,
     required String code,
   }) {
-    throw UnimplementedError();
+    return handleApi(
+      () => api.post(
+        EndPoints.verifyResetCode,
+        data: {ApiKeys.email: email, ApiKeys.code: code},
+      ),
+      backendMessageMapping: {
+        "Invalid email": LocaleKeys.messagesFailuresInvalidEmail,
+        "Invalid or expired verification code":
+            LocaleKeys.messagesFailuresVerificationCodeNotFound,
+      },
+    ).asVoid();
+  }
+
+  @override
+  Future<Either<Failure, void>> resendResetCode({required String email}) {
+    return handleApi(
+      () => api.post(EndPoints.resendResetCode, data: {ApiKeys.email: email}),
+      backendMessageMapping: {
+        "Invalid email": LocaleKeys.messagesFailuresInvalidEmail,
+      },
+    ).asVoid();
   }
 
   @override
   Future<Either<Failure, void>> resetPassword({
-    required String resetToken,
-    required String email,
-    required String code,
+    required String newPassword,
+    required String confirmPassword,
   }) {
-    throw UnimplementedError();
+    return handleApi(
+      () => api.post(
+        EndPoints.resetPassword,
+        data: {
+          ApiKeys.newPassword: newPassword,
+          ApiKeys.confirmPassword: confirmPassword,
+        },
+      ),
+      backendMessageMapping: {
+        "Invalid email": LocaleKeys.messagesFailuresInvalidEmail,
+        "Invalid or expired verification code":
+            LocaleKeys.messagesFailuresVerificationCodeNotFound,
+      },
+    ).asVoid();
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:san3a_app/core/widgets/back_help_app_bar.dart';
+import 'package:san3a_app/core/widgets/custom_modal_progress_hud.dart';
 import 'package:san3a_app/features/auth/presentation/widgets/forget_password_body.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
@@ -7,6 +8,9 @@ class ForgetPasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(appBar: BackHelpAppBar(), body: ForgetPasswordBody());
+    return const CustomModalProgressHUD(
+      inAsyncCall: false,
+      child: Scaffold(appBar: BackHelpAppBar(), body: ForgetPasswordBody()),
+    );
   }
 }
