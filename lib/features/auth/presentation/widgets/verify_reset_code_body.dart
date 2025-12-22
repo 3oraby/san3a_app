@@ -63,9 +63,7 @@ class _VerifyResetCodeBodyState extends ConsumerState<VerifyResetCodeBody> {
   }
 
   void onResendOtpTap() {
-    ref
-        .read(resendResetCodeProvider.notifier)
-        .resendResetCode(email: userEmail);
+    ref.read(resendResetCodeProvider(userEmail));
   }
 
   @override
@@ -113,7 +111,7 @@ class _VerifyResetCodeBodyState extends ConsumerState<VerifyResetCodeBody> {
               text: LocaleKeys.authVerifyOtpConfirm.tr(),
             ),
             const VerticalGap(16),
-            ResendCodeButton(onResend: onResendOtpTap),
+            ResendCodeButton(onResend: onResendOtpTap, seconds: 20),
             const VerticalGap(24),
           ],
         ),
