@@ -20,21 +20,24 @@ class BaseRepoImpl implements BaseRepo {
       final result = await call();
       return Right(result);
     } on ServerException catch (e) {
-      log("Handling ServerException in BaseRepoImpl: ${e.errModel.message}");
+      log(
+        "Handling ServerException in BaseRepoImpl. message from back: ${e.errModel.message}",
+      );
       String message = e.errModel.message;
 
-      log((backendMessageMapping?[message]).toString());
       if (backendMessageMapping != null &&
           backendMessageMapping.containsKey(message)) {
         message = backendMessageMapping[message] ?? message;
+        return Left(CustomFailure(message: message));
       }
 
       if (statusCodeMessages != null &&
           statusCodeMessages.containsKey(e.errModel.code)) {
         message = statusCodeMessages[e.errModel.code] ?? message;
+        return Left(CustomFailure(message: message));
       }
 
-      return Left(CustomFailure(message: message));
+      return const Left(CustomFailure());
     } catch (e) {
       log("Unhandled exception in BaseRepoImpl: $e");
       return const Left(CustomFailure());

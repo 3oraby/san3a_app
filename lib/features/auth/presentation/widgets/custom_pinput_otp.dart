@@ -15,36 +15,39 @@ class CustomPinputOtp extends StatelessWidget {
   Widget build(BuildContext context) {
     final textPalette = getTextPalette(context);
 
-    return Pinput(
-      controller: otpController,
-      animationCurve: Curves.bounceIn,
-      keyboardType: TextInputType.number,
-      submittedPinTheme: PinTheme(
-        height: 48.h,
-        width: 48.h,
-        decoration: BoxDecoration(
-          color: Theme.of(context).brightness == Brightness.dark
-              ? AppDarkColors.activePinFieldBackground
-              : AppLightColors.activePinFieldBackground,
-          borderRadius: BorderRadius.circular(8.r),
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: Pinput(
+        controller: otpController,
+        animationCurve: Curves.bounceIn,
+        keyboardType: TextInputType.number,
+        submittedPinTheme: PinTheme(
+          height: 48.h,
+          width: 48.h,
+          decoration: BoxDecoration(
+            color: Theme.of(context).brightness == Brightness.dark
+                ? AppDarkColors.activePinFieldBackground
+                : AppLightColors.activePinFieldBackground,
+            borderRadius: BorderRadius.circular(8.r),
+          ),
+          textStyle: AppTextStyles.getTextStyle(32).copyWith(
+            fontWeight: FontWeight.w600,
+            color: textPalette.primaryColor,
+          ),
         ),
-        textStyle: AppTextStyles.getTextStyle(32).copyWith(
-          fontWeight: FontWeight.w600,
-          color: textPalette.primaryColor,
-        ),
-      ),
-      defaultPinTheme: PinTheme(
-        height: 48.h,
-        width: 48.h,
-        decoration: BoxDecoration(
-          color: Theme.of(context).brightness == Brightness.dark
-              ? AppDarkColors.inActivePinFieldBackground
-              : AppLightColors.inActivePinFieldBackground,
-          borderRadius: BorderRadius.circular(8.r),
-        ),
-        textStyle: AppTextStyles.getTextStyle(32).copyWith(
-          fontWeight: FontWeight.w600,
-          color: textPalette.primaryColor,
+        defaultPinTheme: PinTheme(
+          height: 48.h,
+          width: 48.h,
+          decoration: BoxDecoration(
+            color: Theme.of(context).brightness == Brightness.dark
+                ? AppDarkColors.inActivePinFieldBackground
+                : AppLightColors.inActivePinFieldBackground,
+            borderRadius: BorderRadius.circular(8.r),
+          ),
+          textStyle: AppTextStyles.getTextStyle(32).copyWith(
+            fontWeight: FontWeight.w600,
+            color: textPalette.primaryColor,
+          ),
         ),
       ),
     );
