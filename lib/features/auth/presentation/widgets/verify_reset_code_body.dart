@@ -111,7 +111,7 @@ class _VerifyResetCodeBodyState extends ConsumerState<VerifyResetCodeBody> {
               text: LocaleKeys.authVerifyOtpConfirm.tr(),
             ),
             const VerticalGap(16),
-            ResendCodeButton(onResend: onResendOtpTap, seconds: 20),
+            ResendCodeButton(onResend: onResendOtpTap),
             const VerticalGap(24),
           ],
         ),

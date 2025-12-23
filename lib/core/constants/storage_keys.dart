@@ -7,4 +7,5 @@ class StorageKeys {
   static const String currentUser = "currentUser";
   static const String userEmail = "userEmail";
   static const String userRole = "userRole";
+  static const String resetToken = "resetToken";
 }

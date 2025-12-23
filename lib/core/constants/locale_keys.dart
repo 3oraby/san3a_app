@@ -24,6 +24,8 @@ abstract class LocaleKeys {
       "messages.failures.user_already_active";
   static const messagesFailuresVerificationCodeNotFound =
       "messages.failures.verification_code_not_found";
+  static const messagesFailuresResetTokenExpired =
+      "messages.failures.reset_token_expired";
 
   // validation
   static const validationFieldIsRequired = "validation.field_is_required";
@@ -54,6 +56,8 @@ abstract class LocaleKeys {
   static const validationGovernorateIsRequired =
       "validation.governorate_is_required";
   static const validationGovernorateTooLong = "validation.governorate_too_long";
+  static const validationPasswordMustContainNumber =
+      "validation.password_must_contain_number";
 
   // crafts
   static const craftCarpenter = "crafts.carpenter";

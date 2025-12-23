@@ -55,6 +55,8 @@ class AuthRepoImpl extends BaseRepoImpl implements AuthRepo {
       final userRole = data["role"] ?? Role.customer.name;
       log("save current role: $userRole");
       await AppStorageHelper.setString(StorageKeys.userRole, userRole);
+
+      await AppStorageHelper.deleteSecureData(StorageKeys.resetToken);
     }).asVoid();
   }
 
@@ -106,6 +108,7 @@ class AuthRepoImpl extends BaseRepoImpl implements AuthRepo {
       //   accessToken,
       // );
 
+      await AppStorageHelper.deleteSecureData(StorageKeys.resetToken);
       await AppStorageHelper.setBool(StorageKeys.isLoggedIn, true);
     }).asVoid();
 
@@ -150,7 +153,12 @@ class AuthRepoImpl extends BaseRepoImpl implements AuthRepo {
         "Reset code has expired. Please request a new one.":
             LocaleKeys.messagesFailuresVerificationCodeNotFound,
       },
-    ).asVoid();
+    ).onSuccess((result) async {
+      await AppStorageHelper.setSecureData(
+        StorageKeys.resetToken,
+        result[ApiKeys.resetToken],
+      );
+    }).asVoid();
   }
 
   @override
@@ -177,10 +185,10 @@ class AuthRepoImpl extends BaseRepoImpl implements AuthRepo {
         },
       ),
       backendMessageMapping: {
-        "Invalid email": LocaleKeys.messagesFailuresInvalidEmail,
-        "Invalid or expired verification code":
-            LocaleKeys.messagesFailuresVerificationCodeNotFound,
+        "Reset token has expired": LocaleKeys.messagesFailuresResetTokenExpired,
       },
-    ).asVoid();
+    ).onSuccess((value) async {
+      await AppStorageHelper.deleteSecureData(StorageKeys.resetToken);
+    }).asVoid();
   }
 }

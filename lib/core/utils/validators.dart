@@ -35,6 +35,8 @@ class Validators {
       return LocaleKeys.validationPasswordMustContainLowercase.tr();
     } else if (!RegExp(r'[A-Z]').hasMatch(value)) {
       return LocaleKeys.validationPasswordMustContainUppercase.tr();
+    } else if (!RegExp(r'[0-9]').hasMatch(value)) {
+      return LocaleKeys.validationPasswordMustContainNumber.tr();
     }
     return null;
   }

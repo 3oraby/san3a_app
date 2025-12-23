@@ -48,7 +48,6 @@ class _ForgetPasswordBodyState extends ConsumerState<ForgetPasswordBody> {
   void dispose() {
     emailController.removeListener(checkEmail);
     emailController.dispose();
-    listenOnForgetPasswordProvider();
     super.dispose();
   }
 

@@ -14,7 +14,8 @@
             "invalid_or_expired_code": "الرمز الذي أدخلته غير صالح أو منتهي الصلاحية. يرجى المحاولة مرة أخرى.",
             "invalid_email": "لم نتمكن من العثور على حساب بهذا البريد الإلكتروني.",
             "user_already_active": "حسابك نشط بالفعل. لا حاجة لاتخاذ أي إجراء آخر.",
-            "verification_code_not_found": "لم يتم العثور على رمز التحقق. يرجى طلب رمز جديد."
+            "verification_code_not_found": "لم يتم العثور على رمز التحقق. يرجى طلب رمز جديد.",
+            "reset_token_expired": "انتهت صلاحية رمز إعادة تعيين كلمة المرور. يرجى طلب رمز جديد."
         }
     },
     "validation": {
@@ -37,7 +38,8 @@
         "enter_your_email_to_reset_password": "يرجى إدخال بريدك الإلكتروني لإعادة تعيين كلمة المرور",
         "governorate_is_required": "المحافظة مطلوبة",
         "governorate_too_long": "المحافظة يجب أن لا تتجاوز 30 حرفًا",
-        "invalid_national_id": "الرقم القومى يجب أن يكون 14 رقم"
+        "invalid_national_id": "الرقم القومى يجب أن يكون 14 رقم",
+        "password_must_contain_number": "يجب أن تحتوي كلمة المرور على رقم على الأقل"
     },
     "crafts": {
         "carpenter": "نجار",

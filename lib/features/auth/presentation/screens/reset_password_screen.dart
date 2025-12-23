@@ -18,12 +18,6 @@ class ResetPasswordScreen extends ConsumerStatefulWidget {
 }
 
 class _ResetPasswordScreenState extends ConsumerState<ResetPasswordScreen> {
-  @override
-  void dispose() {
-    listenOnResetPasswordProvider();
-    super.dispose();
-  }
-
   void listenOnResetPasswordProvider() {
     ref.listen(resetPasswordProvider, (previous, next) {
       if (next is AsyncError) {

@@ -19,10 +19,21 @@ class ApiInterceptor extends Interceptor {
     options.headers['Accept-language'] = "en";
     options.extra['withCredentials'] = true;
 
-    final token = await AppStorageHelper.getSecureData(StorageKeys.accessToken);
+    final resetToken = await AppStorageHelper.getSecureData(
+      StorageKeys.resetToken,
+    );
 
-    if (token != null) {
-      options.headers['Authorization'] = 'Bearer $token';
+    if (resetToken != null) {
+      options.headers['Authorization'] = 'Bearer $resetToken';
+      return handler.next(options);
+    }
+
+    final accessToken = await AppStorageHelper.getSecureData(
+      StorageKeys.accessToken,
+    );
+
+    if (accessToken != null) {
+      options.headers['Authorization'] = 'Bearer $accessToken';
     }
     return handler.next(options);
   }

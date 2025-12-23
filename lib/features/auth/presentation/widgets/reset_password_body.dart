@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:san3a_app/core/constants/locale_keys.dart';
 import 'package:san3a_app/core/helpers/get_text_palette.dart';
 import 'package:san3a_app/core/utils/app_text_styles.dart';
+import 'package:san3a_app/core/utils/validators.dart';
 import 'package:san3a_app/core/widgets/custom_button.dart';
 import 'package:san3a_app/core/widgets/custom_password_text_field.dart';
 import 'package:san3a_app/core/widgets/vertical_gap.dart';
@@ -21,6 +22,7 @@ class _ResetPasswordBodyState extends ConsumerState<ResetPasswordBody> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   bool isButtonEnabled = false;
 
@@ -52,60 +54,70 @@ class _ResetPasswordBodyState extends ConsumerState<ResetPasswordBody> {
   }
 
   void onSendCodeTap() async {
-    ref
-        .read(resetPasswordProvider.notifier)
-        .resetPassword(
-          newPassword: passwordController.text,
-          confirmPassword: confirmPasswordController.text,
-        );
+    if (formKey.currentState!.validate()) {
+      ref
+          .read(resetPasswordProvider.notifier)
+          .resetPassword(
+            newPassword: passwordController.text,
+            confirmPassword: confirmPasswordController.text,
+          );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     final textPalette = getTextPalette(context);
 
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 19.w),
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const VerticalGap(45),
-            Text(
-              LocaleKeys.authForgetPasswordResetPassword.tr(),
-              style: AppTextStyles.getTextStyle(24).copyWith(
-                fontWeight: FontWeight.w700,
-                color: textPalette.primaryColor,
-              ),
-            ),
-            const VerticalGap(65),
-            Row(
-              children: [
-                Text(
-                  LocaleKeys.authResetPasswordEnterNewPassword.tr(),
-                  style: AppTextStyles.getTextStyle(
-                    20,
-                  ).copyWith(color: textPalette.headingColor),
+    return Form(
+      key: formKey,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 19.w),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const VerticalGap(45),
+              Text(
+                LocaleKeys.authForgetPasswordResetPassword.tr(),
+                style: AppTextStyles.getTextStyle(24).copyWith(
+                  fontWeight: FontWeight.w700,
+                  color: textPalette.primaryColor,
                 ),
-              ],
-            ),
-            const VerticalGap(10),
-            CustomPasswordTextField(
-              controller: passwordController,
-              hintText: LocaleKeys.authResetPasswordPassword.tr(),
-            ),
-            const VerticalGap(16),
-            CustomPasswordTextField(
-              controller: confirmPasswordController,
-              hintText: LocaleKeys.authResetPasswordConfirmPassword.tr(),
-            ),
-            const VerticalGap(28),
-            CustomButton(
-              onPressed: onSendCodeTap,
-              isDisabled: !isButtonEnabled,
-              text: LocaleKeys.authResetPasswordConfirm.tr(),
-            ),
-          ],
+              ),
+              const VerticalGap(65),
+              Row(
+                children: [
+                  Text(
+                    LocaleKeys.authResetPasswordEnterNewPassword.tr(),
+                    style: AppTextStyles.getTextStyle(
+                      20,
+                    ).copyWith(color: textPalette.headingColor),
+                  ),
+                ],
+              ),
+              const VerticalGap(10),
+              CustomPasswordTextField(
+                validator: Validators.validatePassword,
+                controller: passwordController,
+                hintText: LocaleKeys.authResetPasswordPassword.tr(),
+              ),
+              const VerticalGap(16),
+              CustomPasswordTextField(
+                validator: (value) => Validators.confirmPasswordValidator(
+                  value,
+                  passwordController.text,
+                ),
+                controller: confirmPasswordController,
+                hintText: LocaleKeys.authResetPasswordConfirmPassword.tr(),
+              ),
+              const VerticalGap(28),
+              CustomButton(
+                onPressed: onSendCodeTap,
+                isDisabled: !isButtonEnabled,
+                text: LocaleKeys.authResetPasswordConfirm.tr(),
+              ),
+            ],
+          ),
         ),
       ),
     );
