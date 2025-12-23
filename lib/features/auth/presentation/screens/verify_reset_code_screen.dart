@@ -18,12 +18,6 @@ class VerifyResetCodeScreen extends ConsumerStatefulWidget {
 }
 
 class _VerifyResetCodeScreenState extends ConsumerState<VerifyResetCodeScreen> {
-  @override
-  void dispose() {
-    listenOnVerifyResetCodeProvider();
-    super.dispose();
-  }
-
   void listenOnVerifyResetCodeProvider() {
     ref.listen(verifyResetCodeProvider, (previous, next) {
       if (next is AsyncError) {
